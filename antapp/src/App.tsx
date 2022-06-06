@@ -6,10 +6,12 @@ import Home from './components/pages/Home';
 import Work from './components/pages/Work';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
+import Navbar from "./components/navbar";
 
 const App: VFC = () => {
   return (
       <div className="container">
+          <Navbar/>
         <Switch>
             <Route exact path="/">
                 <Home/>
