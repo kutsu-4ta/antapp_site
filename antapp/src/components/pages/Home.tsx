@@ -19,17 +19,17 @@ const Home = () => {
 
             <div style={{height: '1000px'}}>
                 <div style={{marginTop: '15rem'}}>
-                    <ScrollFader>
+                    <ScrollFader threshold={300}>
                         <h1>About</h1>
                     </ScrollFader>
                 </div>
                 <div style={{marginTop: '10rem'}}>
-                    <ScrollFader>
+                    <ScrollFader threshold={400}>
                         <div>Works</div>
                     </ScrollFader>
                 </div>
                 <div style={{marginTop: '10rem'}}>
-                    <ScrollFader>
+                    <ScrollFader threshold={600}>
                         <div>Contact</div>
                     </ScrollFader>
                 </div>
