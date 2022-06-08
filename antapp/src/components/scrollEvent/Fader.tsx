@@ -29,6 +29,7 @@ const useObserver: UseObserver = (ref?: RefObject<HTMLDivElement>, options?: Int
             return;
         }
 
+        // TODO: 間抜けな書き方しているので直す
         const myRef = typeof ref?.current !== undefined ? ref : undefined;
         const myRefCurrent = myRef !== undefined ? myRef.current : undefined;
 

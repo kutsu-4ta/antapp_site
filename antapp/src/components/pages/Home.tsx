@@ -2,18 +2,8 @@ import React from 'react';
 import MainTitle from '../heading/MainTitle';
 import StyledCircle from '../backgrounAnimation/Circle';
 import ScrollFader from '../scrollEvent/Fader';
-import UseScroll from "../Utility/UseScroll";
-// import useOffsetTop from "../Utility/UseOffsetTop";
-// import {getActiveElement} from "@testing-library/user-event/dist/utils";
 
 const Home = () => {
-
-    // フェードのしきい値
-    const scrollPosition: number = UseScroll();
-    const threshold: number  = scrollPosition % window.innerHeight > window.innerHeight / 3 ? scrollPosition % window.innerHeight : window.innerHeight / 3;
-
-    console.log(Element.name);
-
     return (
         <>
             <>
