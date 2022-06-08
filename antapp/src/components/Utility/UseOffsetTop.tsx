@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 
-export function useOffsetTop(ref?: React.RefObject<HTMLElement>) {
+export default function useOffsetTop(ref?: React.RefObject<HTMLElement>) {
     const [viewportTop, setViewportTop] = useState < number | undefined > (undefined);
     const [pageOffsetTop, setPageOffsetTop] = useState<number | undefined>(
         undefined
@@ -11,6 +11,7 @@ export function useOffsetTop(ref?: React.RefObject<HTMLElement>) {
         const clientRect = ref.current.getBoundingClientRect();
         setViewportTop(clientRect.top);
         const newPageOffsetTop = clientRect.top + window.pageYOffset;
+        console.log(window);
         if (newPageOffsetTop !== pageOffsetTop) setPageOffsetTop(newPageOffsetTop);
     }, [ref]);
 

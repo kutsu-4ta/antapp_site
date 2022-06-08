@@ -1,0 +1,17 @@
+.fader-enter-active {
+    opacity: 0;
+}
+
+.fader-enter-done {
+    transition: all 1s ease;
+    opacity: 1;
+}
+
+.fader-exit-active {
+    opacity: 1;
+}
+
+.fader-exit-done {
+    transition: all 500ms ease;
+    opacity: 0;
+}

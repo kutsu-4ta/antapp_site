@@ -2,38 +2,78 @@
  * [機能説明]
  * フェードイン、フェードアウトするコンポーネント
  */
+import React, {ReactNode, useEffect, useState, RefObject } from 'react';
+import {CSSTransition} from 'react-transition-group';
+import './style.css';
 
-import React, {ReactNode} from "react";
-import UseScroll from '../Utility/UseScroll';
+
+type UseObserver = (ref?: RefObject<HTMLDivElement>, options?: IntersectionObserverInit ) => boolean;
+const useObserver: UseObserver = (ref?: RefObject<HTMLDivElement>, options?: IntersectionObserverInit) => {
+    const [intersect, setIntersect] = useState<boolean>(false);
+
+    useEffect(() => {
+        function callback(entries: IntersectionObserverEntry[]) {
+            entries.forEach(entry => {
+                setIntersect(entry.isIntersecting);
+            });
+        }
+
+    const options = {
+        root: null,
+        threshold: [0.7, 0.7],
+    }
+
+        const observer = new IntersectionObserver(callback, options);
+
+        if ((ref?.current === null) || (ref?.current === undefined)) {
+            return;
+        }
+
+        const myRef = typeof ref?.current !== undefined ? ref : undefined;
+        const myRefCurrent = myRef !== undefined ? myRef.current : undefined;
+
+        if (( myRefCurrent !== undefined ) && ( myRefCurrent !== null )) {
+            observer.observe(myRefCurrent);
+        }
+
+        return () => {
+            if (ref?.current !== null) {
+                if (( myRefCurrent !== undefined ) && ( myRefCurrent !== null )) {
+                    observer.unobserve(myRefCurrent);
+                }
+            }
+        };
+    });
+    return intersect;
+}
 
 interface Props {
     children: ReactNode;
-    threshold?: number | undefined;
 }
 
+type UseScrollFader = (props: Props) => JSX.Element;
+const useScrollFader: UseScrollFader = (props: Props, ref?: React.LegacyRef<HTMLDivElement> | undefined)  => {
 
-type ScrollFader = (props: Props) => JSX.Element;
-const scrollFader: ScrollFader = (props: Props)  => {
-    // スクロール位置取得
-    const scrollPosition: number = UseScroll();
-    console.log(scrollPosition);
-
-    // TODO:スクロールの画面のyの閾値表示を定義
-    let threshold: number | undefined = props.threshold;
-
-    if (threshold === undefined) {
-        threshold = 300;
-    }
-
-    console.log(window.innerHeight);
-    console.log(props.threshold)
+    const myRef = React.useRef<HTMLDivElement >(null)
+    // myRefを監視
+    const intersect = useObserver(myRef);
 
     return (
         <>
-            {scrollPosition > threshold ? <div>{props.children}</div>: ''}
+            <div ref={myRef}></div>
+            <CSSTransition
+                in={intersect}
+                timeout={{
+                    enter: 50,
+                    exit: 50
+                }}
+                mountOnEnter
+                classNames='fader'
+            >
+                {props.children}
+            </CSSTransition>
         </>
     )
 }
 
-export default scrollFader;
-
+export default useScrollFader;
