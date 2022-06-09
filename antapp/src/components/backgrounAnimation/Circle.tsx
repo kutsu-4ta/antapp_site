@@ -19,7 +19,7 @@ const useStyledCircle: UseStyleCitcles = (props: Props) => {
 
     return (
         <>
-            <h1>{props.children}</h1>
+            <span>{props.children}
             <CSSTransition
                 in={mount}
                 timeout={{
@@ -31,6 +31,7 @@ const useStyledCircle: UseStyleCitcles = (props: Props) => {
             >
                 <p></p>
             </CSSTransition>
+            </span>
         </>
     )
 };

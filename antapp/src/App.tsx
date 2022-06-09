@@ -7,6 +7,7 @@ import Work from './components/pages/Work';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
 import Navbar from './components/navbar';
+import InfinateGradation from './components/backgrounAnimation/InfinateGradation';
 
 const App: VFC = () => {
     return (
