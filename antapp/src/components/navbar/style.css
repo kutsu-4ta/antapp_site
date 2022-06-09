@@ -2,3 +2,12 @@
     height: 10vh;
     width: 12vw;
 }
+
+.my-navbar {
+    /*border-bottom: 0.1rem solid rgba(1, 1, 1, 0.7);*/
+    /*color: rgba(0, 0, 0, 1);*/
+    /*background-color: rgb(255, 255 ,255, 1);*/
+}
+
+.my-navlink {
+}

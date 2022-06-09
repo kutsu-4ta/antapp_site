@@ -9,19 +9,24 @@ import Contact from './components/pages/Contact';
 import Navbar from './components/navbar';
 
 const App: VFC = () => {
-  return (
-      <div className="container">
-          <Navbar/>
-        <Switch>
-            <Route exact path="/">
-                <Home/>
-            </Route>
-            <Route exact path="/work" component={Work}/>;
-            <Route exact path="/about" component={About}/>;
-            <Route exact path="/contact" component={Contact}/>;
-            <Redirect to={"/"}/>
-        </Switch>
-      </div>
+    return (
+        <>
+            <InfinateGradation scale={4}>
+                <Navbar/>
+            </InfinateGradation>
+                <div className="container">
+                    <Switch>
+                        <Route exact path="/">
+                            <Home/>
+                        </Route>
+                        <Route exact path="/work" component={Work}/>;
+                        <Route exact path="/about" component={About}/>;
+                        <Route exact path="/contact" component={Contact}/>;
+                        <Redirect to={"/"}/>
+                    </Switch>
+                </div>
+
+        </>
   );
 };
 

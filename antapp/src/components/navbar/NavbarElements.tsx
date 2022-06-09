@@ -2,13 +2,13 @@ import Styled from 'styled-components';
 import {FaBars} from 'react-icons/fa'
 import {Link} from 'react-router-dom';
 
-// TODO:白色か透明にする
 export const Nav = Styled.nav`
-    background: white;
+    // background: ;
+    // border-bottom: 0.1rem solid white;
+    // color: black;
     height: 80px;
     display: flex;
     justify-content: space-between;
-    // padding: 0.5rem calc((100vw - 1000px) / 2);
     padding: 0;
     z-index: 10;
 `;
