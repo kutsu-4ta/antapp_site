@@ -8,7 +8,7 @@ import Item from "@mui/material/Grid";
 const about = () => {
     return (
         <>
-            <Grid container justifyContent="center" rowSpacing={1} columnSpacing={{xs: 1, sm: 3, md: 12}}>
+            <Grid container justifyContent="center" rowSpacing={1}>
                 <Grid item xs={12}>
                     <Item>
                         <MainTitle>About</MainTitle>
@@ -22,7 +22,7 @@ const about = () => {
                             <Item><img src={ProfileImage} className={"image-profile"} alt="profile"/></Item>
                         </Grid>
                         <Grid item xs={8}>
-                            <Item>Masafumi Yamashita</Item>
+                            <Item className={'text-size-semi-title'}>Masafumi Yamashita</Item>
                         </Grid>
                     </Grid>
 

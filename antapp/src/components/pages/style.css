@@ -26,10 +26,33 @@
     text-align: center;
 }
 
+.margin-zero {
+    margin: 0;
+}
+
+.margin-top-zero {
+    margin-top: 0;
+}
+
+.padding-zero {
+    padding: 0;
+}
+
+
 /* ----------About---------*/
 .image-profile {
     height: 120px;
     width: 120px;
+}
+
+.text-size-semi-title {
+    font-size: 1.6rem;
+}
+
+/* ----------Works---------*/
+.image-works {
+    height: 10px;
+    width: 10px;
 }
 
 .title-container {

@@ -14,14 +14,14 @@ const Home = () => {
         <>
             <div className={'title-container'}>
                 {/*<StyledCircle>*/}
-                <p className={'title-logo-area'}>
+                <div className={'title-logo-area'}>
                     <div>
                         <h1>うんこしたい</h1>
                         <div>
                             トイレに篭って用を足しています。
                         </div>
                     </div>
-                </p>
+                </div>
                 {/*</StyledCircle>*/}
             </div>
 
