@@ -4,6 +4,12 @@
     font-size: 28px;
 }
 
+.title-container {
+    height: 50vh;
+    align-items: center;
+    text-align: center;
+}
+
 .content-body {
     text-align: center;
     margin-top: 40px;

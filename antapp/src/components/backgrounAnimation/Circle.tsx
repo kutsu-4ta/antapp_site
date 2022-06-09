@@ -1,27 +1,39 @@
-import React, {useState, ReactNode} from 'react'
+import React, {useState, useEffect, ReactNode} from 'react'
 import {CSSTransition} from 'react-transition-group';
 import './style.css';
+import MainTitle from "../heading/MainTitle";
 
-type UseStyleCircles = () => JSX.Element;
-const useStyledCircle: UseStyleCircles = () => {
+interface Props {
+    children: ReactNode;
+}
+
+type UseStyleCitcles = (props: Props) => JSX.Element;
+const useStyledCircle: UseStyleCitcles = (props: Props) => {
     //マウントの状態を管理
     const [mount, setMount] = useState(false);
 
+    // コンポーネントのマウント時にだけ実行
+    useEffect(() => {
+        // Update the document title using the browser API
+        setMount(true);
+    });
+
     return (
-        <div>
+        <>
+            <h1>{props.children}</h1>
             <CSSTransition
-                in={true}
+                in={mount}
                 timeout={{
                     enter: 0,
                     exit: 500
                 }}
-                // mountOnEnter
                 unmountOnExit
                 classNames='ball-one'
             >
                 <p></p>
             </CSSTransition>
-        </div>
+        </>
     )
-}
+};
+
 export default useStyledCircle;
