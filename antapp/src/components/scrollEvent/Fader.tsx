@@ -6,7 +6,7 @@ import React, {ReactNode, useEffect, useState, RefObject } from 'react';
 import {CSSTransition} from 'react-transition-group';
 import './style.css';
 
-
+// TODO:ファイル切り分ける
 type UseObserver = (ref?: RefObject<HTMLDivElement>, options?: IntersectionObserverInit ) => boolean;
 const useObserver: UseObserver = (ref?: RefObject<HTMLDivElement>, options?: IntersectionObserverInit) => {
     const [intersect, setIntersect] = useState<boolean>(false);
@@ -20,7 +20,8 @@ const useObserver: UseObserver = (ref?: RefObject<HTMLDivElement>, options?: Int
 
     const options = {
         root: null,
-        threshold: [0.7, 0.7],
+        rootMargin: '90% 0px -20% 0px', // (top, right, bottom, left)
+        threshold: 0.5
     }
 
         const observer = new IntersectionObserver(callback, options);

@@ -1,16 +1,31 @@
 import React from "react";
-import "./About.css";
-import StyledCircle from "../backgrounAnimation/Circle";
-const About = () => {
+import "./style.css";
+import MainTitle from '../heading/MainTitle';
+
+const about = () => {
     return(
-        <>
-            <StyledCircle>
-                <h1>
-                    About
-                </h1>
-            </StyledCircle>
-        </>
+        <div>
+            <MainTitle>About</MainTitle>
+            <div className={'content-body'}>
+                冷やし中華、はじめました。<br/>
+                また、夏にでも召し上がってください。<br/>
+                どうぞ、よろしく。<br/>
+                あああああああああ。<br/>
+                あああああああああ。<br/>
+                あああああああああ。<br/>
+                あああああああああ。<br/>
+                あああああああああ。<br/>
+                あああああああああ。<br/>
+                あああああああああ。<br/>
+                あああああああああ。<br/>
+                あああああああああ。<br/>
+                あああああああああ。<br/>
+                あああああああああ。<br/>
+                えええええええええ。<br/>
+                お!!!!!!!!!!!!
+            </div>
+        </div>
     );
 };
 
-export default About;
+export default about;

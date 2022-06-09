@@ -1,15 +1,18 @@
 import React from "react";
-import "./Work.css";
-import StyledCircle from "../backgrounAnimation/Circle";
+import "./style.css";
+import MainTitle from "../heading/MainTitle";
 const Work = () => {
     return(
-        <>
-            <StyledCircle>
-                <h1>
-                    Works
-                </h1>
-            </StyledCircle>
-        </>
+        <div>
+            <MainTitle>Works</MainTitle>
+            <div className={'content-body'}>
+                あああああああああああああ<br/>
+                いいいいいいいいいいいいい<br/>
+                ううううううううううううう<br/>
+                えええええええええええええ<br/>
+                おおおおおおおおおおおおお
+            </div>
+        </div>
     );
 };
 
