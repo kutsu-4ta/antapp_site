@@ -3,9 +3,9 @@ import "./style.css";
 import MainTitle from "../heading/MainTitle";
 const Contact = () => {
     return (
-        <div>
+        <>
             <MainTitle>Content</MainTitle>
-            <div className={'content-body'}>
+            <div>
                 あああああああああああああ<br/>
                 いいいいいいいいいいいいい<br/>
                 ううううううううううううう<br/>
@@ -24,7 +24,7 @@ const Contact = () => {
                 えええええええええ。<br/>
                 おおおおおおおおおおおおお
             </div>
-        </div>
+        </>
     );
 };
 

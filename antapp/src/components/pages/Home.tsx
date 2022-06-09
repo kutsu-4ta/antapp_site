@@ -7,33 +7,44 @@ import Contact from "./Contact";
 import FoxLogo from "../../assets/images/fox-white.svg";
 import './style.css';
 
+const maxHeight: number = window.innerHeight * 4;
+
 const Home = () => {
     return (
         <>
             <div className={'title-container'}>
-                <StyledCircle>
-                    <img src={FoxLogo} className={'logo-main'} alt="antapp" />
-                </StyledCircle>
+                {/*<StyledCircle>*/}
+                <p className={'title-logo-area'}>
+                    <div>
+                        <h1>うんこしたい</h1>
+                        <div>
+                            トイレに篭って用を足しています。
+                        </div>
+                    </div>
+                </p>
+                {/*</StyledCircle>*/}
             </div>
 
-            <div style={{height: '1000px'}}>
-                <div style={{marginTop: '15rem'}} id={'about'}>
-                    <ScrollFader>
-                        <About/>
-                    </ScrollFader>
-                </div>
+            <div style={{height: maxHeight}}>
 
-                <div style={{marginTop: '10rem'}} id={'works'}>
                     <ScrollFader>
+                        <div className={'content-block'} id={'about'}>
+                            <About/>
+                        </div>
+                    </ScrollFader>
+
+                <ScrollFader>
+                    <div className={'content-block'} id={'works'}>
                         <Work/>
-                    </ScrollFader>
-                </div>
+                    </div>
+                </ScrollFader>
 
-                <div style={{marginTop: '10rem'}} id={'contact'}>
-                    <ScrollFader>
+                <ScrollFader>
+                    <div className={'content-block'} id={'contact'}>
                         <Contact/>
-                    </ScrollFader>
-                </div>
+                    </div>
+                </ScrollFader>
+
             </div>
         </>
     );

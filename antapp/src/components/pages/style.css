@@ -4,19 +4,71 @@
     font-size: 28px;
 }
 
+.title-logo-area {
+    margin-top: 20vh;
+}
+
 .logo-main {
     height: 30vh;
     width: 40vw;
+}
+
+/*----------共通------------*/
+.text-size-body {
+    font-size: 20px;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ----------About---------*/
+.image-profile {
+    height: 120px;
+    width: 120px;
 }
 
 .title-container {
     height: 50vh;
     align-items: center;
     text-align: center;
+    margin-bottom: 10rem;
 }
 
-.content-body {
+.content-block {
+    background-color: rgba(255,255,255,0.3);
+    color: black;
+    /*border: 0.1rem solid black;*/
+    width: 60%;
     text-align: center;
-    margin-top: 40px;
-    font-size: 28px;
+    font-size: 1.6rem;
+    margin-bottom: 25vh;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+
+
+. bg-gradation {
+    background: linear-gradient(45deg, #98CAF9, #F9F398, #F998A7, #9EF998, #79F7EE);
+    background-size: 1000% 1000%;
+    animation: GradientBackground 10s ease infinite;
+}
+
+/*@keyframes GradientBackground {*/
+/*    0% {*/
+/*        background-position: 0% 50%;*/
+/*    }*/
+
+/*    50% {*/
+/*        background-position: 100% 50%;*/
+/*    }*/
+
+/*    100% {*/
+/*        background-position: 0% 50%;*/
+/*    }*/
+/*}*/
