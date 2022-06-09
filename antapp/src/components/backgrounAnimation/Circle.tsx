@@ -1,7 +1,6 @@
 import React, {useState, useEffect, ReactNode} from 'react'
 import {CSSTransition} from 'react-transition-group';
 import './style.css';
-// import logo from './logo.svg'
 import Button from '@mui/material/Button'
 
 interface Props {
@@ -22,7 +21,6 @@ const useStyledCircle: UseStyleCitcles = (props: Props) => {
     return (
         <>
             <h1>{props.children}</h1>
-            <Button variant="contained">Hello World</Button>
             <CSSTransition
                 in={mount}
                 timeout={{
