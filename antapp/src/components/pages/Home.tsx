@@ -9,10 +9,12 @@ import Contact from "./Contact";
 const Home = () => {
     return (
         <>
-            <>
-                <MainTitle>Antapp</MainTitle>
-                <StyledCircle/>
-            </>
+            <ScrollFader>
+                <div>
+                    <MainTitle>Antapp</MainTitle>
+                    <StyledCircle/>
+                </div>
+            </ScrollFader>
 
             <div style={{height: '1000px'}}>
                 <div style={{marginTop: '15rem'}} id={'about'}>

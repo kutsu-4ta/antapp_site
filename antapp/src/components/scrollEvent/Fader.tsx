@@ -20,7 +20,7 @@ const useObserver: UseObserver = (ref?: RefObject<HTMLDivElement>, options?: Int
 
     const options = {
         root: null,
-        rootMargin: '90% 0px -20% 0px', // (top, right, bottom, left)
+        rootMargin: '70% 0px -20% 0px', // (top, right, bottom, left)
         threshold: 0.5
     }
 
