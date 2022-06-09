@@ -1,13 +1,15 @@
 import React from "react";
-import {Nav, Bars, NavLink, NavMenu} from './NavbarElements'
+import {Nav, Bars, NavLink, NavMenu} from './NavbarElements';
+import FoxLogo from '../../assets/images/fox.png';
+import './style.css';
 
 
 const Navbar = () => {
     return (
         <>
             <Nav>
-                <NavLink to="">
-                    <h1>Logo</h1>
+                <NavLink to="/">
+                    <img src={FoxLogo} className={'navbar-logo'} alt="Antapp" />
                 </NavLink>
                 <Bars/>
                 <NavMenu>
