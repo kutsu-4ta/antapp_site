@@ -4,6 +4,11 @@
     font-size: 28px;
 }
 
+.logo-main {
+    height: 30vh;
+    width: 40vw;
+}
+
 .title-container {
     height: 50vh;
     align-items: center;

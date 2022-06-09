@@ -1,7 +1,6 @@
 import React, {useState, useEffect, ReactNode} from 'react'
 import {CSSTransition} from 'react-transition-group';
 import './style.css';
-import Button from '@mui/material/Button'
 
 interface Props {
     children: ReactNode;
@@ -27,7 +26,7 @@ const useStyledCircle: UseStyleCitcles = (props: Props) => {
                     enter: 0,
                     exit: 500
                 }}
-                unmountOnExit
+                mountOnEnter
                 classNames='ball-one'
             >
                 <p></p>

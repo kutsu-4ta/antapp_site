@@ -1,6 +1,6 @@
 import React from "react";
 import {Nav, Bars, NavLink, NavMenu} from './NavbarElements';
-import FoxLogo from '../../assets/images/fox.png';
+import FoxLogo from '../../assets/images/fox-white.svg';
 import './style.css';
 
 
@@ -9,7 +9,7 @@ const Navbar = () => {
         <>
             <Nav>
                 <NavLink to="/">
-                    <img src={FoxLogo} className={'navbar-logo'} alt="Antapp" />
+                    <img src={FoxLogo} className={'logo-navbar'} alt="antapp" />
                 </NavLink>
                 <Bars/>
                 <NavMenu>

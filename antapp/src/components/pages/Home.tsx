@@ -1,16 +1,19 @@
 import React from 'react';
 import StyledCircle from '../backgrounAnimation/Circle';
 import ScrollFader from '../scrollEvent/Fader';
-import MainTitle from "../heading/MainTitle";
 import About from './About';
 import Work from './Work';
 import Contact from "./Contact";
+import FoxLogo from "../../assets/images/fox-white.svg";
+import './style.css';
 
 const Home = () => {
     return (
         <>
             <div className={'title-container'}>
-                <StyledCircle>Antapp</StyledCircle>
+                <StyledCircle>
+                    <img src={FoxLogo} className={'logo-main'} alt="antapp" />
+                </StyledCircle>
             </div>
 
             <div style={{height: '1000px'}}>
