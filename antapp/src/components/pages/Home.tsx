@@ -1,17 +1,19 @@
 import React from 'react';
 import StyledCircle from '../backgrounAnimation/Circle';
 import ScrollFader from '../scrollEvent/Fader';
-import Grid from "@mui/material/Grid";
-import Item from "@mui/material/Grid";
 import About from './About';
 import Work from './Work';
 import Contact from "./Contact";
 import './style.css';
 import Biwa from '../../assets/images/biwa.png';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faArrowRight, faArrowDown} from "@fortawesome/free-solid-svg-icons";
 
 const maxHeight: number = window.innerHeight * 4;
 
 const Home = () => {
+    const iconStyle: React.CSSProperties = { padding: 10, fontSize: 40 };
+
     return (
         <>
             <div className={'title-block title-logo-area'}
@@ -25,6 +27,10 @@ const Home = () => {
                 </div>
                 {/* TODO:FAのアイコンに置き換える*/}
                 メモ:アニメーションで「↓」みたいなの入れる
+                <p className={'text-left'}>
+                    <FontAwesomeIcon style={iconStyle} icon={faArrowDown} />
+                    Scroll!(仮)
+                </p>
                 {/*</StyledCircle>*/}
             </div>
 
@@ -32,7 +38,10 @@ const Home = () => {
                 <ScrollFader>
                     <div className={'content-block'} id={'about'}>
                         <About/>
-                        <a href={'/about'}>more !(仮)</a>
+                        <a href={'/about'}>more
+                            <FontAwesomeIcon style={iconStyle} icon={faArrowRight} />
+                            (仮)
+                        </a>
                     </div>
                 </ScrollFader>
 
@@ -40,7 +49,10 @@ const Home = () => {
                     <div className={'content-block'} id={'works'}>
                         <Work/>
                         {/* TODO:FAのアイコンに置き換える*/}
-                        <a href={'/work'}>more !(仮)</a>
+                        <a href={'/work'}>more
+                            <FontAwesomeIcon style={iconStyle} icon={faArrowRight} />
+                            (仮)
+                        </a>
                     </div>
                 </ScrollFader>
 
