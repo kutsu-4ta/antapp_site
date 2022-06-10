@@ -26,7 +26,6 @@ const App: VFC = () => {
                         <Redirect to={"/"}/>
                     </Switch>
                 </div>
-
         </>
   );
 };

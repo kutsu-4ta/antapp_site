@@ -1,31 +1,5 @@
-.home {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 28px;
-}
-
-.title-logo-area {
-    margin-top: 20vh;
-}
-
-.logo-main {
-    height: 30vh;
-    width: 40vw;
-}
 
 /*----------共通------------*/
-.text-size-body {
-    font-size: 20px;
-}
-
-.text-left {
-    text-align: left;
-}
-
-.text-center {
-    text-align: center;
-}
-
 .margin-zero {
     margin: 0;
 }
@@ -34,31 +8,34 @@
     margin-top: 0;
 }
 
-.padding-zero {
-    padding: 0;
+.text-left {
+    text-align: left;
 }
 
-
-/* ----------About---------*/
-.image-profile {
-    height: 120px;
-    width: 120px;
+.text-right{
+    text-align: right;
 }
 
-.text-size-semi-title {
+.text-center {
+    text-align: center;
+}
+
+.text-size-body {
+    font-size: 20px;
+}
+
+.text-size-sub-title {
     font-size: 1.6rem;
 }
 
-/* ----------Works---------*/
-.image-works {
-    height: 10px;
-    width: 10px;
-}
 
-.title-container {
+/*----------Home-------------*/
+
+.title-block {
     height: 50vh;
     align-items: center;
     text-align: center;
+    margin-top: 20vh;
     margin-bottom: 10rem;
 }
 
@@ -74,24 +51,14 @@
     margin-right: auto;
 }
 
-
-
-. bg-gradation {
-    background: linear-gradient(45deg, #98CAF9, #F9F398, #F998A7, #9EF998, #79F7EE);
-    background-size: 1000% 1000%;
-    animation: GradientBackground 10s ease infinite;
+/* ----------About---------*/
+.image-profile {
+    height: 120px;
+    width: 120px;
 }
 
-/*@keyframes GradientBackground {*/
-/*    0% {*/
-/*        background-position: 0% 50%;*/
-/*    }*/
-
-/*    50% {*/
-/*        background-position: 100% 50%;*/
-/*    }*/
-
-/*    100% {*/
-/*        background-position: 0% 50%;*/
-/*    }*/
-/*}*/
+/* ----------Works---------*/
+.image-works {
+    height: 10px;
+    width: 10px;
+}

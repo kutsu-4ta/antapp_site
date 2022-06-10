@@ -11,7 +11,7 @@ const about = () => {
             <Grid container justifyContent="center" rowSpacing={1}>
                 <Grid item xs={12}>
                     <Item>
-                        <MainTitle>About</MainTitle>
+                        <MainTitle>about</MainTitle>
                     </Item>
                 </Grid>
 
@@ -22,7 +22,7 @@ const about = () => {
                             <Item><img src={ProfileImage} className={"image-profile"} alt="profile"/></Item>
                         </Grid>
                         <Grid item xs={8}>
-                            <Item className={'text-size-semi-title'}>Masafumi Yamashita</Item>
+                            <Item className={'text-size-sub-title'}>Masafumi Yamashita</Item>
                         </Grid>
                     </Grid>
 
@@ -49,12 +49,12 @@ const about = () => {
                     <Item>
                         <ul>JavaScript(1年)</ul>
                         <ul>TypeScript</ul>
-                        <ul>Flutter</ul>
                         <ul>PHP(2年)</ul>
                         <ul>MySQL(1年)</ul>
                         <ul>GitHub</ul>
                         <ul>React.js</ul>
                         <ul>Vue.js</ul>
+                        <ul>Flutter</ul>
                         <ul>Docker</ul>
                         <ul>Laravel</ul>
                     </Item>

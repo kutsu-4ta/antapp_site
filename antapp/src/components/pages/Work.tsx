@@ -73,12 +73,37 @@ const itemData = [
     },
 ];
 
+const Work = () => {
+    return(
+        <>
+            <div>
+                <Grid container justifyContent="center">
+                    <Grid item xs={12}>
+                        <Item>
+                            <MainTitle>works</MainTitle>
+                        </Item>
+                    </Grid>
+                </Grid>
+                <Grid container justifyContent="center">
+                    <Grid item xs={10} className={'text-center'}>
+                        <Item>
+                            <TitlebarBelowMasonryImageList/>
+                        </Item>
+                    </Grid>
+                </Grid>
+            </div>
+        </>
+    );
+};
+
+export default Work;
+
 function TitlebarBelowMasonryImageList() {
     return (
         <ImageList sx={{ width: '50', height: '100' }}>
             <ImageListItem key="Subheader" cols={5}>
                 <ListSubheader>
-                    これらは実績になるんですよね
+                    これからここの実績を増やしていくんですね
                 </ListSubheader>
             </ImageListItem>
 
@@ -106,28 +131,3 @@ function TitlebarBelowMasonryImageList() {
         </ImageList>
     );
 }
-
-const Work = () => {
-    return(
-        <>
-            <div>
-                <Grid container justifyContent="center">
-                    <Grid item xs={12}>
-                        <Item>
-                            <MainTitle>Works</MainTitle>
-                        </Item>
-                    </Grid>
-                </Grid>
-                <Grid container justifyContent="center">
-                    <Grid item xs={10} className={'text-center'}>
-                        <Item>
-                            <TitlebarBelowMasonryImageList/>
-                        </Item>
-                    </Grid>
-                </Grid>
-            </div>
-        </>
-    );
-};
-
-export default Work;
