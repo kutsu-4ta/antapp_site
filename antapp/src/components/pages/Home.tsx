@@ -16,47 +16,55 @@ const Home = () => {
 
     return (
         <>
-            <div className={'title-block title-logo-area'}
-                // TODO:背景画像用意する
-            >
-                <h1>フリーランスでWeb開発を行っています。</h1>
-                メモ：もうちょっとなんか書く
-                <span>
-                    <StyledArrow scale={1000}>
-                        {/*アイコン変える*/}
-                        <FontAwesomeIcon style={iconStyle} icon={faArrowDown}/>
-                    </StyledArrow>
-                </span>
-            </div>
-
-            <div style={{height: maxHeight}}>
-                <ScrollFader>
-                    <div className={'content-block'} id={'about'}>
-                        <About/>
-                        <a href={'/about'}>more
-                            <FontAwesomeIcon style={iconStyle} icon={faArrowRight} />
-                            (仮)
-                        </a>
+            <ScrollFader>
+                <div className={'title-block title-logo-area'}
+                    // TODO:背景画像用意する
+                >
+                    <div id={'home'}>
+                        <h1>フリーランスでWeb開発を行っています。</h1>
+                        メモ：もうちょっとなんか書く<br/>
+                        メモ：もうちょっとなんか書く<br/>
+                        メモ：もうちょっとなんか書く<br/>
+                        メモ：もうちょっとなんか書く<br/>
+                        メモ：もうちょっとなんか書く<br/>
+                        メモ：もうちょっとなんか書く<br/>
+                        <span>
+                            <StyledArrow scale={1000}>
+                                {/*アイコン変える*/}
+                                <FontAwesomeIcon style={iconStyle} icon={faArrowDown}/>
+                            </StyledArrow>
+                        </span>
                     </div>
-                </ScrollFader>
+                </div>
+            </ScrollFader>
 
-                <ScrollFader>
-                    <div className={'content-block'} id={'works'}>
-                        <Work/>
-                        {/* TODO:FAのアイコンに置き換える*/}
-                        <a href={'/work'}>more
-                            <FontAwesomeIcon style={iconStyle} icon={faArrowRight} />
-                            (仮)
-                        </a>
-                    </div>
-                </ScrollFader>
+            <ScrollFader>
+                <div className={'content-block'} id={'about'}>
+                    <About/>
+                    <a href={'/about'}>
+                        <FontAwesomeIcon style={iconStyle} icon={faArrowRight}/>
+                        (仮)
+                    </a>
+                </div>
+            </ScrollFader>
 
-                <ScrollFader>
-                    <div className={'content-block'} id={'contact'}>
-                        <Contact/>
-                    </div>
-                </ScrollFader>
-            </div>
+            <ScrollFader>
+                <div className={'content-block'} id={'works'}>
+                    <Work/>
+                    {/* TODO:FAのアイコンに置き換える*/}
+                    <a href={'/work'}>more
+                        <FontAwesomeIcon style={iconStyle} icon={faArrowRight}/>
+                        (仮)
+                    </a>
+                </div>
+            </ScrollFader>
+
+            <ScrollFader>
+                <div className={'content-block'} id={'contact'}>
+                    <Contact/>
+                </div>
+            </ScrollFader>
+
             <div className={'text-right'}>
                 うんち<br/>
                 うんこ<br/>

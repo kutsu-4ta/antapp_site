@@ -19,9 +19,9 @@ const useObserver: UseObserver = (ref?: RefObject<HTMLDivElement>, options?: Int
         }
 
     const options = {
-        root: null,
-        rootMargin: '70% 0px -20% 0px', // (top, right, bottom, left)
-        threshold: 0.5
+        // root: null,
+        rootMargin: '10% 0% -10% 0%', // (top, right, bottom, left)
+        threshold: 0.2
     }
 
         const observer = new IntersectionObserver(callback, options);
@@ -59,20 +59,42 @@ const useScrollFader: UseScrollFader = (props: Props, ref?: React.LegacyRef<HTML
     // myRefを監視
     const intersect = useObserver(myRef);
 
+    // NOTE:デバッグ用
+    // const callBacks = {
+    //     onEnter: () => {
+    //         console.log('enter')
+    //         console.log(myRef.current?.children)
+    //         console.log()
+    //     },
+    //     onEntered: () => {
+    //         console.log('entered')
+    //         console.log(myRef.current?.children)
+    //     },
+    //     onExit: () => {
+    //         console.log('exit')
+    //         console.log(myRef.current?.children)
+    //     },
+    //     onExited: () => {
+    //         console.log('exited')
+    //         console.log(myRef.current?.children)
+    //     }
+    // };
+
     return (
         <>
-            <div ref={myRef}></div>
-            <CSSTransition
-                in={intersect}
-                timeout={{
-                    enter: 50,
-                    exit: 50
-                }}
-                mountOnEnter
-                classNames='fader'
-            >
-                {props.children}
-            </CSSTransition>
+            <div ref={myRef}>
+                <CSSTransition
+                    in={intersect}
+                    timeout={{
+                        enter: 50,
+                        exit: 50
+                    }}
+                    mountOnEnter
+                    classNames='fader'
+                >
+                    {props.children}
+                </CSSTransition>
+            </div>
         </>
     )
 }
