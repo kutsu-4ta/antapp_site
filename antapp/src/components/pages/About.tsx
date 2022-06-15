@@ -4,7 +4,7 @@ import MainTitle from '../heading/MainTitle';
 import ProfileImage from "../../assets/images/profile_kari.png";
 import Grid from "@mui/material/Grid";
 import Item from "@mui/material/Grid";
-import Chart from "../chart";
+import Rechart from "../chart/Rechart";
 
 const about = () => {
     return (
@@ -44,15 +44,76 @@ const about = () => {
 
                 <Grid item xs={12}>
                     <Item><h2>Skill Set</h2>
-                        <Chart/>
+                        <Rechart data={languageData} layoutType="vertical">Language</Rechart>
                     </Item>
                 </Grid>
 
                 <Grid item xs={12}>
+                    <Item>
+                        <Rechart data={flameworkData} layoutType="vertical">FlameWork</Rechart>
+                    </Item>
                 </Grid>
+
             </Grid>
         </>
     );
 };
 
 export default about;
+
+
+const languageData = [
+    {
+        name: "PHP",
+        value: 23,
+        color: "#08d"
+    },
+    {
+        name: "JavaScript",
+        value: 13,
+        color: "#08d"
+    },
+    {
+        name: "TypeScript",
+        value: 3,
+        color: "#eec263"
+    },
+    {
+        name: "Dart",
+        value: 3,
+        color: "#08d"
+    },
+    {
+        name: "MySQL",
+        value: 23,
+        color: "#08d"
+    }
+];
+
+const flameworkData = [
+    {
+        name: "Laravel",
+        value: 23,
+        color: "#4169e1"
+    },
+    {
+        name: "Vue.js",
+        value: 13,
+        color: "#f0e68c#4169e1"
+    },
+    {
+        name: "React.js",
+        value: 3,
+        color: "#f0e68c"
+    },
+    {
+        name: "MySQL",
+        value: 23,
+        color: "#4169e1"
+    },
+    {
+        name: "Flutter",
+        value: 4,
+        color: "#2e8b57"
+    }
+];
