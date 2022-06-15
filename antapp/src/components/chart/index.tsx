@@ -1,33 +1,74 @@
 import * as React from "react";
 import ReactChart from "./ReactChart";
 import ReactWithD3Chart from "./ReactWithD3Chart";
-import Rechart from "./Rechart";
 import VxChart from "./VxChart";
+import Rechart from "./Rechart";
 import "./style.css";
 
-const data = [
+const languageData = [
     {
-        name: "Nike",
-        value: 90
+        name: "PHP",
+        value: 2.3,
+        color: "#08d"
     },
     {
-        name: "Adidas",
-        value: 60
+        name: "JavaScript",
+        value: 1.3,
+        color: "#08d"
     },
     {
-        name: "New Balance",
-        value: 114
+        name: "TypeScript",
+        value: 0.3,
+        color: "#eec263"
+    },
+    {
+        name: "Dart",
+        value: 0.3,
+        color: "#08d"
+    },
+    {
+        name: "MySQL",
+        value: 2.3,
+        color: "#08d"
+    }
+];
+
+const flameworkData = [
+    {
+        name: "Laravel",
+        value: 2.3,
+        color: "#4169e1"
+    },
+    {
+        name: "Vue.js",
+        value: 1.3,
+        color: "#f0e68c"
+    },
+    {
+        name: "React.js",
+        value: 0.3,
+        color: "#f0e68c"
+    },
+    {
+        name: "MySQL",
+        value: 2.3,
+        color: "#4169e1"
+    },
+    {
+        name: "Flutter",
+        value: 0.4,
+        color: "#2e8b57"
     }
 ];
 
 function ReactBarChart() {
     return (
-        <div className="App">
-            <ReactChart data={data} />
-            <Rechart data={data} />
-            <ReactWithD3Chart data={data} />
-            <VxChart data={data} />
-        </div>
+        <>
+            <Rechart data={languageData}/>
+            {/*<ReactChart data={flameworkData}/>*/}
+            <ReactWithD3Chart data={flameworkData}/>
+            {/*<VxChart data={flameworkData}/>*/}
+        </>
     );
 }
 

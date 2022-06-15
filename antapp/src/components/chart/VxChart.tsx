@@ -3,7 +3,6 @@ import { scaleLinear, scaleBand } from "@vx/scale";
 import { Bar } from "@vx/shape";
 import { AxisLeft } from "@vx/axis";
 import { Group } from "@vx/group";
-import {listClasses} from "@mui/material";
 
 type DataItem = {
     name: string;
@@ -34,25 +33,25 @@ const Chart: React.FC<ChartProps> = ({ data }) => {
 
     const yScale = scaleBand(scaleProp);
 
-    type TickProps = {
-        textAnchor: String
-        dy: number
-        dx: number
-        textAlign: string
-        fontFamily: string
-        fontSize: number
-        fill: String
-    }
-
-    const tickProps = {
-        textAnchor: "left",
-        dy: 10,
-        dx: -30,
-        textAlign: "left",
-        fontFamily: "Arial",
-        fontSize: 16,
-        fill: "black"
-    }
+    // type TickProps = {
+    //     textAnchor: String
+    //     dy: number
+    //     dx: number
+    //     textAlign: string
+    //     fontFamily: string
+    //     fontSize: number
+    //     fill: String
+    // }
+    //
+    // const tickProps = {
+    //     textAnchor: "left",
+    //     dy: 10,
+    //     dx: -30,
+    //     textAlign: "left",
+    //     fontFamily: "Arial",
+    //     fontSize: 16,
+    //     fill: "black"
+    // }
 
     return (
         <div
@@ -82,7 +81,7 @@ const Chart: React.FC<ChartProps> = ({ data }) => {
                         tickStroke="#000"
                         hideTicks
                         hideAxisLine
-                        // tickLabelProps ={(tickValue, index) => (tickProps:TickProps)}
+                        // tickLabelProps ={(tickValue, index) => (tickProps:TickProps?: undefinde)}
                     />
                 </Group>
             </svg>

@@ -18,7 +18,7 @@ const Bar: React.FC<BarProps> = ({ width, label }) => (
     <div
         style={{
             display: "flex",
-            maxWidth: "300px"
+            maxWidth: "200px"
         }}
     >
         <div style={{ width: "120px", textAlign: "left" }}>{label}</div>
@@ -38,10 +38,10 @@ const Chart: React.FC<ChartProps> = ({ data }) => {
                 justifyContent: "center"
             }}
         >
-            <h1>React</h1>
+            <h3>FlameWork</h3>
             <div>
                 {data.map(i => (
-                    <Bar width={i.value} label={i.name} key={i.name} />
+                    <Bar width={i.value * 100} label={i.name} key={i.name} />
                 ))}
             </div>
         </div>

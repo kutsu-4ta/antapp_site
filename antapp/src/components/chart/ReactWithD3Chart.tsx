@@ -1,39 +1,45 @@
 import * as React from "react";
-import * as d3 from "d3-scale";
+import {scaleLinear} from "@vx/scale";
+
+type BarProps = {
+    width: number;
+    label: string;
+    color: string | undefined;
+};
+
+const Bar: React.FC<BarProps> = ({ width, label, color}) => (
+    <div
+        style={{
+            display: "flex",
+            maxWidth: "500px",
+            width: "500px",
+            alignItems: "center"
+        }}
+    >
+        {/*凡例エリア*/}
+        <div style={{ width: "120px", textAlign: "left" }}>{label}</div>
+        {/*プロットエリア*/}
+        <div style={{ width: `${width * 170}px`, height: "12px", textAlign: "left", backgroundColor: color }}/>
+    </div>
+);
 
 type DataItem = {
     name: string;
     value: number;
+    color: string;
 };
 
 type ChartProps = {
     data: DataItem[];
 };
 
-type BarProps = {
-    width: number;
-    label: string;
-    color: string;
-};
-
-const Bar: React.FC<BarProps> = ({ width, label, color }) => (
-    <div
-        style={{
-            display: "flex",
-            maxWidth: "300px"
-        }}
-    >
-        <div style={{ width: "120px", textAlign: "left" }}>{label}</div>
-        <div
-            style={{ width: `${width}px`, height: "12px", backgroundColor: color }}
-        />
-    </div>
-);
-
 const Chart: React.FC<ChartProps> = ({ data }) => {
-    const color = d3
-        .scaleLinear()
-        .domain([60, 120]);
+
+    // valueと連動させるときに使う
+    const color = scaleLinear({
+        domain: [60, 120],
+        range: ["#ffa500", "#87CEEB"]
+    });
 
     return (
         <div
@@ -44,14 +50,14 @@ const Chart: React.FC<ChartProps> = ({ data }) => {
                 justifyContent: "center"
             }}
         >
-            <h1>React + D3</h1>
+            <h3>FlameWork</h3>
             <div>
                 {data.map(i => (
                     <Bar
                         width={i.value}
                         label={i.name}
                         key={i.name}
-                        color={'black'}
+                        color={i.color}
                     />
                 ))}
             </div>

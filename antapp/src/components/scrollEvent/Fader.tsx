@@ -8,7 +8,7 @@ import './style.css';
 
 // TODO:ファイル切り分ける
 type UseObserver = (ref?: RefObject<HTMLDivElement>, options?: IntersectionObserverInit ) => boolean;
-const useObserver: UseObserver = (ref?: RefObject<HTMLDivElement>, options?: IntersectionObserverInit) => {
+export const useObserver: UseObserver = (ref?: RefObject<HTMLDivElement>, options?: IntersectionObserverInit) => {
     const [intersect, setIntersect] = useState<boolean>(false);
 
     useEffect(() => {

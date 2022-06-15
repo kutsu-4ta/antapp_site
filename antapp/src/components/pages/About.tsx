@@ -4,23 +4,7 @@ import MainTitle from '../heading/MainTitle';
 import ProfileImage from "../../assets/images/profile_kari.png";
 import Grid from "@mui/material/Grid";
 import Item from "@mui/material/Grid";
-import ReactBarChart from "../chart";
-
-
-const data = [
-    {
-        name: "Nike",
-        value: 90
-    },
-    {
-        name: "Adidas",
-        value: 60
-    },
-    {
-        name: "New Balance",
-        value: 114
-    }
-];
+import Chart from "../chart";
 
 const about = () => {
     return (
@@ -60,25 +44,11 @@ const about = () => {
 
                 <Grid item xs={12}>
                     <Item><h2>Skill Set</h2>
-                        <h3>Language</h3>
-                        <h3>FrameWork</h3>
-                        <ReactBarChart/>
+                        <Chart/>
                     </Item>
                 </Grid>
 
                 <Grid item xs={12}>
-                    {/*<Item>*/}
-                    {/*    <ul>JavaScript(1年)</ul>*/}
-                    {/*    <ul>TypeScript</ul>*/}
-                    {/*    <ul>PHP(2年)</ul>*/}
-                    {/*    <ul>MySQL(1年)</ul>*/}
-                    {/*    <ul>GitHub</ul>*/}
-                    {/*    <ul>React.js</ul>*/}
-                    {/*    <ul>Vue.js</ul>*/}
-                    {/*    <ul>Flutter</ul>*/}
-                    {/*    <ul>Docker</ul>*/}
-                    {/*    <ul>Laravel</ul>*/}
-                    {/*</Item>*/}
                 </Grid>
             </Grid>
         </>

@@ -41,21 +41,15 @@ const Home = () => {
             <ScrollFader>
                 <div className={'content-block'} id={'about'}>
                     <About/>
-                    <a href={'/about'}>
-                        <FontAwesomeIcon style={iconStyle} icon={faArrowRight}/>
-                        (仮)
-                    </a>
+                    <span><a href={'/about'}><FontAwesomeIcon style={iconStyle} icon={faArrowRight}/></a></span>
                 </div>
             </ScrollFader>
 
             <ScrollFader>
                 <div className={'content-block'} id={'works'}>
                     <Work/>
-                    {/* TODO:FAのアイコンに置き換える*/}
-                    <a href={'/work'}>more
-                        <FontAwesomeIcon style={iconStyle} icon={faArrowRight}/>
-                        (仮)
-                    </a>
+                    {/* TODO:アイコン換える*/}
+                    <span><a href={'/work'}>more<FontAwesomeIcon style={iconStyle} icon={faArrowRight}/></a></span>
                 </div>
             </ScrollFader>
 

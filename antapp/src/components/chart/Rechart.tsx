@@ -1,9 +1,10 @@
 import * as React from "react";
-import { BarChart, Bar, XAxis } from "recharts";
+import { BarChart, Bar, XAxis, YAxis} from "recharts";
 
 type DataItem = {
     name: string;
     value: number;
+    color: string;
 };
 
 type ChartProps = {
@@ -20,10 +21,15 @@ const Rechart: React.FC<ChartProps> = ({ data }) => {
                 justifyContent: "center"
             }}
         >
-            <h1>ReChart</h1>
-            <BarChart width={200} height={200} data={data} layout="horizontal">
-                <Bar dataKey="value" fill="#08d" />
+            <h3>Language</h3>
+            <BarChart width={600} height={500} data={data} barSize={30} layout="horizontal">
+                <Bar
+                    dataKey="value"
+                    animationEasing="ease-in-out"
+                    fill={"#08d"}
+                />
                 <XAxis dataKey="name" />
+                <YAxis />
             </BarChart>
         </div>
     );
