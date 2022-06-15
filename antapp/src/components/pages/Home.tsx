@@ -1,11 +1,11 @@
 import React from 'react';
-import StyledCircle from '../backgrounAnimation/Circle';
+import StyledArrow from "../backgrounAnimation/InfinateUpDownArrow";
 import ScrollFader from '../scrollEvent/Fader';
 import About from './About';
 import Work from './Work';
 import Contact from "./Contact";
 import './style.css';
-import Biwa from '../../assets/images/biwa.png';
+import Background from '../../assets/images/back_ground_1.png';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faArrowRight, faArrowDown} from "@fortawesome/free-solid-svg-icons";
 
@@ -17,21 +17,16 @@ const Home = () => {
     return (
         <>
             <div className={'title-block title-logo-area'}
-                 // TODO:背景画像用意する
-                 // style={{backgroundImage: `url(${Biwa})`}}
+                // TODO:背景画像用意する
             >
-                {/*<StyledCircle>*/}
-                <h1>うんこしたい</h1>
-                <div>
-                    トイレにこもって日々用を足しています。
-                </div>
-                {/* TODO:FAのアイコンに置き換える*/}
-                メモ:アニメーションで「↓」みたいなの入れる
-                <p className={'text-left'}>
-                    <FontAwesomeIcon style={iconStyle} icon={faArrowDown} />
-                    Scroll!(仮)
-                </p>
-                {/*</StyledCircle>*/}
+                <h1>フリーランスでWeb開発を行っています。</h1>
+                メモ：もうちょっとなんか書く
+                <span>
+                    <StyledArrow scale={1000}>
+                        {/*アイコン変える*/}
+                        <FontAwesomeIcon style={iconStyle} icon={faArrowDown}/>
+                    </StyledArrow>
+                </span>
             </div>
 
             <div style={{height: maxHeight}}>

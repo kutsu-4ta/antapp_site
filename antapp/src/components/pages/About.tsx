@@ -22,17 +22,17 @@ const about = () => {
                             <Item><img src={ProfileImage} className={"image-profile"} alt="profile"/></Item>
                         </Grid>
                         <Grid item xs={8}>
-                            <Item className={'text-size-sub-title'}>Masafumi Yamashita</Item>
+                            <Item>山下 将史</Item>
+                            <Item>Yamashita Masafumi</Item>
                         </Grid>
                     </Grid>
 
                     <Grid container spacing={8}>
                         <Grid item xs={12} className={'text-size-body'}>
                             <Item>
-                                うんこの専門家<br/>
-                                二酸化炭素を吐き出します。<br/>
-                                冷やし中華、はじめました。<br/>
-                                目をつぶってうんこをすることができます。
+                                フロントエンドを主にweb制作の依頼を受け付けております。<br/>
+                                具体的にはランディングページ（LP）の制作やwebサイトの更新機能・追加などになります。<br/>
+                                【メモ：経歴を書く。前職でしていたことや得意なことなど。】
                             </Item>
                         </Grid>
                     </Grid>
