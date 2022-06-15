@@ -12,7 +12,7 @@ body {
 }
 
 .rectangle {
-
+    border-radius: 50px 50px 50px 50px;
 }
 /*
 * {

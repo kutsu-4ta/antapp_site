@@ -16,7 +16,7 @@ const Home = () => {
 
     return (
         <>
-            <ScrollFader>
+            <ScrollFader timeout={50}>
                 <div className={'title-block title-logo-area'}
                     // TODO:背景画像用意する
                 >
@@ -38,14 +38,13 @@ const Home = () => {
                 </div>
             </ScrollFader>
 
-            <ScrollFader>
+            <ScrollFader timeout={50}>
                 <div className={'content-block'} id={'about'}>
                     <About/>
-                    <span><a href={'/about'}><FontAwesomeIcon style={iconStyle} icon={faArrowRight}/></a></span>
                 </div>
             </ScrollFader>
 
-            <ScrollFader>
+            <ScrollFader timeout={50}>
                 <div className={'content-block'} id={'works'}>
                     <Work/>
                     {/* TODO:アイコン換える*/}
@@ -53,7 +52,7 @@ const Home = () => {
                 </div>
             </ScrollFader>
 
-            <ScrollFader>
+            <ScrollFader timeout={50}>
                 <div className={'content-block'} id={'contact'}>
                     <Contact/>
                 </div>

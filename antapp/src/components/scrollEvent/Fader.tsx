@@ -50,10 +50,11 @@ export const useObserver: UseObserver = (ref?: RefObject<HTMLDivElement>, option
 
 interface Props {
     children: ReactNode;
+    timeout?: number | undefined;
 }
 
-type UseScrollFader = (props: Props) => JSX.Element;
-const useScrollFader: UseScrollFader = (props: Props, ref?: React.LegacyRef<HTMLDivElement> | undefined)  => {
+type UseScrollFader = (props: Props, timeout:Props) => JSX.Element;
+const useScrollFader: UseScrollFader = (props:Props)  => {
 
     const myRef = React.useRef<HTMLDivElement >(null)
     // myRefを監視
@@ -85,10 +86,7 @@ const useScrollFader: UseScrollFader = (props: Props, ref?: React.LegacyRef<HTML
             <div ref={myRef}>
                 <CSSTransition
                     in={intersect}
-                    timeout={{
-                        enter: 50,
-                        exit: 50
-                    }}
+                    timeout={{enter: props.timeout, exit: 50}}
                     mountOnEnter
                     classNames='fader'
                 >
