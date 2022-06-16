@@ -20,7 +20,7 @@ const App: VFC = () => {
                         <Route exact path="/">
                             <Home/>
                         </Route>
-                        <Route exact path="/work" component={Work}/>;
+                        <Route exact path="/works" component={Work}/>;
                         <Route exact path="/about" component={About}/>;
                         <Route exact path="/contact" component={Contact}/>;
                         <Redirect to={"/"}/>
