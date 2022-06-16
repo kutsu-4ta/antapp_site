@@ -7,6 +7,7 @@ import {ImageList, ImageListItem} from "@mui/material";
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
+import Works from "../../assets/images/icons/works_pc_phone.svg";
 
 
 // TODO:名前の文字列のところをリンクにする
@@ -75,24 +76,24 @@ const itemData = [
 
 const Work = () => {
     return(
-        <>
-            <div>
-                <Grid container justifyContent="center">
-                    <Grid item xs={12}>
-                        <Item>
-                            <MainTitle>works</MainTitle>
-                        </Item>
-                    </Grid>
+        <div className="content-top">
+            <Grid container justifyContent="center">
+                <Grid item xs={12} className="text-center">
+                    <Item>
+                        <img src={Works} className="icon-title" alt="works"/>
+                        <MainTitle>works</MainTitle>
+                    </Item>
                 </Grid>
-                <Grid container justifyContent="center">
-                    <Grid item xs={10} className={'text-center'}>
-                        <Item>
-                            <TitlebarBelowMasonryImageList/>
-                        </Item>
-                    </Grid>
+            </Grid>
+
+            <Grid container justifyContent="center">
+                <Grid item xs={10} className={'text-center'}>
+                    <Item>
+                        <TitlebarBelowMasonryImageList/>
+                    </Item>
                 </Grid>
-            </div>
-        </>
+            </Grid>
+        </div>
     );
 };
 

@@ -5,13 +5,16 @@ import ProfileImage from "../../assets/images/profile_kari.png";
 import Grid from "@mui/material/Grid";
 import Item from "@mui/material/Grid";
 import Rechart from "../chart/Rechart";
+import Human from "../../assets/images/icons/about_human.svg";
+import SkillSets from "../../assets/images/icons/skillsets_dev.svg";
 
 const about = () => {
     return (
-        <>
+        <div className="content-top">
             <Grid container justifyContent="center" rowSpacing={1}>
-                <Grid item xs={12}>
+                <Grid item xs={12} className="text-center">
                     <Item>
+                        <img src={Human} className="icon-title" alt="about"/>
                         <MainTitle>about</MainTitle>
                     </Item>
                 </Grid>
@@ -44,22 +47,23 @@ const about = () => {
                 </div>
             </Grid>
 
-            <Grid container justifyContent="center" className={'text-size-body text-center'}>
+            <Grid container justifyContent="center" className={'text-size-body text-center'} style={{paddingTop: "2rem"}}>
 
-                <Grid item xs={12} style={{height: '15rem', marginBottom: '5rem'}}>
-                    <Item><h2>Skill Set</h2>
+                <Grid item xs={12}>
+                    <Item>
+                        <h2><img src={SkillSets} className="icon-sub-title" alt="skillSets"/>Skill Set</h2>
                         <Rechart data={languageData} layoutType="vertical">Language</Rechart>
                     </Item>
                 </Grid>
 
-                <Grid item xs={12} style={{height: '15rem', marginTop: '5rem'}}>
+                <Grid item xs={12}>
                     <Item>
                         <Rechart data={flameworkData} layoutType="vertical">FlameWork</Rechart>
                     </Item>
                 </Grid>
 
             </Grid>
-        </>
+        </div>
     );
 };
 

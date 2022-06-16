@@ -28,6 +28,19 @@
     font-size: 1.6rem;
 }
 
+.icon-title {
+    font-size: 6rem;
+    height: 20vh;
+}
+
+.icon-sub-title {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.content-top {
+    margin-top: 2rem;
+}
 
 /*----------Home-------------*/
 

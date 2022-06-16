@@ -5,7 +5,6 @@ import About from './About';
 import Work from './Work';
 import Contact from "./Contact";
 import './style.css';
-import Background from '../../assets/images/back_ground_1.png';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faArrowRight, faArrowDown} from "@fortawesome/free-solid-svg-icons";
 
@@ -47,8 +46,6 @@ const Home = () => {
             <ScrollFader timeout={50}>
                 <div className={'content-block'} id={'works'}>
                     <Work/>
-                    {/* TODO:アイコン換える*/}
-                    <span><a href={'/work'}>more<FontAwesomeIcon style={iconStyle} icon={faArrowRight}/></a></span>
                 </div>
             </ScrollFader>
 

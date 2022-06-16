@@ -1,26 +1,3 @@
 .btn-primary {
     font-size: large;
 }
-
-.ball-one-enter-active {
-    opacity: 0;
-    z-index: -1;
-}
-
-.ball-one-enter-done {
-    transition: all 3s ease;
-    opacity: 1;
-    z-index: -1;
-}
-
-.ball-one-enter-exit-active {
-    opacity: 0;
-    transition: all 2s ease;
-    z-index: -1;
-}
-
-.ball-one-enter-exit-done {
-    opacity: 0;
-    transition: all 2s ease;
-    z-index: -1;
-}

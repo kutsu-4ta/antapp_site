@@ -9,19 +9,21 @@ import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import TextField from '@mui/material/TextField';
+import Contact from "../../assets/images/icons/contact_mail.svg";
 
 const contact = () => {
     return (
-        <>
+        <div className="content-top">
             <Grid container justifyContent="center" rowSpacing={1}>
-                <Grid item xs={12}>
+                <Grid item xs={12} className="text-center">
                     <Item>
+                        <img src={Contact} className="icon-title" alt="contact"/>
                         <MainTitle>contact</MainTitle>
                     </Item>
                 </Grid>
             </Grid>
             <UseForm/>
-        </>
+        </div>
     );
 };
 
