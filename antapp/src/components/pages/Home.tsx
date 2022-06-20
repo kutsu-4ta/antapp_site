@@ -1,46 +1,66 @@
+/**
+ * NOTE: [機能] homeコンポーネント
+ *
+ * 当初はルーティングで各ページに飛ばそうと思っていたが、一ページで完結させる方向にした。
+ * スクロールを効果的に使ってUXを高めたいので、少しややこしくなったが、各要素にrefを貼った。
+ * BodyItemに各ページの情報を定義して、homeコンポーネントのreturnの中でmapでループすることで各ページの要素をレンダリングしている。
+ * その際にindex値をidに指定することで、ref.currentから要素にアクセスできるようになっている。
+ *
+ * ナビゲーションバーは当初App.tsxに配置していたが、同じrefを使うかもと思ったので、home.tsxにまとめて書いた。
+ * この辺りは今後共通化やリファクタリングを進めたい。
+ */
+
 import React, {useRef} from 'react';
+import Grid from "@mui/material/Grid";
+import './style.css';
+// スタイル
 import InfinateGradation from '../backgrounAnimation/InfinateGradation';
-import InfinateUpDown from "../backgrounAnimation/InfinateUpDown";
 import ScrollFader from '../scrollEvent/Fader';
+import InfinateUpDown from "../backgrounAnimation/InfinateUpDown";
+// 各ページ
 import About from "./About";
 import SkillSet from "./Skillset";
 import Work from './Work';
 import Contact from "./Contact";
-import './style.css';
-
+// アイコン
 import HumanIcon from "../../assets/images/icons/about_human.svg";
 import WorksIcon from "../../assets/images/icons/works_pc_phone.svg";
 import ContactIcon from "../../assets/images/icons/contact_mail.svg";
 import SkillSetIcon from "../../assets/images/icons/skillsets_dev.svg";
 import ArrowDownScroll from "../../assets/images/icons/arrow_down_scroll.svg";
-import Grid from "@mui/material/Grid";
-import {Bars, Nav, NavLink, NavMenu} from "../navbar/NavbarElements";
+// ナビゲーションバー
 import FoxLogo from "../../assets/images/fox-white.svg";
+import HumanNavIcon from "../../assets/images/icons/human_small_white.svg";
+import WorksNavIcon from "../../assets/images/icons/works_small_white.svg";
+import ContactNavIcon from "../../assets/images/icons/mail_small_white.svg";
+import SkillSetNavIcon from "../../assets/images/icons/skillset_small_white.svg";
+import {Bars, Nav, NavLink, NavMenu} from "../navbar/NavbarElements";
 
 type BodyItem = {
     pageName: string;
     icon: any | undefined;
+    navIcon: any | undefined;
     backGroundColor: string;
 };
 
 const BodyItems: BodyItem[] = [
-    {pageName: "about", icon: HumanIcon, backGroundColor: "green"},
-    {pageName: "skillSet", icon: SkillSetIcon, backGroundColor: "red"},
-    {pageName: "works", icon: WorksIcon, backGroundColor: "yellow"},
-    {pageName: "contact", icon: ContactIcon, backGroundColor: "orange"}
+    {pageName: "about", icon: HumanIcon, navIcon: HumanNavIcon,backGroundColor: "green"},
+    {pageName: "skillSet", icon: SkillSetIcon, navIcon: SkillSetNavIcon,backGroundColor: "red"},
+    {pageName: "works", icon: WorksIcon, navIcon: WorksNavIcon,backGroundColor: "yellow"},
+    {pageName: "contact", icon: ContactIcon, navIcon: ContactNavIcon,backGroundColor: "orange"}
 ];
 
 export default () => {
+    // ボディ
     const ref = useRef(BodyItems.map(() => React.createRef<HTMLDivElement>()));
+    const scrollToView = (id: number | undefined | null) => id ? ref.current[id]!.current!.scrollIntoView({behavior: "smooth"}) : window.scroll({top: 0, behavior: 'smooth'});
 
-    const scrollToView = (id: number | undefined | null) => {
-        id ? ref.current[id]!.current!.scrollIntoView({behavior: "smooth"}) : window.scroll({top: 0, behavior: 'smooth'})
-    };
-
+    // ナビゲーションバー
+    const navRef = useRef(BodyItems.map(() => React.createRef<HTMLDivElement>()));
     const navItemStyle:string = ' border-bottom: solid;' + 'border-bottom-color: azure;' + 'height: 2.5rem;' + 'padding-bottom: 0.3rem;';
     const navItemStyleActive:string = 'border-bottom: solid;' + 'border-bottom-color: black;' + 'height: 3.0rem;' + 'padding-bottom: 0.3rem;';
-    const handleMouseEnter = (id: number) => ref.current[id].current?.getAttribute('style') ? ref.current[id].current?.setAttribute('style',navItemStyleActive) : '';
-    const handleMouseLeave = (id: number) => ref.current[id].current?.getAttribute('style') ? ref.current[id].current?.setAttribute('style',navItemStyle) : '';
+    const handleMouseEnter = (id: number) => navRef.current[id].current?.getAttribute('style') ? navRef.current[id].current?.setAttribute('style',navItemStyleActive) : '';
+    const handleMouseLeave = (id: number) => navRef.current[id].current?.getAttribute('style') ? navRef.current[id].current?.setAttribute('style',navItemStyle) : '';
 
     return (
         <>
@@ -59,6 +79,8 @@ export default () => {
                                             <Grid item xs={12} className="text-center">
                                                 <div
                                                     key={id}
+                                                    ref={navRef.current[id]}
+                                                    id={"nav-" + item.pageName}
                                                     style={{
                                                         paddingBottom: "0.3rem",
                                                         borderBottom: "solid",
@@ -70,9 +92,8 @@ export default () => {
                                                         scrollToView(id)
                                                     }}
                                                 >
-                                                    <img src={item.icon} className="icon-navbar-item"
-                                                         alt={item.pageName}/>
-                                                    <span>{item.pageName}</span>
+                                                    <img src={item.navIcon} className="icon-navbar-item" alt={item.pageName}/>
+                                                    <span className="text-navbar">{item.pageName}</span>
                                                 </div>
                                             </Grid>
                                         </Grid>
