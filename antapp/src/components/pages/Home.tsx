@@ -44,10 +44,10 @@ type BodyItem = {
 };
 
 const BodyItems: BodyItem[] = [
-    {pageName: "about", icon: HumanIcon, navIcon: HumanNavIcon,backGroundColor: "green"},
-    {pageName: "skillSet", icon: SkillSetIcon, navIcon: SkillSetNavIcon,backGroundColor: "red"},
-    {pageName: "works", icon: WorksIcon, navIcon: WorksNavIcon,backGroundColor: "yellow"},
-    {pageName: "contact", icon: ContactIcon, navIcon: ContactNavIcon,backGroundColor: "orange"}
+    {pageName: "about", icon: HumanIcon, navIcon: HumanNavIcon,backGroundColor: "#b4b44c"},
+    {pageName: "skillSet", icon: SkillSetIcon, navIcon: SkillSetNavIcon,backGroundColor: "#ff7f50"},
+    {pageName: "works", icon: WorksIcon, navIcon: WorksNavIcon,backGroundColor: "#4a9b9b"},
+    {pageName: "contact", icon: ContactIcon, navIcon: ContactNavIcon,backGroundColor: "#2a6b23"}
 ];
 
 export default () => {
@@ -83,8 +83,12 @@ export default () => {
                                                     id={"nav-" + item.pageName}
                                                     style={{
                                                         paddingBottom: "0.3rem",
-                                                        borderBottom: "solid",
-                                                        borderColor: "azure",
+                                                        border: "solid",
+                                                        backgroundColor: item.backGroundColor,
+                                                        opacity: "0.9",
+                                                        paddingInline: "1rem",
+                                                        // borderBottom: "solid",
+                                                        borderColor: "azure"
                                                     }}
                                                     onMouseEnter={() => handleMouseEnter(id)}
                                                     onMouseLeave={() => handleMouseLeave(id)}
@@ -110,13 +114,20 @@ export default () => {
                 </Grid>
                 <Grid item xs={8} className="content-title-border text-center">
                     <h2>事業内容</h2>
-                        メモ：もうちょっとなんか書く<br/>
-                        メモ：もうちょっとなんか書く<br/>
-                        メモ：もうちょっとなんか書く<br/>
-                        メモ：もうちょっとなんか書く<br/>
-                        メモ：もうちょっとなんか書く<br/>
-                        メモ：もうちょっとなんか書く<br/>
-                        <br/>
+                    <Grid container justifyContent="center" style={{marginBottom: "3rem"}}>
+                        <Grid item xs={4} className="text-center">
+                            <img src={HumanNavIcon} className="icon-content-top" alt={"webシステム"}/><br/>
+                            <span>webシステム</span>
+                        </Grid>
+                        <Grid item xs={4} className="text-center">
+                            <img src={WorksNavIcon} className="icon-content-top" alt={"LP、webサイト"}/><br/>
+                            <span>LP・webサイト</span>
+                        </Grid>
+                        <Grid item xs={4} className="text-center">
+                            <img src={SkillSetNavIcon} className="icon-content-top" alt={"スマホアプリ"}/><br/>
+                            <span>スマートフォンアプリ</span>
+                        </Grid>
+                    </Grid>
                 </Grid>
                 <Grid item xs={2} className="text-center">
                 </Grid>
@@ -170,19 +181,21 @@ export default () => {
                                     <div style={{position: "sticky", top: "0", paddingLeft: "5rem"}} className="text-center">
                                         {/* 次のページへスクロール */}
                                         {BodyItems[id + 1] ?
-                                            <Grid container justifyContent="center" className="line-vertical" style={{position: "sticky", top: "20px", paddingBottom:"3rem", marginTop:"3rem", backgroundColor:"red",opacity: "0.5"}}>
-                                                <Grid item xs={12} className="text-right" style={{paddingRight:"2rem", paddingBottom:"1rem"}} onClick={() => scrollToView(id + 1)}>next is <br/>{BodyItems[id + 1].pageName}</Grid>
+                                            <Grid container justifyContent="center" style={{position: "sticky", top: "20px", paddingBottom:"3rem", marginTop:"3rem"}}>
+                                                <Grid item xs={12} className="text-right line-vertical" style={{paddingRight:"2rem", paddingBottom:"1rem", backgroundColor:item.backGroundColor, opacity: "0.5"}} onClick={() => scrollToView(id + 1)}>next is <br/>{BodyItems[id + 1].pageName}</Grid>
                                             </Grid>
                                             :
-                                            <div className="line-vertical" onClick={() => scrollToView(null)}>back to<br/>top</div>
+                                            <Grid container justifyContent="center" style={{position: "sticky", top: "20px", paddingBottom:"3rem", marginTop:"3rem"}}>
+                                                <Grid item xs={12} className="text-right line-vertical" style={{paddingRight:"2rem", paddingBottom:"1rem", opacity: "0.5"}} onClick={() => scrollToView(null)}>back to<br/>top</Grid>
+                                            </Grid>
                                         }
 
                                         {BodyItems[id - 1] ?
                                             <Grid item xs={12} className="text-left" style={{position: "sticky", top: "0", paddingTop: "10rem", paddingLeft:"2rem"}}>
-                                                <div style={{paddingBottom:"1rem"}}  onClick={() => scrollToView(id - 1)}>back to<br/>{BodyItems[id - 1].pageName}</div>
+                                                <div style={{paddingBottom:"1rem", backgroundColor:item.backGroundColor, opacity: "0.5"}}  onClick={() => scrollToView(id - 1)}>back to<br/>{BodyItems[id - 1].pageName}</div>
                                             </Grid>
                                             :
-                                            <Grid item xs={12} className="text-left" style={{position: "sticky", top: "0", paddingTop: "10rem", paddingLeft:"2rem"}}>
+                                            <Grid item xs={12} className="text-left" style={{position: "sticky", top: "0", paddingTop: "10rem", paddingLeft:"2rem", backgroundColor:item.backGroundColor, opacity: "0.5"}}>
                                                 <div style={{paddingBottom:"1rem"}}  onClick={() => scrollToView(null)}>back to<br/>top</div>
                                             </Grid>
                                         }
