@@ -1,33 +1,13 @@
 import React from "react";
 import "./style.css";
 import FormControl from '@mui/material/FormControl';
-import MainTitle from "../heading/MainTitle";
 import Grid from "@mui/material/Grid";
-import Item from "@mui/material/Grid";
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import TextField from '@mui/material/TextField';
 import Contact from "../../assets/images/icons/contact_mail.svg";
-
-const contact = () => {
-    return (
-        <div className="content-top">
-            <Grid container justifyContent="center" rowSpacing={1}>
-                <Grid item xs={12} className="text-center">
-                    <Item>
-                        <img src={Contact} className="icon-title" alt="contact"/>
-                        <MainTitle>contact</MainTitle>
-                    </Item>
-                </Grid>
-            </Grid>
-            <UseForm/>
-        </div>
-    );
-};
-
-export default contact;
 
 interface State {
     email: string;
@@ -38,7 +18,7 @@ interface State {
     validContent: boolean
 }
 
-function UseForm() {
+const UseForm = () => {
 
     const [values, setValues] = React.useState<State>({
         email: '',
@@ -110,6 +90,32 @@ function UseForm() {
         </>
     );
 };
+
+const contact = () => {
+    return (
+        <>
+            <div className="content-top">
+                <Grid container justifyContent="center" className="space-5-vertical">
+                    <Grid item xs={12} className="text-center">
+                        <UseForm/>
+                    </Grid>
+                </Grid>
+
+                <div className="text-center">
+                    <h2>Q & A</h2>
+                    Q. うんちの頻度は？<br/>
+                    A. 言えません。<br/><br/>
+                    Q. うんちの頻度は？<br/>
+                    A. 言えません。<br/><br/>
+                    Q. うんちの頻度は？<br/>
+                    A. 言えません。<br/><br/><br/><br/><br/>
+                </div>
+            </div>
+        </>
+    );
+};
+
+export default contact;
 
 // function MyFormHelperText() {
 //     const {focused} = useFormControl() || {};

@@ -1,6 +1,5 @@
 import React from "react";
 import "./style.css";
-import MainTitle from "../heading/MainTitle";
 import Grid from "@mui/material/Grid";
 import Item from "@mui/material/Grid";
 import {ImageList, ImageListItem} from "@mui/material";
@@ -77,17 +76,8 @@ const itemData = [
 const Work = () => {
     return(
         <div className="content-top">
-            <Grid container justifyContent="center">
-                <Grid item xs={12} className="text-center">
-                    <Item>
-                        <img src={Works} className="icon-title" alt="works"/>
-                        <MainTitle>works</MainTitle>
-                    </Item>
-                </Grid>
-            </Grid>
-
-            <Grid container justifyContent="center">
-                <Grid item xs={10} className={'text-center'}>
+            <Grid container justifyContent="center" className="space-5-vertical">
+                <Grid item xs={12} className={'text-center'}>
                     <Item>
                         <TitlebarBelowMasonryImageList/>
                     </Item>
@@ -104,7 +94,7 @@ function TitlebarBelowMasonryImageList() {
         <ImageList sx={{ width: '50', height: '100' }}>
             <ImageListItem key="Subheader" cols={5}>
                 <ListSubheader>
-                    これからここの実績を増やしていくんですね
+                    これからここの実績を増やしていくんですね〜
                 </ListSubheader>
             </ImageListItem>
 

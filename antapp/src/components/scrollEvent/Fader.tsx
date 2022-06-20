@@ -2,6 +2,15 @@
  * [機能説明]
  * フェードイン、フェードアウトするコンポーネント
  */
+
+/**
+ * HACK: 96行目 リファクタリングが必要.
+ * CSSTransitionのトランジションでvisibilityが使えずopacityしか使えなかったので高さを残して非表示ができなかった.
+ * スクロールの実装の関係で,レンダリング時に全要素を展開した時の高さを知っておく必要があったので,
+ * 高さ確保のために本命が非表示の時にvisibilityでダミーのデータを描画させて対処.苦肉の策です.
+ * 汚い実装なので,いい方法を思いついたらリファクタリングする。
+ */
+
 import React, {ReactNode, useEffect, useState, RefObject } from 'react';
 import {CSSTransition} from 'react-transition-group';
 import './style.css';
@@ -61,34 +70,48 @@ const useScrollFader: UseScrollFader = (props:Props)  => {
     const intersect = useObserver(myRef);
 
     // NOTE:デバッグ用
-    // const callBacks = {
-    //     onEnter: () => {
-    //         console.log('enter')
-    //         console.log(myRef.current?.children)
-    //         console.log()
-    //     },
-    //     onEntered: () => {
-    //         console.log('entered')
-    //         console.log(myRef.current?.children)
-    //     },
-    //     onExit: () => {
-    //         console.log('exit')
-    //         console.log(myRef.current?.children)
-    //     },
-    //     onExited: () => {
-    //         console.log('exited')
-    //         console.log(myRef.current?.children)
-    //     }
-    // };
+    const callBacks = {
+        onEnter: () => {
+            console.log('enter')
+            console.log(myRef.current?.children)
+            console.log()
+        },
+        onEntered: () => {
+            console.log('entered')
+            console.log(myRef.current?.children)
+        },
+        onExit: () => {
+            console.log('exit')
+            console.log(myRef.current?.children)
+        },
+        onExited: () => {
+            console.log('exited')
+            console.log(myRef.current?.children)
+        }
+    };
 
     return (
         <>
             <div ref={myRef}>
+                {/* ダミーのデータ */}
+                <CSSTransition
+                    style={{
+                        visibility: "hidden"
+                    }}
+                    in={intersect}
+                    timeout={{enter: 100, exit: 100}}
+                    unmountOnExit={false}
+                    classNames="unvisible"
+                >
+                    {props.children}
+                </CSSTransition>
+                {/* 本命データ */}
                 <CSSTransition
                     in={intersect}
-                    timeout={{enter: props.timeout, exit: 50}}
-                    mountOnEnter
+                    timeout={{enter: 1000, exit: 1000}}
+                    mountOnEnter={true}
                     classNames='fader'
+                    {...callBacks}
                 >
                     {props.children}
                 </CSSTransition>

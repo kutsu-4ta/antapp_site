@@ -12,17 +12,15 @@ import InfinateGradation from './components/backgrounAnimation/InfinateGradation
 const App: VFC = () => {
     return (
         <>
-            <InfinateGradation scale={4}>
-                <Navbar/>
-            </InfinateGradation>
-                <div className="container">
+            {/*<Navbar/>*/}
+                <div>
                     <Switch>
                         <Route exact path="/">
                             <Home/>
                         </Route>
-                        <Route exact path="/works" component={Work}/>;
-                        <Route exact path="/about" component={About}/>;
-                        <Route exact path="/contact" component={Contact}/>;
+                        {/*<Route exact path="/works" component={Work}/>;*/}
+                        {/*<Route exact path="/about" component={About}/>;*/}
+                        {/*<Route exact path="/contact" component={Contact}/>;*/}
                         <Redirect to={"/"}/>
                     </Switch>
                 </div>

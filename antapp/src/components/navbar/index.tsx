@@ -23,38 +23,33 @@ const Navbar = () => {
     let ref = useRef(navBarItems.map( () => React.createRef<HTMLDivElement>()));
 
     const handleMouseEnter = (id: number) => {
+        console.log(ref.current[id].current);
         if (ref.current[id].current?.getAttribute('style')){
-            // console.log(ref.current[id].current?.style);
             ref.current[id].current?.setAttribute('style',
                 ' border-bottom: solid;' +
                 'border-bottom-color: black;' +
                 'height: 3.0rem;' +
                 'padding-bottom: 0.3rem;'
             );
-            // console.log(ref.current[id].current?.style);
         }
         return;
     };
 
     const handleMouseLeave = (id: number) => {
         if (ref.current[id].current?.getAttribute('style')){
-            // console.log(ref.current[id].current?.style.borderColor);
-            // ref.current[id].current?.style?.height = "2.5rem";
             ref.current[id].current?.setAttribute('style',
                 ' border-bottom: solid;' +
                 'border-bottom-color: azure;' +
                 'height: 2.5rem;' +
                 'padding-bottom: 0.3rem;'
             );
-            // console.log(ref.current[id].current?.getAttribute('style'));
-            // console.log(ref.current[id].current?.style);
         }
         return;
     };
 
     return (
         <>
-            <Nav style={{zIndex: "-10"}}>
+            <Nav>
                 <NavLink to="/">
                     <img src={FoxLogo} className={'logo-navbar'} alt="antapp"/>
                 </NavLink>
@@ -82,10 +77,6 @@ const Navbar = () => {
                                                 <img src={item.icon} className="icon-navbar-item"
                                                      alt={item.pageName}/>
                                                 <span>{item.pageName}</span>
-                                                {/*ユニークな処理はフラグでやる*/}
-                                                {/*{item.otherContent && (*/}
-                                                {/*    <div className={classes.commingSoonContent}>ComingSoon</div>*/}
-                                                {/*)}*/}
                                             </div>
                                         </Grid>
                                     </Grid>

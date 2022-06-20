@@ -1,11 +1,27 @@
 
 /*----------共通------------*/
+.space-1-vertical {
+    margin-top : 1rem;
+}
+
 .margin-zero {
     margin: 0;
 }
 
 .margin-top-zero {
     margin-top: 0;
+}
+
+.padding-top-zero {
+    padding-top: 0;
+}
+
+.margin-top-1 {
+    margin-top : 1rem;
+}
+
+.margin-bottom-zero {
+    margin-bottom: 0;
 }
 
 .text-left {
@@ -28,14 +44,35 @@
     font-size: 1.6rem;
 }
 
-.icon-title {
-    font-size: 6rem;
-    height: 20vh;
+.text-align-sub-title {
+    margin-left: 1rem;
+}
+
+.content-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .icon-sub-title {
     margin-left: 1rem;
     margin-right: 1rem;
+    height: 4rem;
+}
+
+.icon-content-top {
+    align-items: center;
+    height: 9rem;
+}
+
+.icon-navbar-item {
+    height: 2rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.icon-navbar-logo {
+    height: 4rem;
 }
 
 .content-top {
@@ -45,21 +82,21 @@
 /*----------Home-------------*/
 
 .title-block {
-    height: 50vh;
+    height: 10rem;
     align-items: center;
     text-align: center;
-    margin-top: 20vh;
-    margin-bottom: 10rem;
+    margin-top: 3rem;
+    margin-bottom: 0;
 }
 
 .content-block {
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255,0);
     color: black;
     /*border: 0.1rem solid black;*/
     width: 60%;
     text-align: center;
     font-size: 1.6rem;
-    margin-bottom: 25vh;
+    margin-bottom: 2rem;
     margin-left: auto;
     margin-right: auto;
 }
@@ -74,4 +111,11 @@
 .image-works {
     height: 10px;
     width: 10px;
+}
+
+
+.line-vertical {
+    border: solid;
+    width: 1rem;
+    /*height: 18rem;*/
 }
