@@ -12,7 +12,7 @@ const SkillSet: SkillSet = () => {
         <div>
             <Grid container justifyContent="center" className="space-3-vertical">
 
-                <Grid item className='text-size-body text-center' style={{paddingTop: "2rem"}}>
+                <Grid item className='text-size-body text-center' style={{paddingBottom: "2rem"}}>
                     <Grid item xs={12}>
                         <Rechart data={languageData} layoutType="vertical">Language</Rechart>
                     </Grid>

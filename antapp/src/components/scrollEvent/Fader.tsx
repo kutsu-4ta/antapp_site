@@ -29,8 +29,8 @@ export const useObserver: UseObserver = (ref?: RefObject<HTMLDivElement>, option
 
     const options = {
         // root: null,
-        rootMargin: '10% 0% -10% 0%', // (top, right, bottom, left)
-        threshold: 0.2
+        rootMargin: '-10% 0% -30% 0%', // (top, right, bottom, left)
+        threshold: 0.4
     }
 
         const observer = new IntersectionObserver(callback, options);
@@ -108,7 +108,7 @@ const useScrollFader: UseScrollFader = (props:Props)  => {
                 {/* 本命データ */}
                 <CSSTransition
                     in={intersect}
-                    timeout={{enter: 1000, exit: 1000}}
+                    timeout={{enter: 300, exit: 300}}
                     mountOnEnter={true}
                     classNames='fader'
                 >

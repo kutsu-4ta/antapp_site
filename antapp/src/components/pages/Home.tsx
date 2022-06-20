@@ -64,7 +64,7 @@ export default () => {
 
     return (
         <>
-            <InfinateGradation scale={4}>
+            <InfinateGradation scale={4} >
                 <Nav>
                     <NavLink to="/">
                         <img src={FoxLogo} className="icon-navbar-logo" alt="antapp"/>
@@ -88,9 +88,7 @@ export default () => {
                                                     }}
                                                     onMouseEnter={() => handleMouseEnter(id)}
                                                     onMouseLeave={() => handleMouseLeave(id)}
-                                                    onClick={() => {
-                                                        scrollToView(id)
-                                                    }}
+                                                    onClick={() => scrollToView(id)}
                                                 >
                                                     <img src={item.navIcon} className="icon-navbar-item" alt={item.pageName}/>
                                                     <span className="text-navbar">{item.pageName}</span>
@@ -103,29 +101,37 @@ export default () => {
                         })}
                     </NavMenu>
                 </Nav>
-            </InfinateGradation>
-            <div className="title-block" id="home">
-                <h1>Web開発のご依頼をお待ちしております！</h1>
-                <div>
-                    <h2>事業内容</h2>
-                </div>
-                メモ：もうちょっとなんか書く<br/>
-                メモ：もうちょっとなんか書く<br/>
-                メモ：もうちょっとなんか書く<br/>
-                メモ：もうちょっとなんか書く<br/>
-                メモ：もうちょっとなんか書く<br/>
-                メモ：もうちょっとなんか書く<br/>
-                <InfinateUpDown scale={20}>
-                    <div style={{
-                        paddingTop: "5rem"
-                    }}>
-                        <img src={ArrowDownScroll} className="icon-sub-title" alt="scroll"/>
-                    </div>
-                </InfinateUpDown>
-            </div>
 
+            <Grid container justifyContent="center" className="content-title" id="home">
+                <Grid item xs={12}>
+                    <h1>Web開発のご依頼をお待ちしております！</h1>
+                </Grid>
+                <Grid item xs={2} className="text-center">
+                </Grid>
+                <Grid item xs={8} className="content-title-border text-center">
+                    <h2>事業内容</h2>
+                        メモ：もうちょっとなんか書く<br/>
+                        メモ：もうちょっとなんか書く<br/>
+                        メモ：もうちょっとなんか書く<br/>
+                        メモ：もうちょっとなんか書く<br/>
+                        メモ：もうちょっとなんか書く<br/>
+                        メモ：もうちょっとなんか書く<br/>
+                        <br/>
+                </Grid>
+                <Grid item xs={2} className="text-center">
+                </Grid>
+            </Grid>
+                <Grid container justifyContent="center">
+                    <InfinateUpDown scale={20}>
+                        <div style={{
+                            paddingTop: "5rem"
+                        }}>
+                            <img src={ArrowDownScroll} className="icon-sub-title" alt="scroll"/>
+                        </div>
+                    </InfinateUpDown>
+                </Grid>
             <div
-                style={{backgroundColor: "rgb(238,228,194)", marginBottom: '10rem', marginTop: "22rem"}}
+                style={{backgroundColor: "rgb(238,228,194)"}}
             >
                 {BodyItems.map((item, id) => {
                     return (
@@ -135,6 +141,10 @@ export default () => {
                                   id={item.pageName}
                                   key={id}
                                   ref={ref.current[id]}
+                                  style={{
+                                      border: "solid",
+                                      borderBottom: "black"
+                                  }}
                             >
                                 <Grid item xs={2}
                                       style={{position: "sticky", top: "0"}}>
@@ -144,7 +154,7 @@ export default () => {
                                 </Grid>
 
                                 <Grid item xs={8}>
-                                    <div className="margin-top-1">
+                                    <div className="content-body">
                                         <ScrollFader timeout={500}>
                                             <div>
                                                 {item.pageName === "about" ? <About/> : ''}
@@ -156,31 +166,26 @@ export default () => {
                                     </div>
                                 </Grid>
 
-                                <Grid item xs={2}
-                                      style={{
-                                          textAlign: "right",
-                                          position: "sticky",
-                                          top: "0"
-                                      }}
-                                >
-                                    <div
-                                        style={{
-                                            position: "sticky",
-                                            top: "50%",
-                                            paddingRight: "50%"
-                                        }}
-                                        className="text-center"
-                                    >
+                                <Grid item xs={2}>
+                                    <div style={{position: "sticky", top: "0", paddingLeft: "5rem"}} className="text-center">
                                         {/* 次のページへスクロール */}
                                         {BodyItems[id + 1] ?
-                                            <div className="line-vertical"
-                                                 onClick={() => scrollToView(id + 1)}>{BodyItems[id + 1].pageName} </div>
+                                            <Grid container justifyContent="center" className="line-vertical" style={{position: "sticky", top: "20px", paddingBottom:"3rem", marginTop:"3rem", backgroundColor:"red",opacity: "0.5"}}>
+                                                <Grid item xs={12} className="text-right" style={{paddingRight:"2rem", paddingBottom:"1rem"}} onClick={() => scrollToView(id + 1)}>next is <br/>{BodyItems[id + 1].pageName}</Grid>
+                                            </Grid>
                                             :
-                                            <div className="line-vertical"
-                                                 onClick={() => scrollToView(null)}> Top </div>
+                                            <div className="line-vertical" onClick={() => scrollToView(null)}>back to<br/>top</div>
                                         }
-                                        <InfinateUpDown scale={500}>
-                                        </InfinateUpDown>
+
+                                        {BodyItems[id - 1] ?
+                                            <Grid item xs={12} className="text-left" style={{position: "sticky", top: "0", paddingTop: "10rem", paddingLeft:"2rem"}}>
+                                                <div style={{paddingBottom:"1rem"}}  onClick={() => scrollToView(id - 1)}>back to<br/>{BodyItems[id - 1].pageName}</div>
+                                            </Grid>
+                                            :
+                                            <Grid item xs={12} className="text-left" style={{position: "sticky", top: "0", paddingTop: "10rem", paddingLeft:"2rem"}}>
+                                                <div style={{paddingBottom:"1rem"}}  onClick={() => scrollToView(null)}>back to<br/>top</div>
+                                            </Grid>
+                                        }
                                     </div>
                                 </Grid>
                             </Grid>
@@ -193,6 +198,7 @@ export default () => {
                     絶滅危惧種レッドリスト認定うんこ
                 </div>
             </div>
+            </InfinateGradation>
         </>
     );
 };

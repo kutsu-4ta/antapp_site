@@ -19,6 +19,8 @@ const GradientBackground = () => {
 // TODO:scaleをpropsで渡せるようにしたい
 const InfinateGradation = styled.div<{ scale: number }>`
   background: linear-gradient(54deg, #2e8b57, #4169e1, #f88728);
+  border: solid;
+  borderBottom: black;
   background-size: 600% 600%;
   animation: ${() => GradientBackground()} 60s ease infinite;
 `
