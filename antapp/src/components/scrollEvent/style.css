@@ -1,3 +1,5 @@
+/* フェード */
+
 .fader-enter {
     transition: all 1s ease;
     opacity: 0;
@@ -43,4 +45,26 @@
     opacity: 0;
     display: none;
     visibility: hidden;
+}
+
+/* アニメーション */
+
+.move-enter {
+    transition: all 2s ease;
+    font-size: 70px;
+}
+
+.move-enter-done {
+    transition: all 2s ease;
+    font-size: 10px;
+}
+
+.move-exit {
+    transition: all 2s ease;
+    font-size: 10px;
+}
+
+.move-exit-done {
+    transition: all 2s ease;
+    font-size:10px;
 }

@@ -94,13 +94,13 @@
     height: 26rem;
     align-items: center;
     text-align: center;
-    color: azure;
+    color: #151414;
     opacity: 0.8;
 }
 
 .content-title-border {
     border: solid;
-    border-color: azure;
+    border-color: #151414;
     width: 60%;
 }
 
@@ -141,3 +141,11 @@
     width: 12rem;
     height: 2rem;
 }
+
+.background-animation {
+    position: sticky;
+    top: 17px;
+    paddingRight: 140px;
+    z-index: -1;
+}
+

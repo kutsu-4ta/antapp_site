@@ -27,11 +27,11 @@ export const useObserver: UseObserver = (ref?: RefObject<HTMLDivElement>, option
             });
         }
 
-    const options = {
-        // root: null,
-        rootMargin: '-10% 0% -30% 0%', // (top, right, bottom, left)
-        threshold: 0.4
-    }
+        const options = {
+            // root: null,
+            rootMargin: '50% 0% 50% 0%', // (top, right, bottom, left) 画面から見えなくなってどのらいで見切れたと判定するか（たぶん）
+            threshold: 0.5
+        }
 
         const observer = new IntersectionObserver(callback, options);
 
@@ -63,15 +63,15 @@ interface Props {
     timeoutExit?: number | undefined;
 }
 
-type UseScrollFader = (props: Props) => JSX.Element;
-const useScrollFader: UseScrollFader = (props:Props)  => {
-
-    const Enter:number = props.timeoutEnter ? props.timeoutEnter : 1000;
-    const Exit:number = props.timeoutExit ? props.timeoutExit : 1000;
+type UseScrollMove = (props: Props) => JSX.Element;
+const useScrollMove: UseScrollMove = (props:Props)  => {
 
     const myRef = React.useRef<HTMLDivElement >(null)
     // myRefを監視
     const intersect = useObserver(myRef);
+
+    const Enter:number = props.timeoutEnter ? props.timeoutEnter : 1000;
+    const Exit:number = props.timeoutExit ? props.timeoutExit : 1000;
 
     // NOTE:デバッグ用
     // const callBacks = {
@@ -97,24 +97,10 @@ const useScrollFader: UseScrollFader = (props:Props)  => {
     return (
         <>
             <div ref={myRef}>
-                {/* ダミーのデータ */}
-                <CSSTransition
-                    style={{
-                        visibility: "hidden"
-                    }}
-                    in={intersect}
-                    timeout={{enter: Enter, exit: Exit}}
-                    unmountOnExit={false}
-                    classNames="unvisible"
-                >
-                    {props.children}
-                </CSSTransition>
-                {/* 本命データ */}
                 <CSSTransition
                     in={intersect}
                     timeout={{enter: Enter, exit: Exit}}
-                    mountOnEnter={true}
-                    classNames='fader'
+                    classNames='move'
                 >
                     {props.children}
                 </CSSTransition>
@@ -123,4 +109,4 @@ const useScrollFader: UseScrollFader = (props:Props)  => {
     )
 }
 
-export default useScrollFader;
+export default useScrollMove;

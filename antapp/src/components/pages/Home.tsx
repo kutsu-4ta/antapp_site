@@ -16,6 +16,7 @@ import './style.css';
 // スタイル
 import InfinateGradation from '../backgrounAnimation/InfinateGradation';
 import ScrollFader from '../scrollEvent/Fader';
+import ScrollMove from '../scrollEvent/Move';
 import InfinateUpDown from "../backgrounAnimation/InfinateUpDown";
 // 各ページ
 import About from "./About";
@@ -64,8 +65,8 @@ export default () => {
 
     return (
         <>
-        {/*<InfinateGradation scale={4} >*/}
-        <div style={{backgroundColor: "rgb(190,184,159)"}}>
+        {/*<div style={{backgroundColor: "rgb(190,184,159)"}}>*/}
+        <div>
             <Nav>
                 <NavLink to="/">
                     <img src={FoxLogo} className="icon-navbar-logo" alt="antapp"/>
@@ -114,20 +115,20 @@ export default () => {
                 </Grid>
                 <Grid item xs={2} className="text-center">
                 </Grid>
-                <Grid item xs={8} className="content-title-border text-center">
+                <Grid item xs={8} className="content-title-border">
                     <h2>事業内容</h2>
-                    <Grid container justifyContent="center" style={{marginBottom: "3rem"}}>
+                    <Grid container justifyContent="center" style={{marginBottom: "2rem"}}>
                         <Grid item xs={4} className="text-center">
-                            <img src={HumanNavIcon} className="icon-content-top" alt={"webシステム"}/><br/>
-                            <span>webシステム</span>
+                            <img src={HumanIcon} className="icon-content-top" alt={"webシステム"}/><br/>
+                            <span>webシステム（仮）</span>
                         </Grid>
                         <Grid item xs={4} className="text-center">
-                            <img src={WorksNavIcon} className="icon-content-top" alt={"LP、webサイト"}/><br/>
-                            <span>LP・webサイト</span>
+                            <img src={WorksIcon} className="icon-content-top" alt={"LP、webサイト"}/><br/>
+                            <span>LP・webサイト（仮）</span>
                         </Grid>
                         <Grid item xs={4} className="text-center">
-                            <img src={SkillSetNavIcon} className="icon-content-top" alt={"スマホアプリ"}/><br/>
-                            <span>スマートフォンアプリ</span>
+                            <img src={SkillSetIcon} className="icon-content-top" alt={"スマホアプリ"}/><br/>
+                            <span>スマートフォンアプリ（仮）</span>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -143,7 +144,6 @@ export default () => {
                 </InfinateUpDown>
             </Grid>
 
-            {/*<Grid container style={{backgroundColor: "rgb(238,228,194)"}}>*/}
                 <Grid container justifyContent="center">
 
                     <Grid item xs={10}>
@@ -172,7 +172,7 @@ export default () => {
 
                                         {/*ボディ*/}
                                         <Grid item xs={10}>
-                                            <ScrollFader timeout={500}>
+                                            <ScrollFader timeoutEnter={500} timeoutExit={500}>
                                                 <div className="content-body">
                                                     {item.pageName === "about" ? <About/> : ''}
                                                     {item.pageName === "skillSet" ? <SkillSet/> : ''}
@@ -190,7 +190,23 @@ export default () => {
 
                     {/*アニメーション*/}
                     <Grid item xs={2}>
-                        アニメーションエリア
+                        <Grid container justifyContent="center">
+                            <ScrollMove timeoutEnter={2000} timeoutExit={2000}>
+                                <Grid item xs={12} className="text-center">
+                                    ああああ
+                                </Grid>
+                            </ScrollMove>
+                            <Grid item xs={12} className="background-animation">
+                                いいいい
+                            </Grid>
+                            <Grid item xs={12} className="text-center"　style={{position: "sticky", top: "34px"}}>
+                                ううううう
+                            </Grid>
+                            <Grid item xs={12} className="text-center"　style={{position: "sticky", top: "51px", paddingTop: "30rem"}}>
+                                ええええええ
+                            </Grid>
+                        </Grid>
+
                     </Grid>
 
                     <div className={'text-right'}>
