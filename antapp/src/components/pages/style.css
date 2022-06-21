@@ -40,8 +40,9 @@
     font-size: 20px;
 }
 
-.text-size-sub-title {
-    font-size: 1.6rem;
+.text-topic {
+    font-size: 1.4rem;
+    text-align: center;
 }
 
 .text-align-sub-title {
@@ -59,9 +60,8 @@
     align-items: center;
 }
 
-.icon-sub-title {
-    margin-left: 1rem;
-    margin-right: 1rem;
+.icon-topic {
+    margin-top: 2rem;
     height: 4rem;
 }
 
@@ -81,6 +81,13 @@
     height: 4rem;
 }
 
+.icon-scroll-arrow-down {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    height: 6rem;
+}
+
+
 .content-title {
     margin-top: 5rem;
     /*margin-bottom: 5rem;*/
@@ -98,7 +105,7 @@
 }
 
 .content-body {
-    margin-top: 4rem;
+    margin-top: 5rem;
     margin-bottom: 5rem;
 }
 

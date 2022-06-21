@@ -64,47 +64,49 @@ export default () => {
 
     return (
         <>
-            <InfinateGradation scale={4} >
-                <Nav>
-                    <NavLink to="/">
-                        <img src={FoxLogo} className="icon-navbar-logo" alt="antapp"/>
-                    </NavLink>
-                    <Bars/>
-                    <NavMenu>
-                        {BodyItems.map((item, id) => {
-                            return (
-                                <div>
-                                    <NavLink to={item.pageName}>
-                                        <Grid container justifyContent="center">
-                                            <Grid item xs={12} className="text-center">
-                                                <div
-                                                    key={id}
-                                                    ref={navRef.current[id]}
-                                                    id={"nav-" + item.pageName}
-                                                    style={{
-                                                        paddingBottom: "0.3rem",
-                                                        border: "solid",
-                                                        backgroundColor: item.backGroundColor,
-                                                        opacity: "0.9",
-                                                        paddingInline: "1rem",
-                                                        // borderBottom: "solid",
-                                                        borderColor: "azure"
-                                                    }}
-                                                    onMouseEnter={() => handleMouseEnter(id)}
-                                                    onMouseLeave={() => handleMouseLeave(id)}
-                                                    onClick={() => scrollToView(id)}
-                                                >
-                                                    <img src={item.navIcon} className="icon-navbar-item" alt={item.pageName}/>
-                                                    <span className="text-navbar">{item.pageName}</span>
-                                                </div>
-                                            </Grid>
+        {/*<InfinateGradation scale={4} >*/}
+        <div style={{backgroundColor: "rgb(190,184,159)"}}>
+            <Nav>
+                <NavLink to="/">
+                    <img src={FoxLogo} className="icon-navbar-logo" alt="antapp"/>
+                </NavLink>
+                <Bars/>
+                <NavMenu>
+                    {BodyItems.map((item, id) => {
+                        return (
+                            <div>
+                                <NavLink to={item.pageName}>
+                                    <Grid container justifyContent="center">
+                                        <Grid item xs={12} className="text-center">
+                                            <div
+                                                key={id}
+                                                ref={navRef.current[id]}
+                                                id={"nav-" + item.pageName}
+                                                style={{
+                                                    paddingBottom: "0.3rem",
+                                                    border: "solid",
+                                                    backgroundColor: item.backGroundColor,
+                                                    opacity: "0.9",
+                                                    paddingInline: "1rem",
+                                                    // borderBottom: "solid",
+                                                    borderColor: "azure"
+                                                }}
+                                                onMouseEnter={() => handleMouseEnter(id)}
+                                                onMouseLeave={() => handleMouseLeave(id)}
+                                                onClick={() => scrollToView(id)}
+                                            >
+                                                <img src={item.navIcon} className="icon-navbar-item"
+                                                     alt={item.pageName}/>
+                                                <span className="text-navbar">{item.pageName}</span>
+                                            </div>
                                         </Grid>
-                                    </NavLink>
-                                </div>
-                            );
-                        })}
-                    </NavMenu>
-                </Nav>
+                                    </Grid>
+                                </NavLink>
+                            </div>
+                        );
+                    })}
+                </NavMenu>
+            </Nav>
 
             <Grid container justifyContent="center" className="content-title" id="home">
                 <Grid item xs={12}>
@@ -132,107 +134,74 @@ export default () => {
                 <Grid item xs={2} className="text-center">
                 </Grid>
             </Grid>
+
+            <Grid container justifyContent="center">
+                <InfinateUpDown scale={20}>
+                    <div>
+                        <img src={ArrowDownScroll} className="icon-scroll-arrow-down" alt="scroll"/>
+                    </div>
+                </InfinateUpDown>
+            </Grid>
+
+            {/*<Grid container style={{backgroundColor: "rgb(238,228,194)"}}>*/}
                 <Grid container justifyContent="center">
-                    <InfinateUpDown scale={20}>
-                        <div style={{
-                            paddingTop: "5rem"
-                        }}>
-                            <img src={ArrowDownScroll} className="icon-sub-title" alt="scroll"/>
-                        </div>
-                    </InfinateUpDown>
+
+                    <Grid item xs={10}>
+                        <Grid container justifyContent="center">
+                            {BodyItems.map((item, id) => {
+                                return (
+                                    <>
+                                        {/*トピックのアイコン*/}
+                                        <Grid item xs={2}
+                                              id={item.pageName}
+                                              key={id}
+                                              ref={ref.current[id]}
+                                              className="text-center"
+                                        >
+                                            {item.icon ?
+                                                <div style={{position: "sticky", top: "0"}}>
+                                                    <img src={item.icon} className="icon-topic" alt={item.pageName}/>
+                                                    <h2 className="text-topic margin-top-zero padding-top-zero">
+                                                        {item.pageName}
+                                                    </h2>
+                                                </div>
+                                                :
+                                                ""
+                                            }
+                                        </Grid>
+
+                                        {/*ボディ*/}
+                                        <Grid item xs={10}>
+                                            <ScrollFader timeout={500}>
+                                                <div className="content-body">
+                                                    {item.pageName === "about" ? <About/> : ''}
+                                                    {item.pageName === "skillSet" ? <SkillSet/> : ''}
+                                                    {item.pageName === "works" ? <Work/> : ''}
+                                                    {item.pageName === "contact" ? <Contact/> : ''}
+                                                </div>
+                                            </ScrollFader>
+                                        </Grid>
+
+                                    </>
+                                );
+                            })}
+                        </Grid>
+                    </Grid>
+
+                    {/*アニメーション*/}
+                    <Grid item xs={2}>
+                        アニメーションエリア
+                    </Grid>
+
+                    <div className={'text-right'}>
+                        うんち<br/>
+                        うんこ<br/>
+                        絶滅危惧種レッドリスト認定うんこ
+                    </div>
+
                 </Grid>
-            <div
-                style={{backgroundColor: "rgb(238,228,194)"}}
-            >
-                {BodyItems.map((item, id) => {
-                    return (
-                        <>
-                            <Grid container
-                                  justifyContent="center"
-                                  id={item.pageName}
-                                  key={id}
-                                  ref={ref.current[id]}
-                                  style={{border: "solid", borderBottom: "black"}}
-                            >
-                                <Grid item xs={2}
-                                      style={{position: "sticky", top: "0"}}>
-                                    <div style={{position: "sticky", top: "0"}}>
-                                        {item.icon ? <div><img src={item.icon} className="icon-sub-title space-1-vertical " alt={item.pageName}/><h2 className="text-align-sub-title margin-top-zero padding-top-zero">{item.pageName}</h2></div> : ""}
-                                    </div>
-                                </Grid>
-
-                                <Grid item xs={8}>
-                                    <div className="content-body">
-                                        <ScrollFader timeout={500}>
-                                            <div>
-                                                {item.pageName === "about" ? <About/> : ''}
-                                                {item.pageName === "skillSet" ? <SkillSet/> : ''}
-                                                {item.pageName === "works" ? <Work/> : ''}
-                                                {item.pageName === "contact" ? <Contact/> : ''}
-                                            </div>
-                                        </ScrollFader>
-                                    </div>
-                                </Grid>
-
-                                <Grid item xs={2}>
-                                    <div className="text-center" style={{
-                                        position: "sticky",
-                                        top: "0",
-                                        paddingLeft: "5rem"
-                                    }}>
-
-                                        <div style={{position: "sticky", top: "0"}}>
-                                            {/*前のページへスクロール*/}
-                                            {BodyItems[id - 1] ?
-                                                <Grid item xs={12} className="text-left">
-                                                    <div className="line-vertical" style={{
-                                                        backgroundColor: item.backGroundColor,
-                                                        opacity: "0.7"
-                                                    }} onClick={() => scrollToView(id - 1)}>back to {BodyItems[id - 1].pageName}</div>
-                                                </Grid>
-                                                :
-                                                <Grid item xs={12} className="text-left">
-                                                    <div className="line-vertical" style={{
-                                                        opacity: "0.7"
-                                                    }} onClick={() => scrollToView(null)}>back to top
-                                                    </div>
-                                                </Grid>
-                                            }
-                                        </div>
-
-                                        <div style={{position: "sticky", top: "0"}}>
-
-                                            {/* 次のページへスクロール */}
-                                            {BodyItems[id + 1] ?
-                                                <Grid container justifyContent="center">
-                                                    <Grid item xs={12} className="text-right line-vertical" style={{
-                                                        backgroundColor: item.backGroundColor,
-                                                        opacity: "0.7"
-                                                    }} onClick={() => scrollToView(id + 1)}>next
-                                                        is {BodyItems[id + 1].pageName}</Grid>
-                                                </Grid>
-                                                :
-                                                <Grid container justifyContent="center">
-                                                    <Grid item xs={12} className="text-right line-vertical" style={{
-                                                        opacity: "0.7"
-                                                    }} onClick={() => scrollToView(null)}>back to top</Grid>
-                                                </Grid>
-                                            }
-                                        </div>
-
-                                    </div>
-                                </Grid>
-                            </Grid>
-                        </>
-                    );
-                })}
-                <div className={'text-right'}>
-                    うんち<br/>
-                    うんこ<br/>
-                    絶滅危惧種レッドリスト認定うんこ
-                </div>
             </div>
-            </InfinateGradation>
+            {/*</InfinateGradation>*/}
         </>
     );
 };
