@@ -152,10 +152,7 @@ export default () => {
                                   id={item.pageName}
                                   key={id}
                                   ref={ref.current[id]}
-                                  style={{
-                                      border: "solid",
-                                      borderBottom: "black"
-                                  }}
+                                  style={{border: "solid", borderBottom: "black"}}
                             >
                                 <Grid item xs={2}
                                       style={{position: "sticky", top: "0"}}>
@@ -178,27 +175,51 @@ export default () => {
                                 </Grid>
 
                                 <Grid item xs={2}>
-                                    <div style={{position: "sticky", top: "0", paddingLeft: "5rem"}} className="text-center">
-                                        {/* 次のページへスクロール */}
-                                        {BodyItems[id + 1] ?
-                                            <Grid container justifyContent="center" style={{position: "sticky", top: "20px", paddingBottom:"3rem", marginTop:"3rem"}}>
-                                                <Grid item xs={12} className="text-right line-vertical" style={{paddingRight:"2rem", paddingBottom:"1rem", backgroundColor:item.backGroundColor, opacity: "0.5"}} onClick={() => scrollToView(id + 1)}>next is <br/>{BodyItems[id + 1].pageName}</Grid>
-                                            </Grid>
-                                            :
-                                            <Grid container justifyContent="center" style={{position: "sticky", top: "20px", paddingBottom:"3rem", marginTop:"3rem"}}>
-                                                <Grid item xs={12} className="text-right line-vertical" style={{paddingRight:"2rem", paddingBottom:"1rem", opacity: "0.5"}} onClick={() => scrollToView(null)}>back to<br/>top</Grid>
-                                            </Grid>
-                                        }
+                                    <div className="text-center" style={{
+                                        position: "sticky",
+                                        top: "0",
+                                        paddingLeft: "5rem"
+                                    }}>
 
-                                        {BodyItems[id - 1] ?
-                                            <Grid item xs={12} className="text-left" style={{position: "sticky", top: "0", paddingTop: "10rem", paddingLeft:"2rem"}}>
-                                                <div style={{paddingBottom:"1rem", backgroundColor:item.backGroundColor, opacity: "0.5"}}  onClick={() => scrollToView(id - 1)}>back to<br/>{BodyItems[id - 1].pageName}</div>
-                                            </Grid>
-                                            :
-                                            <Grid item xs={12} className="text-left" style={{position: "sticky", top: "0", paddingTop: "10rem", paddingLeft:"2rem", backgroundColor:item.backGroundColor, opacity: "0.5"}}>
-                                                <div style={{paddingBottom:"1rem"}}  onClick={() => scrollToView(null)}>back to<br/>top</div>
-                                            </Grid>
-                                        }
+                                        <div style={{position: "sticky", top: "0"}}>
+                                            {/*前のページへスクロール*/}
+                                            {BodyItems[id - 1] ?
+                                                <Grid item xs={12} className="text-left">
+                                                    <div className="line-vertical" style={{
+                                                        backgroundColor: item.backGroundColor,
+                                                        opacity: "0.7"
+                                                    }} onClick={() => scrollToView(id - 1)}>back to {BodyItems[id - 1].pageName}</div>
+                                                </Grid>
+                                                :
+                                                <Grid item xs={12} className="text-left">
+                                                    <div className="line-vertical" style={{
+                                                        opacity: "0.7"
+                                                    }} onClick={() => scrollToView(null)}>back to top
+                                                    </div>
+                                                </Grid>
+                                            }
+                                        </div>
+
+                                        <div style={{position: "sticky", top: "0"}}>
+
+                                            {/* 次のページへスクロール */}
+                                            {BodyItems[id + 1] ?
+                                                <Grid container justifyContent="center">
+                                                    <Grid item xs={12} className="text-right line-vertical" style={{
+                                                        backgroundColor: item.backGroundColor,
+                                                        opacity: "0.7"
+                                                    }} onClick={() => scrollToView(id + 1)}>next
+                                                        is {BodyItems[id + 1].pageName}</Grid>
+                                                </Grid>
+                                                :
+                                                <Grid container justifyContent="center">
+                                                    <Grid item xs={12} className="text-right line-vertical" style={{
+                                                        opacity: "0.7"
+                                                    }} onClick={() => scrollToView(null)}>back to top</Grid>
+                                                </Grid>
+                                            }
+                                        </div>
+
                                     </div>
                                 </Grid>
                             </Grid>
