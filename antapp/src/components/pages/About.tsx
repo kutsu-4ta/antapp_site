@@ -12,7 +12,7 @@ const about = () => {
     return (
         <div className="content-top">
             <Grid container justifyContent="center" className="space-5-vertical">
-                <Grid item xs={12} className="text-center" ></Grid>
+                <Grid item xs={12} className="text-center content-top" ></Grid>
 
                 <div className={'text-left'}>
 
@@ -35,7 +35,7 @@ const about = () => {
                                 以前はネットワークやサーバサイドをメインで仕事をしていましたが、<br/>
                                 最近はフロントが好きで、このサイトもReact.jsの練習として作りました。<br/>
                                 スキルセットは以下になります。<br/>
-                                【メモ：経歴を書く。仕事の姿勢。前職でしていたことや得意なことなど。】
+                                【メモ：経歴を書く。仕事の姿勢。前職でしていたことや得意なことなど。】<br/>
                             </Item>
                         </Grid>
                     </Grid>

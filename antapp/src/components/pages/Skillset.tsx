@@ -21,13 +21,6 @@ const SkillSet: SkillSet = () => {
                     </Grid>
                 </Grid>
 
-                {/*<Grid item className={'text-size-body text-center'} style={{paddingTop: "2rem"}}>*/}
-                {/*        */}
-                {/*    <Grid item xs={12} style={{height: "20rem"}}>*/}
-                {/*            <Rechart data={flameworkData} layoutType="vertical">FlameWork</Rechart>*/}
-                {/*    </Grid>*/}
-                {/*</Grid>*/}
-
             </Grid>
         </div>
     );

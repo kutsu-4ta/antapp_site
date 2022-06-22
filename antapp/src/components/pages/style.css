@@ -42,7 +42,9 @@
 
 .text-topic {
     font-size: 1.4rem;
-    text-align: center;
+    margin-top: 0;
+    padding-top: 0;
+    text-align: right;
 }
 
 .text-align-sub-title {
@@ -61,24 +63,34 @@
 }
 
 .icon-topic {
-    margin-top: 2rem;
+    margin-top: 6rem;
     height: 4rem;
+    padding-right: 0;
 }
 
 .icon-content-top {
     align-items: center;
-    height: 9rem;
+    height: 4rem;
 }
 
 .icon-navbar-item {
     height: 2rem;
     margin-right: 0.5rem;
     margin-left: 0.5rem;
-    /*opacity: 0.8;*/
+    margin-top: 0.5rem;
+}
+
+.icon-navbar-button {
+    paddingBottom: 0.3rem;
+    opacity: 0.9;
+    paddingInline: 1rem;
+    border: solid;
+    borderColor: #a1a0a0;
 }
 
 .icon-navbar-logo {
     height: 4rem;
+    padding-left: 5px;
 }
 
 .icon-scroll-arrow-down {
@@ -89,9 +101,8 @@
 
 
 .content-title {
-    margin-top: 5rem;
-    /*margin-bottom: 5rem;*/
-    height: 26rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
     align-items: center;
     text-align: center;
     color: #151414;
@@ -104,9 +115,21 @@
     width: 60%;
 }
 
+.content-top {
+    margin-top: 10rem;
+}
+
 .content-body {
     margin-top: 5rem;
     margin-bottom: 5rem;
+}
+
+.content-front {
+    z-index: 1;
+}
+
+.content-animation{
+    padding-top: 1rem;
 }
 
 /*----------Home-------------*/
@@ -142,10 +165,37 @@
     height: 2rem;
 }
 
-.background-animation {
+.box-a {
+    border: solid;
+    color: cornflowerblue;
+    width: 3rem;
+    height: 3rem;
+    padding-right:0;
+    margin:0;
+}
+
+.box-b {
+    border: solid;
+    color: cornflowerblue;
+    width: 3rem;
+    height: 3rem;
+    padding-right:0;
+    margin:0;
+}
+
+.background-sticky {
     position: sticky;
     top: 17px;
-    paddingRight: 140px;
+}
+
+.background-animation-wrapper {
     z-index: -1;
 }
 
+.front-animation-wrapper {
+    z-index: 3;
+}
+
+.nav-menu {
+    height: 10rem;
+}
