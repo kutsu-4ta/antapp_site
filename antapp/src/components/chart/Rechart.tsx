@@ -38,8 +38,8 @@ const Rechart: React.FC<ChartProps> = ({ data , children, layoutType}) => {
                                     data={[item]}
                                     layout={layoutType}
                                     margin={{top: 0, right: 0, left: 60, bottom: 0}}
-                                    width={700}
-                                    height={40}
+                                    width={600}
+                                    height={35}
                                     barSize={16}
                                 >
                                     <Bar
@@ -74,7 +74,7 @@ const Rechart: React.FC<ChartProps> = ({ data , children, layoutType}) => {
                         ]}
                         layout={layoutType}
                         margin={{top: 0, right: 0, left: 60, bottom: 0}}
-                        width={700}
+                        width={600}
                         height={40}
                         barSize={16}
                     >
