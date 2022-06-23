@@ -36,6 +36,29 @@ import ContactNavIcon from "../../assets/images/icons/mail_small_white.svg";
 import SkillSetNavIcon from "../../assets/images/icons/skillset_small_white.svg";
 import {NavLink} from "../navbar/NavbarElements";
 
+import { createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+let theme = createTheme({
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 600,
+            md: 768,
+            lg: 1025,
+            xl: 1536,
+        },
+    },
+    palette: {
+        primary: {
+            main: "#42a5f5",
+            light: "#1976d2",
+            dark: "#1565c0",
+        },
+    }
+});
+
 type BodyItem = {
     pageName: string;
     icon: any | undefined;
@@ -61,7 +84,8 @@ export default () => {
     const handleMouseLeave = (id: number) => navRef.current[id].current?.getAttribute('style') ? navRef.current[id].current?.setAttribute('style',' border: solid; border-color: #a1a0a0; height: 2.5rem; padding-bottom: 0.3rem; opacity: 0.9; background:'+ BodyItems[id].backGroundColor + ';') : '';
 
     return (
-        <>
+        // <ThemeProvider theme={theme}>
+        //     <CssBaseline />
             <div id="target">
                 <Grid container justifyContent="center" className="content-title" id="home">
 
@@ -148,11 +172,11 @@ export default () => {
 
 
                     <Grid container justifyContent="center">
-                        <InfinateUpDown scale={20}>
-                            <div>
+                        <Grid item xs={12} className="content-flex-center">
+                            <InfinateUpDown scale={20}>
                                 <img src={ArrowDownScroll} className="icon-scroll-arrow-down" alt="scroll"/>
-                            </div>
-                        </InfinateUpDown>
+                            </InfinateUpDown>
+                        </Grid>
                     </Grid>
 
                     <Grid container justifyContent="center">
@@ -225,6 +249,6 @@ export default () => {
                     </Grid>
                 </NavAnimation>
             </div>
-        </>
+        // </ThemeProvider>
     );
 };
