@@ -20,6 +20,10 @@
     padding: 3rem;
 }
 
+.padding-top-3 {
+    padding-top: 3rem;
+}
+
 .margin-top-1 {
     margin-top : 1rem;
 }
@@ -34,6 +38,10 @@
 
 .margin-bottom-2{
     margin-bottom: 2rem;
+}
+
+.margin-bottom-3{
+    margin-bottom: 3rem;
 }
 
 .text-left {
@@ -90,6 +98,10 @@
     padding-right: 0;
 }
 
+.icon-topic:hover{
+    cursor: pointer;
+}
+
 .icon-content-top {
     align-items: center;
     height: 4rem;
@@ -102,6 +114,10 @@
     margin-top: 0.5rem;
 }
 
+.icon-navbar-item:hover{
+    cursor: pointer;
+}
+
 .icon-navbar-button {
     paddingBottom: 0.3rem;
     opacity: 0.9;
@@ -110,15 +126,26 @@
     borderColor: #a1a0a0;
 }
 
+.icon-navbar-button:hover{
+    cursor: pointer;
+}
+
 .icon-navbar-logo {
     height: 4rem;
     padding-left: 5px;
+}
+
+.icon-navbar-logo:hover{
+    cursor: pointer;
 }
 
 .icon-scroll-arrow-down {
     height: 6rem;
 }
 
+.icon-scroll-arrow-down:hover{
+    cursor: pointer;
+}
 
 .content-title {
     margin-top: 3rem;
@@ -227,12 +254,39 @@
     margin-bottom: 0.5rem;
 }
 
-/* 感想：モバイルはボーダーなしでもいいかもね */
+.mobile-title{
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.mobile-icon-content-top{
+    align-items: center;
+    height: 2rem;
+}
+
+.mobile-icon-scroll-arrow-down{
+    height: 3rem;
+}
+
+.mobile-icon-topic{
+    margin-top: 0.5rem;
+    height: 2rem;
+    padding-right: 0;
+}
+
+.mobile-text-size-body{
+    font-size: 14px;
+}
+
 .mobile-content-title-border {
     border-top: solid #cbc7c7;
     /*border: solid;*/
     /*border-color: #151414;*/
     margin-top: 2rem;
+}
+
+.mobile-content-top-text{
+    font-size: 0.8rem;
 }
 
 .mobile-content-body {
@@ -244,40 +298,8 @@
     font-size: 1rem;
 }
 
-.mobile-title{
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-}
-
 .mobile-text-size-sub-title{
     font-size: 0.8rem;
-}
-
-.mobile-icon-content-top{
-    align-items: center;
-    height: 2rem;
-}
-
-.mobile-content-top-text{
-    font-size: 0.8rem;
-}
-
-.mobile-nav-menu{
-    height: 8rem;
-}
-
-.mobile-icon-scroll-arrow-down{
-    height: 3rem;
-}
-
-.mobile-text-size-body{
-    font-size: 14px;
-}
-
-.mobile-icon-topic{
-    margin-top: 3rem;
-    height: 2rem;
-    padding-right: 0;
 }
 
 .mobile-text-topic{

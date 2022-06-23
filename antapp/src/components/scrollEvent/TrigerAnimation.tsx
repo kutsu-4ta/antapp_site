@@ -16,10 +16,11 @@ export const NavAnimation: NavAnimationType = (props: Props): ReactElement => {
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
         setNavAnimation();
+        setMobileNavAnimation();
     }, []);
 
     type SetNavAnimation = () => void
-    const setNavAnimation: SetNavAnimation = () =>{
+    const setNavAnimation: SetNavAnimation = () => {
         gsap.fromTo(
             '#nav-item-target', // 動かしたい要素のid
             {   // fromの設定
@@ -43,13 +44,38 @@ export const NavAnimation: NavAnimationType = (props: Props): ReactElement => {
             }
         );
     }
+
+    type SetMobileNavAnimation = () => void
+    const setMobileNavAnimation: SetMobileNavAnimation = () => {
+        gsap.fromTo(
+            '#mobile-nav-item-target',
+            {   // fromの設定
+                x: 0
+            },
+            {   // toの設定
+                scrollTrigger: {
+                    trigger: '#mobile-nav-item-trigger',
+                    start: 'bottom center',
+                    // scrub: true,
+                    // markers: true,
+                    onEnter: () => {
+                        console.log('scroll In')
+                    },
+                    onEnterBack: () => {
+                        console.log('scroll Back')
+                    },
+                    toggleActions: 'play none none reverse'
+                },
+                x: 140
+            }
+        );
+    }
     return (
         <div className="front-animation-wrapper">
             {props.children}
         </div>
     );
 }
-
 
 interface AnimationProps {
     children: ReactNode;
