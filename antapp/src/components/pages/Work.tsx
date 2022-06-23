@@ -22,7 +22,7 @@ const Work: VFC = () => {
                                     </div>
                                     {item.name}<br/>
                                     {item.subscribe}<br/>
-                                    <a href={item.url}>
+                                    <a href={item.url} target="_blank" rel="noopener noreferrer">
                                         (デモサイトへ)
                                     </a>
                                 </Item>
