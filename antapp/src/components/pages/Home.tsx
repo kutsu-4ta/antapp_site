@@ -248,9 +248,8 @@ export default () => {
                             </Grid>
 
                             <div className={'text-right'}>
-                                うんち<br/>
-                                うんこ<br/>
-                                絶滅危惧種レッドリスト認定うんこ
+                                特定商取引法のやつ<br/>
+                                絶滅危惧種レッドリスト認定うんこ(仮)
                             </div>
                         </Grid>
                     </NavAnimation>
@@ -400,9 +399,8 @@ export default () => {
                             </Grid>
 
                             <div className={'text-right'}>
-                                うんち<br/>
-                                うんこ<br/>
-                                絶滅危惧種レッドリスト認定うんこ
+                                特定商取引法のやつ<br/>
+                                絶滅危惧種レッドリスト認定うんこ(仮)
                             </div>
                         </Grid>
                     </div>

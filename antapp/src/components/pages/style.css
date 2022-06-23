@@ -191,6 +191,11 @@
     margin-right: auto;
 }
 
+.content-work-grid{
+    border: solid;
+    border-color: #a1a0a0;
+}
+
 .image-about {
     height: 10rem;
     wiidth:10rem;
@@ -314,3 +319,10 @@
     width: 6rem;
 }
 
+.mobile-content-work-grid{
+    /*border-top: solid;*/
+    border-bottom: solid;
+    border-width: thin;
+    border-bottom-style: dashed;
+    border-color: #a1a0a0;
+}
