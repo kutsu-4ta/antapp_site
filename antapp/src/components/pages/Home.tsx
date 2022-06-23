@@ -279,7 +279,7 @@ export default () => {
                             <Grid container justifyContent="center" spacing={4} style={{marginBottom: "2rem"}}>
                                 <Grid item xs={6} className="text-center">
                                     <img src={HumanIcon} className="mobile-icon-content-top" alt={"webシステム"}/><br/>
-                                    <span className="mobile-text-size-sub-title">webシステム（仮）</span>
+                                    <span className="mobile-text-size-sub-title mobile-title">webシステム（仮）</span>
                                 </Grid>
                                 <Grid item xs={6} className="text-center">
                                     <img src={WorksIcon} className="mobile-icon-content-top" alt={"LP、webサイト"}/><br/>

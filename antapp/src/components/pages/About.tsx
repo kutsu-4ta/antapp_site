@@ -48,7 +48,7 @@ const about = () => {
                             </Grid>
                             <Grid item xs={12} className="text-size-sub-title">
                                 {/*<Item>山下 将史</Item>*/}
-                                <Item className="">Yamashita Masafumi</Item>
+                                <Item className="mobile-text-size-title">Yamashita Masafumi</Item>
                             </Grid>
                         </Grid>
 
