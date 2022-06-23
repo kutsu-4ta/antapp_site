@@ -1,22 +1,25 @@
 import styled, {keyframes} from "styled-components";
 import {ReactNode} from "react";
+import Grid from "@mui/material/Grid";
 
 interface Props {
     children: ReactNode;
     scale: number;
 }
-type InfinateUpDown = (props:Props) => JSX.Element;
-const infinateUpDown: InfinateUpDown = (props) => {
+type InfinateUpDownType = (props:Props) => JSX.Element;
+const InfinateUpDown: InfinateUpDownType = (props) => {
     return (
-        <div>
-            <InfinateArrownUpDown scale={props.scale}>
-                {props.children}
-            </InfinateArrownUpDown>
-        </div>
+        <Grid container justifyContent="center">
+            <Grid item xs={12}>
+                <InfinateUpDownStyle scale={props.scale}>
+                    {props.children}
+                </InfinateUpDownStyle>
+            </Grid>
+        </Grid>
     );
 }
 
-const InfinateUpDown = () => {
+const UpDown = () => {
     return (
         keyframes`
           0% {
@@ -33,9 +36,9 @@ const InfinateUpDown = () => {
 };
 
 // FIXME:scaleをpropsで渡せるようにしたい 2sのところ
-const InfinateArrownUpDown = styled.span<Pick<Props, 'scale'>>`
+const InfinateUpDownStyle = styled.div<Pick<Props, 'scale'>>`
   position: relative;
-  animation: ${InfinateUpDown}  2s ease infinite;
+  animation: ${ UpDown}  2s ease infinite;
 `
 
-export default infinateUpDown;
+export default InfinateUpDown;
