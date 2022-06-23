@@ -141,7 +141,7 @@
 
 .content-body {
     margin-top: 5rem;
-    margin-bottom: 5rem;
+    margin-bottom: 1rem;
 }
 
 .content-front {
@@ -233,6 +233,11 @@
     /*border: solid;*/
     /*border-color: #151414;*/
     margin-top: 2rem;
+}
+
+.mobile-content-body {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
 }
 
 .mobile-text-size-title{

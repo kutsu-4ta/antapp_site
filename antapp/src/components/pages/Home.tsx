@@ -363,9 +363,9 @@ export default () => {
                                             {/*ボディ*/}
                                             <Grid item xs={10}>
                                                 <ScrollFader timeoutEnter={500} timeoutExit={500}>
-                                                    <div className="content-body">
+                                                    <div className="mobile-content-body">
                                                         {item.pageName === "about" ? <About/> : ''}
-                                                        {/*{item.pageName === "skillSet" ? <SkillSet/> : ''}*/}
+                                                        {item.pageName === "skillSet" ? <SkillSet/> : ''}
                                                         {item.pageName === "works" ? <Work/> : ''}
                                                         {item.pageName === "contact" ? <Contact/> : ''}
                                                     </div>

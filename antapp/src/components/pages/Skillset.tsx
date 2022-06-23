@@ -2,26 +2,46 @@ import React from "react";
 import SkillSets from "../../assets/images/icons/skillsets_dev.svg";
 import Rechart from "../chart/Rechart";
 import Grid from "@mui/material/Grid";
+import Item from "@mui/material/Grid";
 import "./style.css";
 import Fader from "../scrollEvent/Fader";
 import Work from "./Work";
+import {IsPc, IsMobile} from "../utility/Responsive";
 
 type SkillSet = () => JSX.Element;
 const SkillSet: SkillSet = () => {
     return (
         <div>
-            <Grid container justifyContent="center" className="space-3-vertical">
-
-                <Grid item className='text-size-body text-center' style={{paddingBottom: "2rem"}}>
-                    <Grid item xs={12}>
-                        <Rechart data={languageData} layoutType="vertical">Language</Rechart>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Rechart data={flameworkData} layoutType="vertical">FlameWork</Rechart>
+            <IsPc>
+                <Grid container justifyContent="center" className="space-3-vertical">
+                    <Grid item className='text-center' style={{paddingBottom: "2rem"}}>
+                        <Grid item xs={12}>
+                            <Rechart data={languageData} layoutType="vertical" width={null} height={null}>Language</Rechart>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Rechart data={flameworkData} layoutType="vertical" width={null} height={null}>FlameWork</Rechart>
+                        </Grid>
                     </Grid>
                 </Grid>
+            </IsPc>
+            <IsMobile>
+                <Grid container justifyContent="center">
+                    <Grid item xs={12} className='text-center' style={{paddingTop: "2rem"}}>
+                            <Item className="mobile-text-size-body">
+                                業務で扱ったことのある言語とフレームワークの経験年数は以下になります。<br/>
+                                Flutterは只今勉強中です。
+                            </Item>
+                    </Grid>
 
-            </Grid>
+                    <Grid item xs={12}>
+                        <Rechart data={languageData} layoutType="vertical" width={300} height={25}><p className="text-center">Language</p></Rechart>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Rechart data={flameworkData} layoutType="vertical" width={300} height={25}><p className="text-center">FlameWork</p></Rechart>
+                    </Grid>
+
+                </Grid>
+            </IsMobile>
         </div>
     );
 };
