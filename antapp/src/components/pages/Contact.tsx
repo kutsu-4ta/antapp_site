@@ -133,11 +133,11 @@ const contact = () => {
                         </Grid>
                     </Grid>
 
-                    <p className="" style={{border: "solid blue"}}>
-                        <a href="https://twitter.com/antapp_?ref_src=twsrc%5Etfw" className="twitter-follow-button"
-                           data-show-count="false">ツイッター @antapp_</a>
-                        <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-                    </p>
+                    {/*<p className="" style={{border: "solid blue"}}>*/}
+                    {/*    <a href="https://twitter.com/antapp_?ref_src=twsrc%5Etfw" className="twitter-follow-button"*/}
+                    {/*       data-show-count="false">ツイッター @antapp_</a>*/}
+                    {/*    <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>*/}
+                    {/*</p>*/}
                     <div className="text-center">
                         <h2>Q & A</h2>
                         Q. うんちの頻度は？<br/>
