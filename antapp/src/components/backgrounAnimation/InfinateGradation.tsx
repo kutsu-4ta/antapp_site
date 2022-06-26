@@ -1,3 +1,8 @@
+/**
+ * [説明] 無限グラデーション
+ * scaleのスパンでcolor1、color2, color3の順で色が変わる
+ */
+
 import styled, {keyframes} from "styled-components";
 
 const GradientBackground = () => {
@@ -16,13 +21,14 @@ const GradientBackground = () => {
     );
 };
 
-// TODO:scaleをpropsで渡せるようにしたい
-const InfinateGradation = styled.div<{ scale: number }>`
-  background: linear-gradient(54deg, #a19c7d, #afa07f, #9f9983);
+const InfinateGradation = styled.div<{scale:number, color1: string, color2:string, color3: string }>`
+  background: linear-gradient(54deg, ${({color1})=>(color1 ? color1 : "#628ac7")}, ${({color2})=>(color2 ? color2 : "#2d4eab")}, ${({color3})=>(color3 ? color3 : "#1a3280")});
+
   border: solid;
   borderBottom: black;
   background-size: 600% 600%;
-  animation: ${() => GradientBackground()} 10s ease infinite;
+  animation: ${() => GradientBackground()} 
+  ${({scale}) => (scale ? scale : 10) }s ease infinite;
 `
 
 export default InfinateGradation;

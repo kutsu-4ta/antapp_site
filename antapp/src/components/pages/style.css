@@ -12,6 +12,10 @@
     margin-top: 0;
 }
 
+.padding-zero {
+    padding: 0;
+}
+
 .padding-top-zero {
     padding-top: 0;
 }
@@ -77,7 +81,7 @@
 
 .text-navbar {
     color: #ffffff;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .text-vertical-center{
@@ -325,4 +329,37 @@
     border-width: thin;
     border-bottom-style: dashed;
     border-color: #a1a0a0;
+}
+
+
+
+
+
+/*お試しゾーン*/
+
+.equilateral-triangle {
+    border-bottom: 150px solid #43A047; /* 高さ */
+    border-right: 86.6px solid transparent; /* 左辺の長さ */
+    border-left: 86.6px solid transparent; /* 右辺の長さ */
+}
+.backgroundOtameshi {
+    position: absolute;
+    z-index: -1;
+}
+
+.nav-item-fadein {
+    animation: slideIn 1s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(180px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+    }
+    40%,100% {
+        opacity: 1;
+    }
 }
