@@ -27,6 +27,7 @@ import About from "./About";
 import SkillSet from "./Skillset";
 import Work from './Work';
 import Contact from "./Contact";
+import {ShowLoading} from "../utility/Loading ";
 // アイコン
 import HumanIcon from "../../assets/images/icons/about_human.svg";
 import WorksIcon from "../../assets/images/icons/works_pc_phone.svg";
@@ -97,12 +98,10 @@ export default () => {
     // ボディ
     const ref = useRef(BodyItems.map(() => React.createRef<HTMLDivElement>()));
     const scrollToView = (id: number | undefined | null) => (id !== null) && (id !== undefined) ? ref.current[id]!.current!.scrollIntoView({behavior: "smooth"}) : window.scroll({top: 0, behavior: 'smooth'});
-
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-
-                {/* PC端末 */}
+            {/* PC端末 */}
             <IsPc>
                 <div id="target">
                     <NavAnimation>

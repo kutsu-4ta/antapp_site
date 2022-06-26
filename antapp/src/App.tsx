@@ -3,29 +3,21 @@ import {VFC} from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import './App.css';
 import Home from './components/pages/Home';
-import Work from './components/pages/Work';
-import About from './components/pages/About';
-import Contact from './components/pages/Contact';
-import Navbar from './components/navbar';
-import InfinateGradation from './components/backgrounAnimation/InfinateGradation';
+import {Loading, ShowLoading} from './components/utility/Loading ';
 
 const App: VFC = () => {
     return (
         <>
-            {/*<Navbar/>*/}
-                <div>
-                    <Switch>
-                        <Route exact path="/">
-                            <Home/>
-                        </Route>
-                        {/*<Route exact path="/works" component={Work}/>;*/}
-                        {/*<Route exact path="/about" component={About}/>;*/}
-                        {/*<Route exact path="/contact" component={Contact}/>;*/}
-                        <Redirect to={"/"}/>
-                    </Switch>
-                </div>
+            <ShowLoading timeout={6000}>
+                <Switch>
+                    <Route exact path="/">
+                        <Home/>
+                    </Route>
+                    <Redirect to={"/"}/>
+                </Switch>
+            </ShowLoading>
         </>
-  );
+    );
 };
 
 export default App;
