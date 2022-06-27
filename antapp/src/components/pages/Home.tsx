@@ -27,7 +27,7 @@ import About from "./About";
 import SkillSet from "./Skillset";
 import Work from './Work';
 import Contact from "./Contact";
-import {ShowLoading} from "../utility/Loading ";
+import Loading from "../utility/Loading ";
 // アイコン
 import HumanIcon from "../../assets/images/icons/about_human.svg";
 import WorksIcon from "../../assets/images/icons/works_pc_phone.svg";
@@ -103,6 +103,7 @@ export default () => {
             <CssBaseline />
             {/* PC端末 */}
             <IsPc>
+                <Loading/>
                 <div id="target">
                     <NavAnimation>
                         <UseTriangleAnimation/>

@@ -4,45 +4,39 @@
  * ページにアクセスした際の読み込み時に擬似的にローディングさせる。
  */
 
-import { ReactNode, useEffect, useState } from "react";
+import { VFC } from "react";
+import { Button, Card, Statistic } from "semantic-ui-react";
 
-const useDelay = (msec: number) => {
-    const [isActiveLoading, setIsActiveLoading] = useState(false);
-
-    useEffect(() => {
-        setTimeout(() => setIsActiveLoading(true), msec)
-    }, []);
-
-    return { isActiveLoading };
-}
-
-
-
-type LoadingType = () => JSX.Element
-export const Loading:LoadingType = () => {
-    return(
-    <>
-        <div>
-            ロード中
-        </div>
-    </>
-    );
-}
-
-
-
-//
-
-interface Props {
-    children: ReactNode;
-    timeout: number
-}
-type ShowLoadingType = (props: Props) => JSX.Element
-export const ShowLoading: ShowLoadingType = (props) => {
-    const {isActiveLoading} = useDelay(props.timeout);
-    return (
-        <>
-            {isActiveLoading ? props.children : Loading}
-        </>
-    );
+const BULK_UNIT = 10; type Props = {
+    count?: number;
+    add?: (amount: number) => void; decrement?: () => void; increment?: () => void;
 };
+
+const Loading: VFC<Props> = ({
+                                 count = 0,
+                                 add = () => undefined,
+                                 decrement = () => undefined,
+                                 increment = () => undefined,
+                             }) => (
+    <Card>
+        <Statistic className="number-board">
+            <Statistic.Label>count</Statistic.Label>
+            <Statistic.Value>{count}</Statistic.Value>
+        </Statistic>
+        <Card.Content>
+            <div className="ui two buttons">
+                <Button color="red" onClick={decrement}>
+                    -1
+                </Button>
+                <Button color="green" onClick={increment}>
+                    +1 </Button>
+            </div>
+            <div className="fluid-button">
+                <Button fluid color="grey" onClick={() => add(BULK_UNIT)}> +{BULK_UNIT}
+                </Button>
+            </div>
+        </Card.Content>
+    </Card>
+);
+
+export default Loading;
