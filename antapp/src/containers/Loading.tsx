@@ -1,9 +1,9 @@
 import { VFC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { add, decrement, increment } from '../components/utility/utility-actions';
-import { LoadingState } from '../reducer';
-import Loading from "../components/utility/Loading ";
+import { LoadingState, added, decremented, incremented } from "../features/Loading";
+import Loading from '../components/loading/Loading';
+
 
 const EnhancedLoading: VFC = () => {
     const count = useSelector<LoadingState, number>((state) => state.count);
@@ -11,9 +11,9 @@ const EnhancedLoading: VFC = () => {
     return (
         <Loading
             count={count}
-            add={(amount: number) => dispatch(add(amount))}
-            decrement={() => dispatch(decrement())}
-            increment={() => dispatch(increment())}
+            add={(amount: number) => dispatch(added(amount))}
+            decrement={() => dispatch(decremented())}
+            increment={() => dispatch(incremented())}
         />
     );
 };

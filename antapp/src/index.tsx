@@ -1,11 +1,11 @@
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import { loadingReducer, initialState } from "./reducer";
+import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom'; import App from './App';
-import ReportWebVitals from "./reportWebVitals";
 
-const store = createStore(loadingReducer, initialState);
+import { loadingSlice } from "./features/Loading";
+import { BrowserRouter } from 'react-router-dom'; import App from './App';
+
+const store = configureStore({ reducer: loadingSlice.reducer });
 
 ReactDOM.render(
         <BrowserRouter>
@@ -15,5 +15,3 @@ ReactDOM.render(
         </BrowserRouter>
     , document.getElementById('root'),
 );
-
-render:ReportWebVitals();

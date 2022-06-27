@@ -27,7 +27,7 @@ import About from "./About";
 import SkillSet from "./Skillset";
 import Work from './Work';
 import Contact from "./Contact";
-import Loading from "../utility/Loading ";
+import Loading from "../loading/Loading";
 // アイコン
 import HumanIcon from "../../assets/images/icons/about_human.svg";
 import WorksIcon from "../../assets/images/icons/works_pc_phone.svg";
@@ -46,6 +46,8 @@ import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import styled from "styled-components";
+
+import EnhancedLoading from "../../containers/Loading";
 
 let theme = createTheme({
     breakpoints: {
@@ -103,7 +105,7 @@ export default () => {
             <CssBaseline />
             {/* PC端末 */}
             <IsPc>
-                <Loading/>
+                <EnhancedLoading/>
                 <div id="target">
                     <NavAnimation>
                         <UseTriangleAnimation/>
