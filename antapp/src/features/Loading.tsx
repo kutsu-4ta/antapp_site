@@ -1,19 +1,19 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+/**
+ * [説明]action と reducer を定義している.
+ * Sliceを使って同時に定義している.
+ */
 
-export type LoadingState = { count: number };
-const initialState: LoadingState = { count: 0 };
+import { createSlice } from '@reduxjs/toolkit';
+
+export type LoadingState = { isLoading:boolean ,count: number};
+const initialState: LoadingState = { isLoading: true, count: 0 };
 
 export const loadingSlice = createSlice(
     { name: 'loading',
         initialState,
         reducers: {
-            added: (state, action: PayloadAction<number>) => ({
-                ...state,
-                count: state.count + action.payload,
-            }),
-            decremented: (state) => ({...state, count: state.count - 1}),
-            incremented: (state) => ({...state, count: state.count + 1}),
+            loaded: (state) => ({...state, isLoading: !state.isLoading}),
         },
     });
 
-export const { added, decremented, incremented } = loadingSlice.actions;
+export const { loaded } = loadingSlice.actions;

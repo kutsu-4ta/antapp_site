@@ -1,23 +1,23 @@
+/**
+ * [説明] 擬似ロードのisLoadingでstoreを使うためのコンポーネント.
+ * ContainerのなかのコンポーネントはComponents以下のコンポーネントへ
+ * store絡みの値や関数を橋渡しするためのコンポーネント.
+ */
+
 import { VFC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { LoadingState, added, decremented, incremented } from "../features/Loading";
+import { useSelector } from 'react-redux';
+import { LoadingState } from "../features/Loading";
 import Loading from '../components/loading/Loading';
-
+import useLoading from '../hooks/use-loading';
 
 const EnhancedLoading: VFC = () => {
-    const count = useSelector<LoadingState, number>((state) => state.count);
-    const dispatch = useDispatch();
+    useLoading();
+    const loading = useSelector<LoadingState, boolean>((state) => state.isLoading);
     return (
         <Loading
-            count={count}
-            add={(amount: number) => dispatch(added(amount))}
-            decrement={() => dispatch(decremented())}
-            increment={() => dispatch(incremented())}
+            isLoading={loading}
         />
     );
 };
 
 export default EnhancedLoading;
-
-
