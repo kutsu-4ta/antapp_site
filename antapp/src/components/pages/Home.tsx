@@ -105,7 +105,7 @@ export default () => {
             <CssBaseline />
             {/* PC端末 */}
             <IsPc>
-                <EnhancedLoading/>
+                <EnhancedLoading>
                 <div id="target">
                     <NavAnimation>
                         <UseTriangleAnimation/>
@@ -256,6 +256,7 @@ export default () => {
                         </Grid>
                     </NavAnimation>
                     </div>
+                </EnhancedLoading>
                 </IsPc>
 
                 {/* Mobile端末 */}
