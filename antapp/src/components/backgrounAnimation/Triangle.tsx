@@ -30,7 +30,7 @@ export const UseTriangleAnimation: UseTriangleAnimation = () => {
 
     const Triangle = styled.div`
       border-top: ${() => window.innerHeight * 0.5 + "px"} solid #f2ff54; /* 高さ */
-      border-bottom: ${() => window.innerHeight - window.innerHeight * 0.5 + "px"} solid #f2ff54; /* 高さ */
+      border-bottom: ${() => window.innerHeight * 0.5 + "px"} solid #f2ff54; /* 高さ */
       border-right: ${() => window.innerWidth - 20 + "px"} solid transparent; /* スクロールバーの幅20px引いてる */
       animation: ${() => TriangleAnimation} 500ms ease-in;
       //background-color: #4f5045;

@@ -1,0 +1,58 @@
+
+.text-center {
+    text-align: center;
+}
+
+.icon-logo {
+    height: 4rem;
+    /*padding-left: 5px;*/
+}
+
+.fade-in-enter {
+    /*position: absolute;*/
+    z-index: 2;
+    opacity: 0;
+    transition: all 1000ms ease;
+}
+
+.fade-in-enter-done {
+    /*position: absolute;*/
+    z-index: 2;
+    opacity: 1;
+    transition: all 1000ms ease;
+}
+
+.fade-in-exit {
+    opacity: 1;
+    /*transform: translateY(200px);*/
+    transition: all 1500ms ease;
+}
+
+
+.fade-in-exit-done {
+    position: absolute;
+    opacity: 1;
+    /*transform: translateY(200px);*/
+    transition: all 1500ms ease;
+}
+
+
+.rectangular-circle-enter {
+    transition: all 1s ease;
+    opacity: 1;
+}
+
+.rectangular-circle-enter-done {
+    transition: all 1s ease;
+    opacity: 1;
+}
+
+.rectangular-circle-exit {
+    transition: all 1s ease;
+    opacity: 1;
+}
+
+.rectangular-circle-exit-done {
+    transition: all 1s ease;
+    opacity: 0;
+}

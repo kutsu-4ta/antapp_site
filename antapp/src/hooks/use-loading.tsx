@@ -22,7 +22,7 @@ const useLoading = () => {
                         setTimeout(() => {
                             loaded()
                             dispatch(loaded())
-                        }, 3000);
+                        }, 2000);
                     }
                 } catch (err) {
                     throw new Error('Load is failed');
