@@ -1,5 +1,16 @@
 
 /*----------共通------------*/
+
+.background-sub-primary {
+    background-color: #a1a0a0;
+}
+
+.background-content {
+    background-color: #ffffff;
+    border-radius: 50px;
+    opacity: 0.7;
+}
+
 .space-1-vertical {
     margin-top : 1rem;
 }
@@ -72,7 +83,7 @@
     font-size: 1.4rem;
     margin-top: 0;
     padding-top: 0;
-    text-align: right;
+    text-align: center;
 }
 
 .text-align-sub-title {
@@ -97,9 +108,9 @@
 }
 
 .icon-topic {
-    margin-top: 6rem;
-    height: 4rem;
+    height: 5rem;
     padding-right: 0;
+    padding-top: 1rem;
 }
 
 .icon-topic:hover{
@@ -136,7 +147,8 @@
 
 .icon-navbar-logo {
     height: 4rem;
-    padding-left: 5px;
+    z-index: 5;
+    padding-top: 1rem;
 }
 
 .icon-navbar-logo:hover{
@@ -171,7 +183,7 @@
 }
 
 .content-body {
-    margin-top: 5rem;
+    margin-top: 3rem;
     margin-bottom: 1rem;
 }
 
@@ -195,9 +207,13 @@
     margin-right: auto;
 }
 
-.content-work-grid{
-    border: solid;
-    border-color: #a1a0a0;
+.content-work-grid {
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+text-ellipsis {
+    text-overflow: ellipsis;
 }
 
 .image-about {
@@ -280,7 +296,7 @@
 .mobile-icon-topic{
     margin-top: 0.5rem;
     height: 2rem;
-    padding-right: 0;
+    /*padding-right: 0;*/
 }
 
 .mobile-text-size-body{
@@ -314,7 +330,7 @@
 .mobile-text-topic{
     font-size: 1.0rem;
     font-weight: 350;
-    padding: 0;
+    padding-top: 0;
     margin-top: 0;
 }
 

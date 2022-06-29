@@ -12,7 +12,7 @@ const about = () => {
     return (
         <div>
             <IsPc>
-                <Grid container justifyContent="center" className="content-top padding-3">
+                <Grid container justifyContent="center" className="padding-3">
                     <Grid item xs={4} className="content-flex-center">
                         <Item>
                             <img src={ProfileImage} className="image-about" alt="profile"/>

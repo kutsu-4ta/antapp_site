@@ -12,7 +12,7 @@ const Work: VFC = () => {
     return (
         <div>
             <IsPc>
-                <Grid container justifyContent="center" spacing={4} className="text-center" style={{margin: "2rem"}}>
+                <Grid container justifyContent="center" spacing={4} className="text-center">
                     {itemData.map((item) => {
                         return (
                             <Grid item xs={6}>
@@ -20,8 +20,10 @@ const Work: VFC = () => {
                                     <div>
                                         <img src={item.img} style={{height: "15rem", width: "15rem"}}/>
                                     </div>
-                                    {item.name}<br/>
-                                    {item.subscribe}<br/>
+                                    {item.name}
+                                    <div className="text-ellipsis">
+                                    {item.subscribe}
+                                    </div>
                                     <a href={item.url} target="_blank" rel="noopener noreferrer">
                                         (デモサイトへ)
                                     </a>

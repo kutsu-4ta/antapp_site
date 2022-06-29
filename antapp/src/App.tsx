@@ -11,6 +11,9 @@ const App: VFC = () => {
                 <Route exact path="/">
                     <Home/>
                 </Route>
+                <Route exact path="/home">
+                    <Home/>
+                </Route>
                 <Redirect to={"/"}/>
             </Switch>
         </>

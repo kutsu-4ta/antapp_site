@@ -61,9 +61,9 @@ let theme = createTheme({
     },
     palette: {
         primary: {
-            main: "#42a5f5",
-            light: "#1976d2",
-            dark: "#1565c0",
+            main: "#efff36",
+            light: "#843eee",
+            dark: "#818181",
         },
         background: {
             default:  "#fcfcfc",
@@ -105,92 +105,92 @@ export default () => {
             <CssBaseline />
             {/* PC端末 */}
             <IsPc>
-                <EnhancedLoading>
+                {/*<EnhancedLoading>*/}
                 <div id="target">
                     <NavAnimation>
-                        <UseTriangleAnimation/>
-                        <div style={{position: "sticky", top: "10px", zIndex: "3"}}>
-                            <img style={{position: "sticky", top: "10px", zIndex: "3"}} id="nav-item-target"
-                                 onClick={() => scrollToView(null)} src={FoxLogo} className="icon-navbar-logo"
-                                 alt="antapp"/>
-                        </div>
+                        {/*<div style={{height: window.innerHeight, position: "sticky", top: "0"}} >*/}
+                        <InfinateGradation color1="#dcdcdc" color2="#778899" color3="#b0c4de" scale={18} style={{height: window.innerHeight, position: "sticky", top: "0", border: "none"}} >
 
-                        <Grid container justifyContent="center" className="content-title" id="home">
-
-                            <Grid item xs={12} style={{height: "5rem"}}>
-                                <CSSAnimation timeoutEnter={500} timeoutExit={200} classNames="fade-in">
-                                    <h1>I'm a web Developer.</h1>
-                                </CSSAnimation>
-                            </Grid>
-
-                        </Grid>
-
-                        <Grid container justifyContent="center">
-                            <Grid item xs={2}></Grid>
-                            <Grid item xs={8}>
-                                <Grid container justifyContent="center" className="nav-menu"
-                                      style={{position: "sticky", top: "10px", zIndex: "3"}}>
-                                    {BodyItems.map((item, id) => {
-                                        return (
-                                            <Grid item xs={3} className="padding-3 padding-zero">
-                                                <CSSAnimation timeoutEnter={800} timeoutExit={200} classNames="slide-in-from-bottom">
-                                                    <Grid container justifyContent="center">
-                                                        <Grid item xs={12} className="text-center">
-                                                            <InfinateGradation scale={10}
-                                                                               color1="#f08080"
-                                                                               color2={BodyItems[id].backGroundColor}
-                                                                               color3="#c0c0c0"
-                                                                               style={{border: "none"}}
-                                                            >
-
-                                                                <div
-                                                                    key={id}
-                                                                    ref={navRef.current[id]}
-                                                                    id={"nav-" + item.pageName}
-                                                                    style={{
-                                                                        borderColor: "#808080",
-                                                                    }}
-                                                                    onMouseEnter={() => handleMouseEnter(id)}
-                                                                    onMouseLeave={() => handleMouseLeave(id)}
-                                                                    onClick={() => scrollToView(id)}
-                                                                    className="icon-navbar-button"
-                                                                >
-                                                                    <img src={item.navIcon}
-                                                                         className="icon-navbar-item"
-                                                                         alt={item.pageName}/>
-                                                                    <p className="text-navbar">{item.pageName}</p>
-                                                                </div>
-                                                            </InfinateGradation>
-                                                        </Grid>
-                                                    </Grid>
-                                                </CSSAnimation>
-                                            </Grid>
-                                        );
-                                    })}
-                                </Grid>
-                            </Grid>
-                            <Grid item xs={2}></Grid>
-                        </Grid>
-
-                        <Grid container justifyContent="center" id="nav-item-trigger">
-                            <Grid item xs={12} className="content-flex-center"
-                                  style={{height: window.innerHeight * 0.7}}>
-                                <InfinateUpDown scale={20}>
-                                    <div className="content-flex-center">
-                                        <CSSAnimation timeoutEnter={2500} timeoutExit={200} classNames="fade-in">
-                                            <img src={ArrowDownScroll} className="icon-scroll-arrow-down"
-                                                 alt="scroll"
-                                                 onClick={() => scrollToView(0)}/>
+                            <UseTriangleAnimation/>
+                                <img onClick={() => scrollToView(null)} src={FoxLogo} className="icon-navbar-logo" style={{ paddingLeft: window.innerWidth * 0.9 + "px"}} alt="antapp"/>
+                            <div  id="nav-item-target">
+                                <Grid container justifyContent="center" className="content-title" id="home">
+                                    <Grid item xs={12} style={{height: "5rem"}}>
+                                        <CSSAnimation timeoutEnter={500} timeoutExit={200} classNames="fade-in">
+                                            <h1>I'm a web Developer.</h1>
                                         </CSSAnimation>
-                                    </div>
-                                </InfinateUpDown>
-                            </Grid>
-                        </Grid>
+                                    </Grid>
 
-                        <Grid container justifyContent="center">
+                                </Grid>
 
+                                <Grid container justifyContent="center" style={{paddingTop: window.innerHeight * 0.1}}>
+                                    <Grid item xs={2}></Grid>
+                                    <Grid item xs={8}>
+                                        <Grid container justifyContent="center" className="nav-menu"
+                                              style={{position: "sticky", top: "0", zIndex: "3"}}>
+                                            {BodyItems.map((item, id) => {
+                                                return (
+                                                    <Grid item xs={3} className="padding-3 padding-zero">
+                                                        <CSSAnimation timeoutEnter={800} timeoutExit={200}
+                                                                      classNames="slide-in-from-bottom">
+                                                            <Grid container justifyContent="center">
+                                                                <Grid item xs={12} className="text-center">
+                                                                    <InfinateGradation scale={15}
+                                                                                       color1="#6a5acd"
+                                                                                       color2={BodyItems[id].backGroundColor}
+                                                                                       color3="#6a5acd"
+                                                                                       style={{border: "none"}}
+                                                                    >
+
+                                                                        <div
+                                                                            key={id}
+                                                                            ref={navRef.current[id]}
+                                                                            id={"nav-" + item.pageName}
+                                                                            style={{
+                                                                                borderColor: "#808080",
+                                                                            }}
+                                                                            onMouseEnter={() => handleMouseEnter(id)}
+                                                                            onMouseLeave={() => handleMouseLeave(id)}
+                                                                            onClick={() => scrollToView(id)}
+                                                                            className="icon-navbar-button"
+                                                                        >
+                                                                            <img src={item.navIcon}
+                                                                                 className="icon-navbar-item"
+                                                                                 alt={item.pageName}/>
+                                                                            <p className="text-navbar">{item.pageName}</p>
+                                                                        </div>
+                                                                    </InfinateGradation>
+                                                                </Grid>
+                                                            </Grid>
+                                                        </CSSAnimation>
+                                                    </Grid>
+                                                );
+                                            })}
+                                        </Grid>
+                                    </Grid>
+                                    <Grid item xs={2}></Grid>
+                                </Grid>
+
+                                <Grid container justifyContent="center" style={{paddingTop: window.innerHeight * 0.1}} id="nav-item-trigger">
+                                    <Grid item xs={12} className="content-flex-center">
+                                        <InfinateUpDown scale={20}>
+                                            <div className="content-flex-center">
+                                                <CSSAnimation timeoutEnter={2500} timeoutExit={200}
+                                                              classNames="fade-in">
+                                                    <img src={ArrowDownScroll} className="icon-scroll-arrow-down"
+                                                         alt="scroll"
+                                                         onClick={() => scrollToView(0)}/>
+                                                </CSSAnimation>
+                                            </div>
+                                        </InfinateUpDown>
+                                    </Grid>
+                                </Grid>
+                            </div>
+                        </InfinateGradation>
+
+                        <Grid container justifyContent="center" className="background-sub-primary">
                             <Grid item xs={10} className="content-front">
-                                <Grid container justifyContent="center" style={{position: "sticky", top: "0"}}>
+                                <Grid container justifyContent="center">
                                     {BodyItems.map((item, id) => {
                                         return (
                                             <>
@@ -199,7 +199,7 @@ export default () => {
                                                       id={item.pageName}
                                                       key={id}
                                                       ref={ref.current[id]}
-                                                      className="text-right"
+                                                      className="text-center"
                                                 >
                                                     {item.icon ?
                                                         <div style={{position: "sticky", top: "0"}}>
@@ -207,7 +207,7 @@ export default () => {
                                                                  alt={item.pageName}
                                                                  onClick={() => scrollToView(id)}
                                                             />
-                                                            <h2 className="text-topic" style={{paddingRight: "0"}}>
+                                                            <h2 className="text-topic">
                                                                 {item.pageName}
                                                             </h2>
                                                         </div>
@@ -218,8 +218,8 @@ export default () => {
 
                                                 {/*ボディ*/}
                                                 <Grid item xs={10}>
-                                                    <ScrollFader timeoutEnter={500} timeoutExit={500}>
-                                                        <div className="content-body">
+                                                    <ScrollFader timeoutEnter={200} timeoutExit={500}>
+                                                        <div className="content-body background-content">
                                                             {item.pageName === "about" ? <About/> : ''}
                                                             {item.pageName === "skillSet" ? <SkillSet/> : ''}
                                                             {item.pageName === "works" ? <Work/> : ''}
@@ -256,7 +256,7 @@ export default () => {
                         </Grid>
                     </NavAnimation>
                     </div>
-                </EnhancedLoading>
+                {/*</EnhancedLoading>*/}
                 </IsPc>
 
                 {/* Mobile端末 */}

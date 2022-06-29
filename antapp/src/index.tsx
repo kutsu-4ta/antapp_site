@@ -4,13 +4,17 @@ import { Provider } from 'react-redux';
 
 import { loadingSlice } from "./features/Loading";
 import { BrowserRouter } from 'react-router-dom'; import App from './App';
+import EnhancedLoading from "./containers/Loading";
+import React from "react";
 
 const store = configureStore({ reducer: loadingSlice.reducer });
 
 ReactDOM.render(
         <BrowserRouter>
             <Provider store={store}>
-                <App/>
+                <EnhancedLoading>
+                    <App/>
+                </EnhancedLoading>
             </Provider>
         </BrowserRouter>
     , document.getElementById('root'),

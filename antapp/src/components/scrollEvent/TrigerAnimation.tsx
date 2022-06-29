@@ -24,7 +24,8 @@ export const NavAnimation: NavAnimationType = (props: Props): ReactElement => {
         gsap.fromTo(
             '#nav-item-target', // 動かしたい要素のid
             {   // fromの設定
-                x: (window.innerWidth - 50) * 0.5 - 30
+                // x: (window.innerWidth - 50) * 0.5 - 30
+                x: 0
             },
             {   // toの設定
                 scrollTrigger: {
@@ -40,7 +41,7 @@ export const NavAnimation: NavAnimationType = (props: Props): ReactElement => {
                     // },
                     toggleActions: 'play none none reverse'
                 },
-                x: 0
+                x: - window.innerWidth
             }
         );
     }

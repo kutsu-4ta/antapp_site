@@ -103,8 +103,8 @@ const contact = () => {
     return (
         <>
             <IsPc>
-                <div className="content-top">
-                    <Grid container justifyContent="center" className="space-5-vertical">
+                <div>
+                    <Grid container justifyContent="center">
                         <Grid item xs={12} className="text-center">
                             <UseForm/>
                         </Grid>
