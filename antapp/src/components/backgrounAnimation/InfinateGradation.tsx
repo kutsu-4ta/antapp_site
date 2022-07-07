@@ -21,13 +21,13 @@ const GradientBackground = () => {
     );
 };
 
-const InfinateGradation = styled.div<{scale:number, color1: string, color2:string, color3: string }>`
-  background: linear-gradient(54deg, ${({color1})=>(color1 ? color1 : "#6e6d6d")}, ${({color2})=>(color2 ? color2 : "#212121")}, ${({color3})=>(color3 ? color3 : "#4f4d4d")});
+const InfinateGradation = styled.div<{scale:number, color1: string, color2:string, color3: string}>`
+  background: linear-gradient(54deg, ${({color1})=>(color1 ? color1 : "#6e6d6d")}, ${({color2})=>(color2 ? color2 : "#212121")}, ${({color3})=>(color3 ? color3 : "#4f4d4d")} );
 
   border: solid;
   borderBottom: black;
   background-size: 600% 600%;
-  animation: ${() => GradientBackground()} 
+  animation: ${() => GradientBackground() }
   ${({scale}) => (scale ? scale : 10) }s ease infinite;
 `
 

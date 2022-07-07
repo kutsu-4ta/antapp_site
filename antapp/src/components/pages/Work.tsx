@@ -2,7 +2,7 @@ import React, {VFC} from "react";
 import "./style.css";
 import Grid from "@mui/material/Grid";
 import Item from "@mui/material/Grid";
-import IconButton from '@mui/material/IconButton';
+import { Typography } from '@mui/material';
 import {IsPc, IsMobile} from  "../utility/Responsive";
 
 
@@ -20,13 +20,8 @@ const Work: VFC = () => {
                                     <div>
                                         <img src={item.img} style={{height: "15rem", width: "15rem"}}/>
                                     </div>
-                                    {item.name}
-                                    <div className="text-ellipsis">
-                                    {item.subscribe}
-                                    </div>
-                                    <a href={item.url} target="_blank" rel="noopener noreferrer">
-                                        (デモサイトへ)
-                                    </a>
+                                    <Typography component="p" variant="body1" textAlign="center">{item.name}</Typography>
+                                    <Typography component="p" variant="body2" textAlign="center">{item.subscribe}</Typography>
                                 </Item>
                             </Grid>
                         );

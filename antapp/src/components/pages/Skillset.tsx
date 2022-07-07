@@ -1,11 +1,9 @@
 import React from "react";
-import SkillSets from "../../assets/images/icons/skillsets_dev.svg";
+import { Typography } from '@mui/material';
 import Rechart from "../chart/Rechart";
 import Grid from "@mui/material/Grid";
 import Item from "@mui/material/Grid";
 import "./style.css";
-import Fader from "../scrollEvent/Fader";
-import Work from "./Work";
 import {IsPc, IsMobile} from "../utility/Responsive";
 
 type SkillSet = () => JSX.Element;
@@ -16,10 +14,24 @@ const SkillSet: SkillSet = () => {
                 <Grid container justifyContent="center" className="space-3-vertical">
                     <Grid item className='text-center' style={{paddingBottom: "2rem"}}>
                         <Grid item xs={12}>
-                            <Rechart data={languageData} layoutType="vertical" width={null} height={null}>Language</Rechart>
+                            <Rechart data={languageData} layoutType="vertical" width={null} height={null}>
+                                <Typography
+                                    component="p"
+                                    variant="h6"
+                                    textAlign="center"
+                                >Language
+                                </Typography>
+                            </Rechart>
                         </Grid>
                         <Grid item xs={12}>
-                            <Rechart data={flameworkData} layoutType="vertical" width={null} height={null}>FlameWork</Rechart>
+                            <Rechart data={flameworkData} layoutType="vertical" width={null} height={null}>
+                                <Typography
+                                    component="p"
+                                    variant="h6"
+                                    textAlign="center"
+                                >FlameWork・Tools
+                                </Typography>
+                                </Rechart>
                         </Grid>
                     </Grid>
                 </Grid>

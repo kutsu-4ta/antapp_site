@@ -4,6 +4,7 @@ import FormControl from '@mui/material/FormControl';
 import Grid from "@mui/material/Grid";
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
+import { Typography } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import TextField from '@mui/material/TextField';
@@ -110,19 +111,22 @@ const contact = () => {
                         </Grid>
                     </Grid>
 
-                    <p className="" style={{border: "solid blue"}}>
-                        <a href="https://twitter.com/antapp_?ref_src=twsrc%5Etfw" className="twitter-follow-button"
-                           data-show-count="false">ツイッター @antapp_</a>
-                        <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-                    </p>
+                    {/*<p className="" style={{border: "solid blue"}}>*/}
+                    {/*    <a href="https://twitter.com/antapp_?ref_src=twsrc%5Etfw" className="twitter-follow-button"*/}
+                    {/*       data-show-count="false">ツイッター @antapp_</a>*/}
+                    {/*    <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>*/}
+                    {/*</p>*/}
                     <div className="text-center">
-                        <h2>Q & A</h2>
-                        Q. うんちの頻度は？<br/>
-                        A. 言えません。<br/><br/>
-                        Q. うんちの頻度は？<br/>
-                        A. 言えません。<br/><br/>
-                        Q. うんちの頻度は？<br/>
-                        A. 言えません。<br/><br/><br/><br/><br/>
+                        <h2 style={{fontFamily: "Noto Serif JP"}}>Q & A</h2>
+                        <Typography component="p" variant="body1" textAlign="center"
+                                    style={{fontFamily: "Noto Serif JP"}}>
+                            Q. うんちの頻度は？<br/>
+                            A. 言えません。<br/><br/>
+                            Q. うんちの頻度は？<br/>
+                            A. 言えません。<br/><br/>
+                            Q. うんちの頻度は？<br/>
+                            A. 言えません。<br/>
+                        </Typography>
                     </div>
                 </div>
             </IsPc>
@@ -139,13 +143,15 @@ const contact = () => {
                     {/*    <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>*/}
                     {/*</p>*/}
                     <div className="text-center">
-                        <h2>Q & A</h2>
+                        <h2 style={{fontFamily: "Noto Serif JP"}}>Q & A</h2>
+                        <Typography component="p" variant="body1" textAlign="center" style={{fontFamily: "Noto Serif JP"}}>
                         Q. うんちの頻度は？<br/>
                         A. 言えません。<br/><br/>
                         Q. うんちの頻度は？<br/>
                         A. 言えません。<br/><br/>
                         Q. うんちの頻度は？<br/>
-                        A. 言えません。<br/><br/><br/><br/><br/>
+                        A. 言えません。<br/>
+                        </Typography>
                     </div>
             </IsMobile>
         </>

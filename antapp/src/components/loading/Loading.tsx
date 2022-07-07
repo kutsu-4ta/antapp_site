@@ -54,7 +54,7 @@ export const UseAnimation: UseAnimation = () => {
                 width: 0%;
                 transform: translateX(${window.innerWidth * 0.5 + "px"});
               }
-              50% {
+              10% {
                 width: 100%; 
               }
               100% {
@@ -70,7 +70,7 @@ export const UseAnimation: UseAnimation = () => {
       content: '';
       left: 0%;
       bottom: 0;
-      border-bottom: solid 4px  #f2ff54;
+      border-bottom: solid 4px #abe1ff;
       text-align: center;
       font-size: 18px;
       z-index: -1;
@@ -82,7 +82,7 @@ export const UseAnimation: UseAnimation = () => {
       content: '';
       left: 0%;
       bottom: 0;
-      border-bottom: solid 1px #313413;
+      border-bottom: solid 1px #000000;
       text-align: center;
       font-size: 18px;
       z-index: -1;

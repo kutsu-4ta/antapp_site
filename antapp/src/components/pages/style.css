@@ -1,3 +1,8 @@
+/*----------WEBフォント------------*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300&display=swap');
+body {
+    font-family: 'Noto Serif JP', serif;
+}
 
 /*----------共通------------*/
 
@@ -7,8 +12,8 @@
 
 .background-content {
     background-color: #ffffff;
-    border-radius: 50px;
-    opacity: 0.7;
+    border-radius: 10px;
+    opacity: 0.9;
 }
 
 .space-1-vertical {
@@ -134,7 +139,7 @@
 }
 
 .icon-navbar-button {
-    paddingBottom: 0.3rem;
+    paddingBottom: 0.1rem;
     opacity: 0.9;
     paddingInline: 1rem;
     border: solid;
@@ -268,6 +273,8 @@ text-ellipsis {
     height: 10rem;
 }
 
+
+
 /*------------mobile端末----------*/
 
 .mobile-h1{
@@ -299,8 +306,31 @@ text-ellipsis {
     /*padding-right: 0;*/
 }
 
+.mobile-icon-navbar-item {
+    height: 1rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+.mobile-text-navbar {
+    color: #ffffff;
+    opacity: 0.9;
+    padding-top: 0;
+}
+
 .mobile-text-size-body{
     font-size: 14px;
+}
+
+.mobile-content-title {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    align-items: center;
+    text-align: center;
+    color: #151414;
+    opacity: 0.8;
 }
 
 .mobile-content-title-border {
@@ -319,8 +349,8 @@ text-ellipsis {
     margin-bottom: 1rem;
 }
 
-.mobile-text-size-title{
-    font-size: 1rem;
+.mobile-text-size-title {
+    font-size: 1.5rem;
 }
 
 .mobile-text-size-sub-title{
