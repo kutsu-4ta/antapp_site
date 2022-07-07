@@ -8,7 +8,7 @@ import { VFC } from 'react';
 import { useSelector } from 'react-redux';
 import { LoadingState } from "../features/Loading";
 import Loading from '../components/loading/Loading';
-import useLoading from '../hooks/use-loading';
+import useLoading from '../components/loading/useLoading';
 
 interface Props {
     children: JSX.Element;

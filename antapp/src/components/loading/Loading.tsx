@@ -16,10 +16,7 @@ type Props = {
     children: ReactNode;
 };
 
-const Loading: VFC<Props> = ({
-                                 isLoading = true,
-                                 children
-                             }) => {
+const Loading: VFC<Props> = ({isLoading = true, children}) => {
     return (
         <>
             {

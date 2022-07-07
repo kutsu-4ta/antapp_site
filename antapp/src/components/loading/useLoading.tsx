@@ -6,7 +6,7 @@
 
 import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
-import {loadingSlice} from "../features/Loading";
+import {loadingSlice} from "../../features/Loading";
 
 const useLoading = () => {
     const [isLoading, setIsLoading] = useState(false);
