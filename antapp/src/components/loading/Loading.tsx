@@ -13,20 +13,21 @@ import './styles.css';
 
 type Props = {
     isLoading?: boolean;
-    children: ReactNode;
+    children: ReactNode | null;
+    message: string;
 };
 
-const Loading: VFC<Props> = ({isLoading = true, children}) => {
+const Loading: VFC<Props> = ({isLoading = true, message= 'loading...', children = null }) => {
     return (
         <>
             {
                 isLoading ?
                     <Grid container justifyContent="center">
                         <Grid item xs={12} className="text-center">
-                            <UseAnimation/>
+                            <UseAnimation message={message}/>
                         </Grid>
                     </Grid> :
-                    children
+                    children? children : ''
             }
         </>
     );
@@ -36,8 +37,11 @@ export default Loading;
 
 
 
-type UseAnimation = () => JSX.Element;
-export const UseAnimation: UseAnimation = () => {
+interface UseAnimationProps {
+    message: string;
+}
+type UseAnimation = (props: UseAnimationProps) => JSX.Element;
+export const UseAnimation: UseAnimation = (props) => {
     const [mount, setMount] = useState(false);
 
     useEffect(() => {
@@ -109,15 +113,6 @@ export const UseAnimation: UseAnimation = () => {
       opacity: 0;
       z-index: 2;
     `
-    const helloMessages: string[] = [
-        'Hello.',
-        'こんにちは',
-        'いらっしゃいませ',
-        '見に来てくれてありがとう',
-        'ゆっくりしていってね',
-        'thanks for coming',
-    ]
-    const helloMessage: string = helloMessages[Math.floor(Math.random() * (helloMessages.length+1))]
 
     return (
         <>
@@ -139,7 +134,7 @@ export const UseAnimation: UseAnimation = () => {
                         </Grid>
                         <Grid item xs={12} className="text-center">
                             <img src={FoxLogo} className="icon-logo"/>
-                            <p>{helloMessage}</p>
+                            <p>{props.message}</p>
                         </Grid>
                     </Grid>
                 </Logo>

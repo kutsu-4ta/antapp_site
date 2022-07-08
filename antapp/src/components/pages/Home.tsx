@@ -22,7 +22,7 @@ import {NavAnimation, ScrollAnimation} from "../scrollEvent/TrigerAnimation";
 import {UseTriangleAnimation} from "../backgrounAnimation/Triangle";
 import InfinateGradation from "../backgrounAnimation/InfinateGradation";
 import {CSSAnimation} from "../backgrounAnimation/Slidein";
-import ChapterTitle from "../atoms/texts/ChapterTitle";
+import Sentence from "../atoms/texts/Sentence";
 // 各ページ
 import About from "./About";
 import SkillSet from "./Skillset";
@@ -45,6 +45,7 @@ import SkillSetNavIcon from "../../assets/images/icons/skillset_small_white.svg"
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import {Typography} from "@mui/material";
 
 let theme = createTheme({
     breakpoints: {
@@ -220,7 +221,7 @@ export default () => {
                                                             {item.pageName === "about" ? <About/> : ''}
                                                             {item.pageName === "skillSet" ? <SkillSet/> : ''}
                                                             {item.pageName === "works" ? <Work/> : ''}
-                                                            {item.pageName === "contact" ? <Contact/> : ''}
+                                                            {item.pageName === "contact" ? <Contact/>: ''}
                                                         </div>
                                                     </ScrollFader>
                                                 </Grid>
@@ -239,14 +240,22 @@ export default () => {
                                     </Grid>
                                 </Grid>
                             </Grid>
-
-                            <div className={'text-right'}>
-                                特定商取引法のやつ<br/>
-                                絶滅危惧種レッドリスト認定うんこ(仮)
+                            <div className={"text-right margin-top-10"}>
+                                <Typography component="p" variant="body1" textAlign="center">
+                                    thank you for your comming !!
+                                </Typography>
                             </div>
                         </Grid>
                     </NavAnimation>
-                    </div>
+                    {/*<div className={"text-right margin-top-10"}>*/}
+                    {/*    <Typography component="p" variant="body1" textAlign="right">*/}
+                    {/*        {"特定商取引方に基づく記載事項"}*/}
+                    {/*    </Typography>*/}
+                    {/*    {"代表責任者名: 山下 将史"}<br/>*/}
+                    {/*    {"所在地: メールにて遅滞なく提供いたします"}<br/>*/}
+                    {/*    {"電話番号: メールにて遅滞なく提供いたします"}<br/>*/}
+                    {/*</div>*/}
+                </div>
                 </IsPc>
 
                 {/* Mobile端末 */}

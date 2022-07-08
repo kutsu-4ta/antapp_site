@@ -9,10 +9,21 @@ import React from "react";
 
 const store = configureStore({ reducer: loadingSlice.reducer });
 
+const helloMessages: string[] = [
+    'Hello.',
+    'こんにちは',
+    'いらっしゃいませ',
+    '見に来てくれてありがとう',
+    'ゆっくりしていってね',
+    'thanks for coming',
+]
+
+const helloMessage: string = helloMessages[Math.floor(Math.random() * (helloMessages.length+1))]
+
 ReactDOM.render(
         <BrowserRouter>
             <Provider store={store}>
-                <EnhancedLoading>
+                <EnhancedLoading message={helloMessage}>
                     <App/>
                 </EnhancedLoading>
             </Provider>

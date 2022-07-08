@@ -1,12 +1,11 @@
 import React, {useRef} from "react";
 import {useState} from "react";
 import { Dialog } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress'
 import {init, send} from "emailjs-com";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import Input from "@mui/material/Input";
 import FormHelperText from "@mui/material/FormHelperText";
 import TextField from "@mui/material/TextField";
 import Button from "@material-ui/core/Button";
@@ -17,7 +16,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Sentence from "../atoms/texts/Sentence";
-import { MyDialog, MyDialogProps } from '../CustomDialog/MyDialog';
+import { MyDialog } from '../CustomDialog/MyDialog';
+import FoxLogo from "../../assets/images/fox-white.svg";
 
 const UseForm = () => {
     interface State {
@@ -43,15 +43,15 @@ const UseForm = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [modalConfig, setModalConfig] = React.useState<MyDialogProps | undefined>()
     const [state, setState] = React.useState<State>({
-        company: null,
-        fromName: null,
-        email: null,
-        content: null,
-        validCompany: null,
-        validFromName: null,
-        validEmail: null,
-        validContent: null,
-        errors: null,
+        company: '',
+        fromName: '',
+        email: '',
+        content: '',
+        validCompany: '',
+        validFromName: '',
+        validEmail: '',
+        validContent: '',
+        errors: '',
     });
 
     const companyInputRef = useRef<HTMLInputElement>();
@@ -77,11 +77,13 @@ const UseForm = () => {
         setModalConfig(undefined)
         if (ret === 'ok') {
             console.log('OK押した');
+            setState((state) => ({...state, errors: ''}));
+
             // 送信
             const pubKey = process.env.REACT_APP_CONTACT_PUB_KEY;
             const serviceID = process.env.REACT_APP_CONTACT_SERVICE_ID;
             const templateID = process.env.REACT_APP_TEMPLATE_ID;
-            if (pubKey !== undefined && serviceID !== undefined && templateID !== undefined && state.errors === null) {
+            if (pubKey !== undefined && serviceID !== undefined && templateID !== undefined && state.errors === '' ) {
                 init(pubKey);
 
                 const template_param = {
@@ -94,9 +96,10 @@ const UseForm = () => {
                     message: state.content
                 };
 
-                // TODO:非同期処理のローディング実装
+                setIsLoading(true);
                 await send(serviceID, templateID, template_param).then(
                     () => {
+                        setIsLoading(false);
                         openDialog();
                         setState((state) => ({...state, company: '', fromName: '', email: '', content: '', errors: ''}));
                     }
@@ -156,49 +159,74 @@ const UseForm = () => {
 
                     <Grid item xs={12}>
                         <FormControl sx={{m: 1, width: '50vw'}} variant="outlined">
-                            <InputLabel htmlFor="input-company">company（任意）</InputLabel>
-                            <Input id="input-company" inputRef={companyInputRef} value={state.company}
-                                   onChange={onChangeFormValue('company')}/>
+                            <TextField
+                                id="outlined-textarea"
+                                multiline
+                                label="Company"
+                                placeholder='株式会社エグザンプル'
+                                variant="standard"
+                                sx={{background: '#FFFFFF'}}
+                                value={state.company}
+                                type="text"
+                                inputRef={companyInputRef}
+                                onChange={onChangeFormValue('company')}
+                            />
                             <FormHelperText
-                                id="input-name-helper-text">{state.validCompany !== null ? `※${state.validCompany}` : ''}</FormHelperText>
-                        </FormControl>
-                    </Grid>
-
-                    <Grid item xs={12}>
-                        <FormControl sx={{m: 1, width: '50vw'}} variant="outlined">
-                            <InputLabel htmlFor="input-fromName">name</InputLabel>
-                            <Input id="input-fromName" inputRef={fromNameInputRef} value={state.fromName}
-                                   onChange={onChangeFormValue('fromName')}/>
-                            <FormHelperText id="input-name-helper-text" focused
-                                            error>{state.validFromName ? `※${state.validFromName}` : ''}</FormHelperText>
-                        </FormControl>
-                    </Grid>
-
-                    <Grid item xs={12}>
-                        <FormControl sx={{m: 1, width: '50vw'}} variant="outlined">
-                            <InputLabel htmlFor="input-email">email</InputLabel>
-                            <Input id="input-email" inputRef={emailInputRef} value={state.email}
-                                   onChange={onChangeFormValue('email')}/>
-                            <FormHelperText id="input-email-helper-text" focused
-                                            error>{state.validEmail ? `※${state.validEmail}` : ''}</FormHelperText>
+                                id="input-name-helper-text">{state.validCompany ? `*${state.validCompany}` : ''}</FormHelperText>
                         </FormControl>
                     </Grid>
 
                     <Grid item xs={12}>
                         <FormControl sx={{m: 1, width: '50vw'}} variant="outlined">
                             <TextField
-                                id="filled-multiline-static"
-                                label="content"
-                                multiline
-                                rows={6}
+                                // required
+                                label="Name"
+                                required
+                                placeholder='山田 太郎'
                                 variant="standard"
+                                value={state.fromName}
+                                type="text"
+                                inputRef={fromNameInputRef}
+                                onChange={onChangeFormValue('fromName')}
+                            />
+                            <FormHelperText id="input-name-helper-text" focused
+                                            error>{state.validFromName ? `*${state.validFromName}` : ''}</FormHelperText>
+                        </FormControl>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <FormControl sx={{m: 1, width: '50vw'}} variant="outlined">
+
+                            <TextField
+                                label="E-mail"
+                                variant="standard"
+                                required
+                                placeholder='taro@example.com'
+                                value={state.email}
+                                type="text"
+                                inputRef={emailInputRef}
+                                onChange={onChangeFormValue('email')}
+                            />
+                            <FormHelperText id="input-email-helper-text" focused
+                                            error>{state.validEmail ? `*${state.validEmail}` : ''}</FormHelperText>
+                        </FormControl>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <FormControl sx={{m: 1, width: '50vw'}}>
+                            <TextField
+                                label="content"
+                                variant="standard"
+                                required
+                                rows={6}
+                                multiline
                                 value={state.content}
                                 onChange={onChangeFormValue('content')}
                                 inputRef={contentInputRef}
+                                placeholder="（例）JavaScriptを用いたWebサイトのコーディングについてご依頼の相談"
                             />
-                            <input hidden/>
                             <FormHelperText id="input-content-helper-text" focused
-                                            error>{state.validContent ? `※${state.validContent}` : ''}</FormHelperText>
+                                            error>{state.validContent ? `*${state.validContent}` : ''}</FormHelperText>
                         </FormControl>
                     </Grid>
 
@@ -208,6 +236,8 @@ const UseForm = () => {
                         </Button>
                     </Grid>
                 </Box>
+
+                {modalConfig && <MyDialog {...modalConfig} />}
 
                 <Dialog
                     open={isOpenDialog}
@@ -228,8 +258,18 @@ const UseForm = () => {
                     </DialogActions>
                 </Dialog>
 
-                {modalConfig && <MyDialog {...modalConfig} />}
-
+                <Dialog open={isLoading}>
+                    <DialogContent style={{textAlign:"center"}}>
+                        <Grid container justifyContent="center">
+                            <Grid item xs={12}>
+                                <img src={FoxLogo} className="icon-logo"/>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <CircularProgress/>
+                            </Grid>
+                        </Grid>
+                    </DialogContent>
+                </Dialog>
             </Grid>
         </>
     );

@@ -12,6 +12,7 @@ import useLoading from '../components/loading/useLoading';
 
 interface Props {
     children: JSX.Element;
+    message: string;
 }
 
 type  EnhancedLoadingType = (props:Props) => JSX.Element;
@@ -21,6 +22,7 @@ const EnhancedLoading: EnhancedLoadingType = (props:Props) => {
     return (
         <Loading
             isLoading={loading}
+            message={props.message}
         >
             {props.children}
         </Loading>
