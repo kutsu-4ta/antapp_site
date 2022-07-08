@@ -6,6 +6,9 @@ import { loadingSlice } from "./features/Loading";
 import { BrowserRouter } from 'react-router-dom'; import App from './App';
 import EnhancedLoading from "./containers/Loading";
 import React from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import {createTheme} from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 
 const store = configureStore({ reducer: loadingSlice.reducer });
 
@@ -19,12 +22,36 @@ const helloMessages: string[] = [
 ]
 
 const helloMessage: string = helloMessages[Math.floor(Math.random() * (helloMessages.length+1))]
-
+let theme = createTheme({
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 600,
+            md: 768,
+            lg: 1025,
+            xl: 1536,
+        },
+    },
+    palette: {
+        primary: {
+            main: "#16abe5",
+            light: "#843eee",
+            dark: "#818181",
+        },
+        background: {
+            default:  "#fcfcfc",
+        },
+        text: { primary: "#2a2929" },
+    }
+});
 ReactDOM.render(
         <BrowserRouter>
             <Provider store={store}>
                 <EnhancedLoading message={helloMessage}>
+                    <ThemeProvider theme={theme}>
+                        <CssBaseline/>
                     <App/>
+                    </ThemeProvider>
                 </EnhancedLoading>
             </Provider>
         </BrowserRouter>

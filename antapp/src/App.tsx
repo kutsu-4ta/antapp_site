@@ -3,6 +3,7 @@ import {VFC} from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import './App.css';
 import Home from './components/pages/Home';
+import History from './components/pages/History';
 
 const App: VFC = () => {
     return (
@@ -13,6 +14,9 @@ const App: VFC = () => {
                 </Route>
                 <Route exact path="/home">
                     <Home/>
+                </Route>
+                <Route exact path="/history">
+                    <History/>
                 </Route>
                 <Redirect to={"/"}/>
             </Switch>

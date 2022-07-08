@@ -9,6 +9,7 @@ import Sentence from "../atoms/texts/Sentence";
 
 import Human from "../../assets/images/icons/about_human.svg";
 import ChapterTitle from "../atoms/texts/ChapterTitle";
+import {Link} from "react-router-dom";
 
 const about = () => {
 
@@ -66,6 +67,14 @@ const about = () => {
                             お客様の理想の実現に貢献し、真心を込めて良いものを作っていきたいと思います。<br/>
                             業務で扱った言語とフレームワークをSkillSetのページに載せていますのでご覧ください。<br/>
                             </Typography>
+                        </Item>
+                    </Grid>
+                    <Grid item xs={12} className="text-size-body">
+
+                        <Item className="margin-top-2">
+                            <Link to={'/history'}>
+                            <button> 詳しく見る </button>
+                            </Link>
                         </Item>
                     </Grid>
                 </Grid>

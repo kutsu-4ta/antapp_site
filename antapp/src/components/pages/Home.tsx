@@ -41,34 +41,7 @@ import HumanNavIcon from "../../assets/images/icons/human_small_white.svg";
 import WorksNavIcon from "../../assets/images/icons/works_small_white.svg";
 import ContactNavIcon from "../../assets/images/icons/mail_small_white.svg";
 import SkillSetNavIcon from "../../assets/images/icons/skillset_small_white.svg";
-
-import { createTheme } from "@mui/material/styles";
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import {Typography} from "@mui/material";
-
-let theme = createTheme({
-    breakpoints: {
-        values: {
-            xs: 0,
-            sm: 600,
-            md: 768,
-            lg: 1025,
-            xl: 1536,
-        },
-    },
-    palette: {
-        primary: {
-            main: "#16abe5",
-            light: "#843eee",
-            dark: "#818181",
-        },
-        background: {
-            default:  "#fcfcfc",
-        },
-        text: { primary: "#2a2929" },
-    }
-});
 
 type BodyItem = {
     pageName: string;
@@ -99,8 +72,7 @@ export default () => {
     const ref = useRef(BodyItems.map(() => React.createRef<HTMLDivElement>()));
     const scrollToView = (id: number | undefined | null) => (id !== null) && (id !== undefined) ? ref.current[id]!.current!.scrollIntoView({behavior: "smooth"}) : window.scroll({top: 0, behavior: 'smooth'});
     return (
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
+        <>
             {/* PC端末 */}
             <IsPc>
                 <div id="target">
@@ -466,7 +438,6 @@ export default () => {
                         {/*</div>*/}
                     </NavAnimation>
                 </IsMobile>
-
-        </ThemeProvider>
+        </>
     );
 };
