@@ -6,6 +6,7 @@ import Home from './components/pages/Home';
 import History from './components/pages/History';
 
 const App: VFC = () => {
+
     return (
         <>
             <Switch>

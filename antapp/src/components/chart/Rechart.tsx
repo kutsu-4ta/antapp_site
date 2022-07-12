@@ -56,7 +56,7 @@ const Rechart: React.FC<ChartProps> = ({ data , children, height, width,layoutTy
                                         shape={<Rectangle className="rectangle" radius={[10, 10, 10, 10]}/>}
                                     />
                                     <XAxis
-                                        domain={[0, 2.0]}
+                                        domain={[0, 100]}
                                         type="number"
                                         axisLine={false}
                                         hide={true}
@@ -85,12 +85,10 @@ const Rechart: React.FC<ChartProps> = ({ data , children, height, width,layoutTy
                         barSize={16}
                     >
                         <XAxis
-                            domain={[0, 2.0]}
-                            // unit="年"
+                            domain={[0, 100]}
                             type="number"
                             axisLine={false}
                             hide={false}
-                            // label={{value: "(年)", angle: 0,dx: 240, dy: 0}}
                         />
                         <YAxis
                             dataKey="name"
@@ -100,7 +98,7 @@ const Rechart: React.FC<ChartProps> = ({ data , children, height, width,layoutTy
                     </BarChart>
                 </Grid>
                 <Grid item xs={12} className="text-center">
-                    (年)
+                    (自信ある度)
                 </Grid>
             </Grid>
         </>

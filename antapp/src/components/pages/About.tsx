@@ -4,6 +4,7 @@ import ProfileImage from "../../assets/images/profile_kari.png";
 import Grid from "@mui/material/Grid";
 import Item from "@mui/material/Grid";
 import { Typography } from '@mui/material';
+import Button from '@mui/material/Button';
 import  {IsPc, IsMobile} from "../utility/Responsive";
 import Sentence from "../atoms/texts/Sentence";
 
@@ -12,7 +13,6 @@ import ChapterTitle from "../atoms/texts/ChapterTitle";
 import {Link} from "react-router-dom";
 
 const about = () => {
-
     return (
         <div>
             <IsPc>
@@ -58,24 +58,27 @@ const about = () => {
                                 mb="8px"
                                 style={{fontFamily: "Noto Serif JP"}}
                             >
-                            フリーランスでweb制作を行っています。<br/>
-                            新卒でwebシステム開発の会社に就職し、サーバサイドエンジニアとして自社製品の開発・運用に携わっていました。<br/>
-                            業務では主にLaravel、PHP、Vue.jsを使っておりました。<br/>
-                            2022年の6月からフリーランスとして活動を開始しました。<br/>
-                            最近はフロント・エンドが好きで、このサイトをReact.jsで作成しました。<br/>
-                            LP・Webサイトのコーディング、webシステムの制作などご依頼いただければと思います。<br/>
-                            お客様の理想の実現に貢献し、真心を込めて良いものを作っていきたいと思います。<br/>
-                            業務で扱った言語とフレームワークをSkillSetのページに載せていますのでご覧ください。<br/>
+                                <h3>エンジニアを目指した経緯</h3>
+                                大学では情報系を専攻していましたがバンド活動に夢中になり留年してしまいました。留年期間中にIT業界に惹かれ、プログラミングとWeb技術を猛勉強しました。<br/>
+                                同時に物を売ることにも興味があったため、Web業界で自社開発をしている会社を軸に就職活動をし、エンジニアとしてのキャリアをスタートしました。<br/>
+
+                                <h3>フリーランスになった経緯</h3>
+                                新卒入社した企業で1年間、自社開発の実務を積みました。<br/>
+                                そこでの配属先の自社製品のチームは少数で構成されており、入社1年目ながら自社開発の全工程に携らせていただきましsた。<br/>
+                                以前の会社はとてもありがたい環境でしたが、より自由な発想でエンジニアとしての自分を磨きたいという気持ちが強くなり、フリーランスを考えるようになりました。<br/>
+                                以前の会社では副業ができなかったため、退社して今はフリーランスのエンジニアとして働かせていただいています。<br/>
+                                会社での経験は自社開発のみで受託開発の経験はまだまだ浅いですが、<br/>
+                                丁寧なコミュニケーションを心がけて、プロの技術者としてお客様の課題解決に貢献していきます。
                             </Typography>
                         </Item>
                     </Grid>
                     <Grid item xs={12} className="text-size-body">
 
-                        <Item className="margin-top-2">
-                            <Link to={'/history'}>
-                            <button> 詳しく見る </button>
-                            </Link>
-                        </Item>
+                        {/*<Item className="margin-top-2">*/}
+                        {/*    <Link to={'/history'}>*/}
+                        {/*        <Button variant="contained">詳しく見る</Button>*/}
+                        {/*    </Link>*/}
+                        {/*</Item>*/}
                     </Grid>
                 </Grid>
             </IsPc>
@@ -88,7 +91,6 @@ const about = () => {
                                 <img src={ProfileImage} className="mobile-image-about" alt="profile"/>
                             </Grid>
                             <Grid item xs={12} className="text-size-sub-title">
-                                {/*<Item>山下 将史</Item>*/}
                                 <Item className="mobile-text-size-title">Yamashita Masafumi</Item>
                             </Grid>
                         </Grid>

@@ -8,8 +8,8 @@ import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import TextField from "@mui/material/TextField";
-import Button from "@material-ui/core/Button";
-import SendIcon from "@material-ui/core/Icon";
+import Button from '@mui/material/Button';
+import SendIcon from "@mui/icons-material/Send";
 import {validateEmail, validateRequired} from "../utility/validation";
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -162,7 +162,7 @@ const UseForm = () => {
                             <TextField
                                 id="outlined-textarea"
                                 multiline
-                                label="Company"
+                                label="会社名"
                                 placeholder='株式会社エグザンプル'
                                 variant="standard"
                                 sx={{background: '#FFFFFF'}}
@@ -180,7 +180,7 @@ const UseForm = () => {
                         <FormControl sx={{m: 1, width: '50vw'}} variant="outlined">
                             <TextField
                                 // required
-                                label="Name"
+                                label="お名前"
                                 required
                                 placeholder='山田 太郎'
                                 variant="standard"
@@ -198,7 +198,7 @@ const UseForm = () => {
                         <FormControl sx={{m: 1, width: '50vw'}} variant="outlined">
 
                             <TextField
-                                label="E-mail"
+                                label="メールアドレス"
                                 variant="standard"
                                 required
                                 placeholder='taro@example.com'
@@ -215,7 +215,7 @@ const UseForm = () => {
                     <Grid item xs={12}>
                         <FormControl sx={{m: 1, width: '50vw'}}>
                             <TextField
-                                label="content"
+                                label="お問い合わせ内容"
                                 variant="standard"
                                 required
                                 rows={6}
@@ -232,7 +232,9 @@ const UseForm = () => {
 
                     <Grid item xs={12}>
                         <Button variant="contained" endIcon={<SendIcon/>} onClick={() => sendForm()}>
-                            Send
+                            <text className="text-center">
+                                フォームを送る！
+                            </text>
                         </Button>
                     </Grid>
                 </Box>
@@ -252,8 +254,10 @@ const UseForm = () => {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button autoFocus onClick={closeDialog} color="primary">
+                        <Button onClick={closeDialog}  variant="contained">
+                            <text className="text-center">
                             完了
+                            </text>
                         </Button>
                     </DialogActions>
                 </Dialog>

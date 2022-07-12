@@ -5,6 +5,8 @@ import Grid from "@mui/material/Grid";
 import Item from "@mui/material/Grid";
 import "./style.css";
 import {IsPc, IsMobile} from "../utility/Responsive";
+import GitHubLogo from "../../assets/images/LanguageLogo/github-icon.svg";
+import FlutterLogo from "../../assets/images/LanguageLogo/flutter.svg";
 
 type SkillSet = () => JSX.Element;
 const SkillSet: SkillSet = () => {
@@ -63,27 +65,27 @@ export default SkillSet;
 const languageData = [
     {
         name: "TypeScript",
-        value: 0.3,
+        value: 30,
         color: "#eec263"
     },
     {
         name: "JavaScript",
-        value: 1.5,
+        value: 70,
         color: "#eec263"
     },
     {
-        name: "Dart",
-        value: 0.3,
+        name: "Flutter",
+        value: 30,
         color: "#2e8b57"
     },
     {
         name: "PHP",
-        value: 2.0,
+        value: 70,
         color: "#4169e1"
     },
     {
         name: "MySQL",
-        value: 2.0,
+        value: 30,
         color: "#4169e1"
     }
 ];
@@ -91,32 +93,27 @@ const languageData = [
 const flameworkData = [
     {
         name: "React.js",
-        value: 0.3,
+        value: 30,
         color: "#eec263"
     },
     {
         name: "Vue.js",
-        value: 1.5,
+        value: 70,
         color: "#eec263"
     },
     {
-        name: "Flutter",
-        value: 0.5,
-        color: "#2e8b57"
-    },
-    {
         name: "Laravel",
-        value: 2.0,
+        value: 80,
         color: "#4169e1"
     },
     {
         name: "WordPress",
-        value: 1.0,
+        value: 60,
         color: "#4169e1"
     },
     {
         name: "docker",
-        value: 1.0,
+        value: 70,
         color: "#4169e1"
     }
 ];

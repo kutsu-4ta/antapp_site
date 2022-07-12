@@ -39,7 +39,7 @@ let theme = createTheme({
             dark: "#818181",
         },
         background: {
-            default:  "#fcfcfc",
+            default:  "#ffffff",
         },
         text: { primary: "#2a2929" },
     }

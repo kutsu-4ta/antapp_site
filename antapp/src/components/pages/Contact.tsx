@@ -23,15 +23,12 @@ const contact = () => {
                     {/*    <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>*/}
                     {/*</p>*/}
                     <div className="text-center">
-                        <h2 style={{fontFamily: "Noto Serif JP"}}>Q & A</h2>
-                        <Typography component="p" variant="body1" textAlign="center"
-                                    style={{fontFamily: "Noto Serif JP"}}>
-                            Q. うんちの頻度は？<br/>
-                            A. 言えません。<br/><br/>
-                            Q. うんちの頻度は？<br/>
-                            A. 言えません。<br/><br/>
-                            Q. うんちの頻度は？<br/>
-                            A. 言えません。<br/>
+                        <h2 style={{fontFamily: "Noto Serif JP"}} className="margin-top-2" >Q & A</h2>
+                        <Typography component="p" variant="body1" textAlign="center" className="padding-3" style={{fontFamily: "Noto Serif JP"}}>
+                            Q. 職務経歴書が見たいです<br/>
+                            A. お問い合わせフォームにでご要望いただければお送りいたします。<br/><br/>
+                            Q. zoomなどで打ち合わせはできますか？<br/>
+                            A. もちろんです！<br/><br/>
                         </Typography>
                     </div>
                 </div>
@@ -49,14 +46,12 @@ const contact = () => {
                     {/*    <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>*/}
                     {/*</p>*/}
                     <div className="text-center">
-                        <h2 style={{fontFamily: "Noto Serif JP"}}>Q & A</h2>
-                        <Typography component="p" variant="body1" textAlign="center" style={{fontFamily: "Noto Serif JP"}}>
-                        Q. うんちの頻度は？<br/>
-                        A. 言えません。<br/><br/>
-                        Q. うんちの頻度は？<br/>
-                        A. 言えません。<br/><br/>
-                        Q. うんちの頻度は？<br/>
-                        A. 言えません。<br/>
+                        <h2 style={{fontFamily: "Noto Serif JP"}} className="margin-top-2" >Q & A</h2>
+                        <Typography component="p" variant="body1" textAlign="left" className="padding-3" style={{fontFamily: "Noto Serif JP"}}>
+                        Q. 職務経歴書が見たいです<br/>
+                        A. お問い合わせフォームにでご要望いただければお送りいたします。<br/><br/>
+                        Q. zoomなどで打ち合わせはできますか？<br/>
+                        A. もちろんです！<br/><br/>
                         </Typography>
                     </div>
             </IsMobile>

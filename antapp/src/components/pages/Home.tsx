@@ -23,6 +23,10 @@ import {UseTriangleAnimation} from "../backgrounAnimation/Triangle";
 import InfinateGradation from "../backgrounAnimation/InfinateGradation";
 import {CSSAnimation} from "../backgrounAnimation/Slidein";
 import Sentence from "../atoms/texts/Sentence";
+import HomeSmall from "../../assets/images/Home_small.png";
+import HomeMiddle from "../../assets/images/Home_middle.png";
+import HomeLarge from "../../assets/images/Home_large.png";
+import HomeXXLarge from "../../assets/images/Home_xxlarge.png";
 // 各ページ
 import About from "./About";
 import SkillSet from "./Skillset";
@@ -58,6 +62,15 @@ const BodyItems: BodyItem[] = [
 ];
 
 export default () => {
+
+    const [widthState, setWidthState] = useState(window.innerWidth);
+    const [heightState, setHeightState] = useState(window.innerHeight);
+    const [homePicture, setHomePicture] = useState(HomeXXLarge);
+
+    useEffect(() => {
+        resize()
+    })
+
     // ナビゲーションバー
     const navRef = useRef(BodyItems.map(() => React.createRef<HTMLDivElement>()));
     type StyleActiveNavButton = (id: number) => string;
@@ -71,21 +84,47 @@ export default () => {
     // ボディ
     const ref = useRef(BodyItems.map(() => React.createRef<HTMLDivElement>()));
     const scrollToView = (id: number | undefined | null) => (id !== null) && (id !== undefined) ? ref.current[id]!.current!.scrollIntoView({behavior: "smooth"}) : window.scroll({top: 0, behavior: 'smooth'});
+    const resize = () => {
+        console.log('resize');
+        setWidthState(window.innerWidth);
+        setHeightState(window.innerHeight);
+        console.log(heightState);
+        if (widthState < 500 && heightState < 200) {
+            setHomePicture(HomeSmall);
+        } else if (widthState < 1400 && heightState < 800) {
+            setHomePicture(HomeMiddle);
+        } else if (widthState < 1500 && heightState < 950) {
+            setHomePicture(HomeLarge);
+        } else {
+            setHomePicture(HomeXXLarge);
+        }
+    }
     return (
         <>
+            {window.addEventListener('resize', resize)}
             {/* PC端末 */}
             <IsPc>
                 <div id="target">
                     <NavAnimation>
                         <InfinateGradation
-                            color1="#778899"
-                            color2="#b0c4de"
-                            color3="#87cefa"
-                            scale={20}
-                            style={{height: window.innerHeight, position: "sticky", top: "0", border: "none"}} >
+                            color1="#4169e1"
+                            color2="#00ffff"
+                            color3="#20b2aa"
+                            scale={3}
+                            style={{height: '100vh', width: '100%', position: "sticky", top: "0", border: "none"}} >
 
+                        <div
+                            style={{
+                            top: "0",
+                            position: 'sticky',
+                            backgroundImage: `url(${homePicture})`,
+                            backgroundRepeat: 'no-repeat',
+                            width: '100vw',
+                            height: '100vh'
+                        }}
+                        >
                             <UseTriangleAnimation/>
-                            <img onClick={() => scrollToView(null)} src={FoxLogo} className="icon-navbar-logo" style={{ paddingLeft: window.innerWidth * 0.9 + "px"}} alt="antapp"/>
+                            <img onClick={() => scrollToView(null)} src={FoxLogo} className="icon-navbar-logo" style={{ paddingLeft: widthState * 0.9 + "px"}} alt="antapp"/>
                             <div  id="nav-item-target">
                                 <Grid container justifyContent="center" className="content-title" id="home">
                                     <Grid item xs={12} style={{height: "5rem"}}>
@@ -95,7 +134,7 @@ export default () => {
                                     </Grid>
                                 </Grid>
 
-                                <Grid container justifyContent="center" style={{paddingTop: window.innerHeight * 0.1}}>
+                                <Grid container justifyContent="center" style={{paddingTop: heightState * 0.1}}>
                                     <Grid item xs={2}></Grid>
                                     <Grid item xs={8}>
                                         <Grid container justifyContent="center" className="nav-menu"
@@ -141,7 +180,7 @@ export default () => {
                                     <Grid item xs={2}></Grid>
                                 </Grid>
 
-                                <Grid container justifyContent="center" style={{paddingTop: window.innerHeight * 0.1}} id="nav-item-trigger">
+                                <Grid container justifyContent="center" style={{paddingTop: heightState * 0.1}} id="nav-item-trigger">
                                     <Grid item xs={12} className="content-flex-center">
                                         <InfinateUpDown scale={20}>
                                             <div className="content-flex-center">
@@ -156,6 +195,7 @@ export default () => {
                                     </Grid>
                                 </Grid>
                             </div>
+                        </div>
                         </InfinateGradation>
 
                         <Grid container justifyContent="center">
@@ -238,9 +278,9 @@ export default () => {
                             color2="#b0c4de"
                             color3="#87cefa"
                             scale={20}
-                            style={{height: window.innerHeight, position: "sticky", top: "0", border: "none"}} >
+                            style={{height: heightState, position: "sticky", top: "0", border: "none"}} >
                         <UseTriangleAnimation/>
-                        <img onClick={() => scrollToView(null)} src={FoxLogo} className="mobile-icon-navbar-logo" style={{ paddingLeft: window.innerWidth * 0.9 + "px"}} alt="antapp"/>
+                        <img onClick={() => scrollToView(null)} src={FoxLogo} className="mobile-icon-navbar-logo" style={{ paddingLeft: widthState * 0.9 + "px"}} alt="antapp"/>
 
                             <Grid container justifyContent="center" className="mobile-content-title" id="home">
                                 <Grid item xs={12} style={{height: "5rem"}}>
