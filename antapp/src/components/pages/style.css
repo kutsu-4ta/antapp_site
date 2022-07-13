@@ -14,7 +14,7 @@ body {
     border: solid gray;
     background-color: #ffffff;
     border-radius: 10px;
-    opacity: 0.9;
+    opacity: 0.99;
 }
 
 .space-1-vertical {
@@ -158,7 +158,8 @@ body {
 .icon-navbar-logo {
     height: 4rem;
     z-index: 5;
-    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
 }
 
 .icon-navbar-logo:hover{
@@ -171,6 +172,14 @@ body {
 
 .icon-scroll-arrow-down:hover{
     cursor: pointer;
+}
+
+.navbar-button {
+    paddingBottom: 0.1rem;
+    opacity: 0.9;
+    paddingInline: 1rem;
+    border: solid;
+    borderColor: #a1a0a0;
 }
 
 .content-title {

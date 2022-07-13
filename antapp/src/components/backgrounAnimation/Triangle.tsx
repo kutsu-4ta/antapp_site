@@ -3,9 +3,14 @@ import {CSSTransition} from 'react-transition-group';
 import './style.css';
 import styled, {keyframes} from "styled-components";
 
-type UseTriangleAnimation = () => JSX.Element;
+interface Props {
+    width: number;
+    height: number;
+}
 
-export const UseTriangleAnimation: UseTriangleAnimation = () => {
+type UseTriangleAnimation = (props:Props) => JSX.Element;
+
+export const UseTriangleAnimation: UseTriangleAnimation = (props:Props) => {
     //マウントの状態を管理
     const [mount, setMount] = useState(false);
 
@@ -22,18 +27,18 @@ export const UseTriangleAnimation: UseTriangleAnimation = () => {
                 border-right: 0px solid transparent;
               }
               100% {
-                   border-right: ${window.innerWidth -20 + "px"} solid transparent;
+                   border-right: ${props.width -20 + "px"} solid transparent;
               }
             `
         );
     };
 
     const Triangle = styled.div`
-        // border-top: ${() => window.innerHeight * 0.5 + "px"} solid #efff36; /* 高さ */
-        // border-bottom: ${() => window.innerHeight * 0.5 + "px"} solid #efff36; /* 高さ */
-      border-top: ${() => window.innerHeight * 0.5 + "px"} solid #ffffff; /* 高さ */
-      border-bottom: ${() => window.innerHeight * 0.5 + "px"} solid #ffffff; /* 高さ */
-      border-right: ${() => window.innerWidth - 20 + "px"} solid transparent; /* スクロールバーの幅20px引いてる */
+        // border-top: ${() => props.height * 0.5 + "px"} solid #efff36; /* 高さ */
+        // border-bottom: ${() => props.height * 0.5 + "px"} solid #efff36; /* 高さ */
+      border-top: ${() => props.height * 0.5 + "px"} solid #ffffff; /* 高さ */
+      border-bottom: ${() => props.height * 0.5 + "px"} solid #ffffff; /* 高さ */
+      border-right: ${() => props.width  + "px"} solid transparent; /* スクロールバーの幅20px引いてる */
       animation: ${() => TriangleAnimation} 500ms ease-in;
       //background-color: #4f5045;
 
@@ -44,8 +49,6 @@ export const UseTriangleAnimation: UseTriangleAnimation = () => {
     const Background = styled.div`
       background-color: #4f5045;
     `
-
-    // NOTE:高さと幅のみ画面サイズを取りたいのでコールバックで書き換える
     const callBacks = {
         onEnter: () => {
             console.log('enter')

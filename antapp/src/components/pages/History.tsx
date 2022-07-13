@@ -19,16 +19,6 @@ export default () => {
         <div>
             <IsPc>
                 <div style={{width: width * 2}}>
-                    <div style={{
-                        zIndex: '-1',
-                        position: 'absolute',
-                        // backgroundImage: `url(${historyTitleImage})`,
-                        backgroundRepeat: 'no-repeat',
-                        width:'100vw',
-                        height:'100vh'
-                    }}>
-                        Hello,world
-                    </div>
                     <Grid container justifyContent="center">
                         <Grid item xs={6} className="content-flex-center">
                             <Grid container justifyContent="center" className="padding-3">

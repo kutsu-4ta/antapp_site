@@ -12,6 +12,7 @@
 
 import React, {useRef, useEffect, useState} from 'react';
 import Grid from "@mui/material/Grid";
+import Slider from "@mui/material/Slider";
 import './style.css';
 import  {IsPc, IsMobile} from "../utility/Responsive";
 import Background from "../../assets/images/profile_kari.png";
@@ -27,6 +28,7 @@ import HomeSmall from "../../assets/images/Home_small.png";
 import HomeMiddle from "../../assets/images/Home_middle.png";
 import HomeLarge from "../../assets/images/Home_large.png";
 import HomeXXLarge from "../../assets/images/Home_xxlarge.png";
+import HomeMobile from "../../assets/images/Home_mobile.png";
 // 各ページ
 import About from "./About";
 import SkillSet from "./Skillset";
@@ -39,6 +41,10 @@ import WorksIcon from "../../assets/images/icons/works_pc_phone.svg";
 import ContactIcon from "../../assets/images/icons/contact_mail.svg";
 import SkillSetIcon from "../../assets/images/icons/skillsets_dev.svg";
 import ArrowDownScroll from "../../assets/images/icons/arrow_down_scroll.svg";
+import ShareIcon from '@mui/icons-material/Share';
+import MobileLeft from '../../assets/images/icons/mobile_left.svg';
+import MobileRight from '../../assets/images/icons/mobile_right.svg';
+import MenuIcon from '@mui/icons-material/Menu';
 // ナビゲーションバー
 import FoxLogo from "../../assets/images/fox-white.svg";
 import HumanNavIcon from "../../assets/images/icons/human_small_white.svg";
@@ -66,6 +72,7 @@ export default () => {
     const [widthState, setWidthState] = useState(window.innerWidth);
     const [heightState, setHeightState] = useState(window.innerHeight);
     const [homePicture, setHomePicture] = useState(HomeXXLarge);
+    const [displayColorState, setDisplayColorState] = useState("#00ffff");
 
     useEffect(() => {
         resize()
@@ -77,9 +84,15 @@ export default () => {
     const styleActiveNavButton: StyleActiveNavButton = (id) => 'border: solid #808080; opacity: 1; background:' + BodyItems[id].backGroundColor + ';';
     const styleNavButton = 'border: solid #808080; opacity: 0.8;';
 
-    const handleMouseEnter = (id: number) => navRef.current[id].current?.getAttribute('style') ? navRef.current[id].current?.setAttribute('style', styleActiveNavButton(id)) : '';
+    const handleMouseEnter = (id: number) => {
+        setDisplayColorState(BodyItems[id].backGroundColor)
+        return (navRef.current[id].current?.getAttribute('style') ? navRef.current[id].current?.setAttribute('style', styleActiveNavButton(id)) : '');
+    }
 
-    const handleMouseLeave = (id: number) => navRef.current[id].current?.getAttribute('style') ? navRef.current[id].current?.setAttribute('style', styleNavButton) : '';
+    const handleMouseLeave = (id: number) => {
+        setDisplayColorState("#00ffff")
+        return (navRef.current[id].current?.getAttribute('style') ? navRef.current[id].current?.setAttribute('style', styleNavButton) : '');
+    }
 
     // ボディ
     const ref = useRef(BodyItems.map(() => React.createRef<HTMLDivElement>()));
@@ -88,8 +101,8 @@ export default () => {
         console.log('resize');
         setWidthState(window.innerWidth);
         setHeightState(window.innerHeight);
-        console.log(heightState);
-        if (widthState < 500 && heightState < 200) {
+        console.log(widthState);
+        if (widthState < 900 && heightState < 200) {
             setHomePicture(HomeSmall);
         } else if (widthState < 1400 && heightState < 800) {
             setHomePicture(HomeMiddle);
@@ -104,30 +117,87 @@ export default () => {
             {window.addEventListener('resize', resize)}
             {/* PC端末 */}
             <IsPc>
-                <div id="target">
-                    <NavAnimation>
-                        <InfinateGradation
-                            color1="#4169e1"
-                            color2="#00ffff"
-                            color3="#20b2aa"
-                            scale={3}
-                            style={{height: '100vh', width: '100%', position: "sticky", top: "0", border: "none"}} >
+                <Grid container justifyContent="center" style={{
+                    position: "fixed",
+                    height: "4rem",
+                    top: "0",
+                    zIndex: "10",
+                    backgroundColor: "rgba(169,169,169,0.9)",
+                }}>
+                    <Grid item xs={8}>
+                        <img onClick={() => scrollToView(null)} src={FoxLogo} className="icon-navbar-logo"
+                             alt="antapp"/>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Grid container justifyContent="center" spacing={2}>
+                            {BodyItems.map((item, id) => {
+                                return (
+                                    <Grid item xs={3} className="text-center">
+                                        <InfinateGradation scale={10}
+                                                           color1="#c0c0c0"
+                                                           color2={BodyItems[id].backGroundColor}
+                                                           color3="#696969"
+                                                           style={{border: "none"}}
+                                        >
+                                            <div
+                                                key={id}
+                                                ref={navRef.current[id]}
+                                                id={"nav-" + item.pageName}
+                                                style={{borderColor: "#808080",}}
+                                                onMouseEnter={() => handleMouseEnter(id)}
+                                                onMouseLeave={() => handleMouseLeave(id)}
+                                                onClick={() => scrollToView(id)}
+                                                className="icon-navbar-button"
+                                            >
+                                                {/*<img src={item.navIcon}*/}
+                                                {/*     className="icon-navbar-item"*/}
+                                                {/*     alt={item.pageName}/>*/}
+                                                <p className="text-navbar">{item.pageName}</p>
+                                            </div>
+                                        </InfinateGradation>
+
+                                    </Grid>
+
+                                );
+                            })}
+                        </Grid>
+
+                        <Grid container justifyContent="center">
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                {/*</div>*/}
+
+
+                {/*<div id="target">*/}
+                <NavAnimation>
+                    <InfinateGradation
+                        color1="#c0c0c0"
+                        color2={displayColorState}
+                        color3="#696969"
+                        scale={2}
+                        style={{
+                            height: '100vh',
+                            width: `${widthState}`,
+                            position: "sticky",
+                            top: "0",
+                            border: "none"
+                        }}>
 
                         <div
                             style={{
-                            top: "0",
-                            position: 'sticky',
-                            backgroundImage: `url(${homePicture})`,
-                            backgroundRepeat: 'no-repeat',
-                            width: '100vw',
-                            height: '100vh'
-                        }}
+                                top: "0",
+                                position: 'sticky',
+                                backgroundImage: `url(${homePicture})`,
+                                backgroundRepeat: 'no-repeat',
+                                width: `${widthState}`,
+                                height: '100vh'
+                            }}
                         >
-                            <UseTriangleAnimation/>
-                            <img onClick={() => scrollToView(null)} src={FoxLogo} className="icon-navbar-logo" style={{ paddingLeft: widthState * 0.9 + "px"}} alt="antapp"/>
-                            <div  id="nav-item-target">
+                            <div id="nav-item-target">
                                 <Grid container justifyContent="center" className="content-title" id="home">
-                                    <Grid item xs={12} style={{height: "5rem"}}>
+                                    <Grid item xs={12} style={{height: "5rem", marginTop: "5rem"}}>
                                         <CSSAnimation timeoutEnter={500} timeoutExit={200} classNames="fade-in">
                                             <h1 style={{fontFamily: "Noto Serif JP"}}>Masafumi Yamashita</h1>
                                         </CSSAnimation>
@@ -135,60 +205,64 @@ export default () => {
                                 </Grid>
 
                                 <Grid container justifyContent="center" style={{paddingTop: heightState * 0.1}}>
-                                    <Grid item xs={2}></Grid>
                                     <Grid item xs={8}>
                                         <Grid container justifyContent="center" className="nav-menu"
                                               style={{position: "sticky", top: "0", zIndex: "3"}}>
+
+                                            <Grid item xs={12} className="text-center">
+                                                {/*<CSSAnimation timeoutEnter={800} timeoutExit={200} classNames="slide-in-from-bottom">*/}
+                                                {/*</CSSAnimation>*/}
+                                            </Grid>
+
                                             {BodyItems.map((item, id) => {
                                                 return (
                                                     <Grid item xs={3} className="padding-3 padding-zero">
-                                                        <CSSAnimation timeoutEnter={800} timeoutExit={200} classNames="slide-in-from-bottom">
-                                                            <Grid container justifyContent="center">
-                                                                <Grid item xs={12} className="text-center" >
-                                                                    <InfinateGradation scale={10}
-                                                                                       color1="#c0c0c0"
-                                                                                       color2={BodyItems[id].backGroundColor}
-                                                                                       color3="#c0c0c0"
-                                                                                       style={{border:"none"}}
-                                                                    >
-                                                                        <div
-                                                                            key={id}
-                                                                            ref={navRef.current[id]}
-                                                                            id={"nav-" + item.pageName}
-                                                                            style={{
-                                                                                borderColor: "#808080",
-                                                                            }}
-                                                                            onMouseEnter={() => handleMouseEnter(id)}
-                                                                            onMouseLeave={() => handleMouseLeave(id)}
-                                                                            onClick={() => scrollToView(id)}
-                                                                            className="icon-navbar-button"
-                                                                        >
-                                                                            <img src={item.navIcon}
-                                                                                 className="icon-navbar-item"
-                                                                                 alt={item.pageName}/>
-                                                                            <p className="text-navbar">{item.pageName}</p>
-                                                                        </div>
-                                                                    </InfinateGradation>
-                                                                </Grid>
-                                                            </Grid>
-                                                        </CSSAnimation>
+                                                        {/*<CSSAnimation timeoutEnter={800} timeoutExit={200} classNames="slide-in-from-bottom">*/}
+                                                        {/*    <Grid container justifyContent="center">*/}
+                                                        {/*        <Grid item xs={12} className="text-center">*/}
+                                                        {/*            <InfinateGradation scale={10}*/}
+                                                        {/*                               color1="#c0c0c0"*/}
+                                                        {/*                               color2={BodyItems[id].backGroundColor}*/}
+                                                        {/*                               color3="#c0c0c0"*/}
+                                                        {/*                               style={{border: "none"}}*/}
+                                                        {/*            >*/}
+                                                        {/*                <div*/}
+                                                        {/*                    key={id}*/}
+                                                        {/*                    ref={navRef.current[id]}*/}
+                                                        {/*                    id={"nav-" + item.pageName}*/}
+                                                        {/*                    style={{*/}
+                                                        {/*                        borderColor: "#808080",*/}
+                                                        {/*                    }}*/}
+                                                        {/*                    onMouseEnter={() => handleMouseEnter(id)}*/}
+                                                        {/*                    onMouseLeave={() => handleMouseLeave(id)}*/}
+                                                        {/*                    onClick={() => scrollToView(id)}*/}
+                                                        {/*                    className="icon-navbar-button"*/}
+                                                        {/*                >*/}
+                                                        {/*                    <img src={item.navIcon}*/}
+                                                        {/*                         className="icon-navbar-item"*/}
+                                                        {/*                         alt={item.pageName}/>*/}
+                                                        {/*                    <p className="text-navbar">{item.pageName}</p>*/}
+                                                        {/*                </div>*/}
+                                                        {/*            </InfinateGradation>*/}
+                                                        {/*        </Grid>*/}
+                                                        {/*    </Grid>*/}
+                                                        {/*</CSSAnimation>*/}
                                                     </Grid>
                                                 );
                                             })}
                                         </Grid>
                                     </Grid>
-                                    <Grid item xs={2}></Grid>
                                 </Grid>
 
-                                <Grid container justifyContent="center" style={{paddingTop: heightState * 0.1}} id="nav-item-trigger">
+                                <Grid container justifyContent="center" style={{paddingTop: heightState * 0.1}}
+                                      id="nav-item-trigger">
                                     <Grid item xs={12} className="content-flex-center">
                                         <InfinateUpDown scale={20}>
                                             <div className="content-flex-center">
-                                                <CSSAnimation timeoutEnter={2500} timeoutExit={200}
+                                                <CSSAnimation timeoutEnter={2000} timeoutExit={200}
                                                               classNames="fade-in">
                                                     <img src={ArrowDownScroll} className="icon-scroll-arrow-down"
-                                                         alt="scroll"
-                                                         onClick={() => scrollToView(0)}/>
+                                                         alt="scroll" onClick={() => scrollToView(0)}/>
                                                 </CSSAnimation>
                                             </div>
                                         </InfinateUpDown>
@@ -196,288 +270,144 @@ export default () => {
                                 </Grid>
                             </div>
                         </div>
-                        </InfinateGradation>
+                    </InfinateGradation>
 
-                        <Grid container justifyContent="center">
-                            <Grid item xs={10} className="content-front">
-                                <Grid container justifyContent="center">
-                                    {BodyItems.map((item, id) => {
-                                        return (
-                                            <>
-                                                {/*トピックのアイコン*/}
-                                                <Grid item xs={2}
-                                                      id={item.pageName}
-                                                      key={id}
-                                                      ref={ref.current[id]}
-                                                      className="text-center"
-                                                >
-                                                    {item.icon ?
-                                                        <div style={{position: "sticky", top: "0"}}>
-                                                            <img src={item.icon} className="icon-topic"
-                                                                 alt={item.pageName}
-                                                                 onClick={() => scrollToView(id)}
-                                                            />
-                                                            <h2 className="text-topic">
-                                                                {item.pageName}
-                                                            </h2>
-                                                        </div>
-                                                        :
-                                                        ""
-                                                    }
-                                                </Grid>
-
-                                                {/*ボディ*/}
-                                                <Grid item xs={10}>
-                                                    <ScrollFader timeoutEnter={200} timeoutExit={500}>
-                                                        <div className="content-body background-content">
-                                                            {item.pageName === "about" ? <About/> : ''}
-                                                            {item.pageName === "skillSet" ? <SkillSet/> : ''}
-                                                            {item.pageName === "works" ? <Work/> : ''}
-                                                            {item.pageName === "contact" ? <Contact/>: ''}
-                                                        </div>
-                                                    </ScrollFader>
-                                                </Grid>
-                                            </>
-                                        );
-                                    })}
-                                </Grid>
-                            </Grid>
-
-                            {/*アニメーション*/}
-                            <Grid item xs={2}>
-                                <Grid container justifyContent="center">
-                                    <Grid item xs={12} className="text-center content-animation background-sticky">
+                    <Grid container justifyContent="center">
+                        {BodyItems.map((item, id) => {
+                            return (
+                                <>
+                                    {/*トピックのアイコン*/}
+                                    <Grid item xs={1}
+                                          id={item.pageName}
+                                          key={id}
+                                          ref={ref.current[id]}
+                                          className="text-center"
+                                    >
+                                        {item.icon ?
+                                            <div style={{position: "sticky", top: "0"}}>
+                                                <img src={item.icon} className="icon-topic"
+                                                     alt={item.pageName}
+                                                     onClick={() => scrollToView(id)}
+                                                     style={{marginTop: "5rem"}}
+                                                />
+                                                <h2 className="text-topic">
+                                                    {item.pageName}
+                                                </h2>
+                                            </div>
+                                            :
+                                            ""
+                                        }
                                     </Grid>
-                                    <Grid item xs={12} className="text-center content-animation background-sticky">
+
+                                    {/*ボディ*/}
+                                    <Grid item xs={10}>
+                                        <Grid container justifyContent="center">
+                                            <ScrollFader timeoutEnter={150} timeoutExit={1000}>
+                                                <Grid item xs={12}>
+                                                    <div className="content-body background-content"
+                                                         style={{marginTop: "5rem"}}>
+                                                        {item.pageName === "about" ? <About/> : ''}
+                                                        {item.pageName === "skillSet" ? <SkillSet/> : ''}
+                                                        {item.pageName === "works" ? <Work/> : ''}
+                                                        {item.pageName === "contact" ? <Contact/> : ''}
+                                                    </div>
+                                                </Grid>
+                                            </ScrollFader>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </Grid>
-                            <div className={"text-right margin-top-10"}>
-                                <Typography component="p" variant="body1" textAlign="center">
-                                    thank you for your comming !!
-                                </Typography>
-                            </div>
+                                    <Grid item xs={1}>
+                                    </Grid>
+                                </>
+                            );
+                        })}
+                    </Grid>
+
+                    <div className={"text-right margin-top-10"}>
+                        <Typography component="p" variant="body1" textAlign="center">
+                            thank you for your coming !!
+                        </Typography>
+                    </div>
+
+                </NavAnimation>
+                {/*</div>*/}
+            </IsPc>
+
+            {/* Mobile端末 */}
+            <IsMobile>
+                <div style={{backgroundColor: "black",
+                    // fontFamily:"Noto Serif JP",
+                    color:"white"}}
+                className="text-center">
+                    <Grid container justifyContent="center">
+                        <Grid item xs={12} style={{height: '15vh'}}>
+                            <h1>Masafumi Yamashita</h1>
                         </Grid>
-                    </NavAnimation>
-                    {/*<div className={"text-right margin-top-10"}>*/}
-                    {/*    <Typography component="p" variant="body1" textAlign="right">*/}
-                    {/*        {"特定商取引方に基づく記載事項"}*/}
-                    {/*    </Typography>*/}
-                    {/*    {"代表責任者名: 山下 将史"}<br/>*/}
-                    {/*    {"所在地: メールにて遅滞なく提供いたします"}<br/>*/}
-                    {/*    {"電話番号: メールにて遅滞なく提供いたします"}<br/>*/}
-                    {/*</div>*/}
-                </div>
-                </IsPc>
 
-                {/* Mobile端末 */}
-                <IsMobile>
-                    <NavAnimation>
-                        <InfinateGradation
-                            color1="#778899"
-                            color2="#b0c4de"
-                            color3="#87cefa"
-                            scale={20}
-                            style={{height: heightState, position: "sticky", top: "0", border: "none"}} >
-                        <UseTriangleAnimation/>
-                        <img onClick={() => scrollToView(null)} src={FoxLogo} className="mobile-icon-navbar-logo" style={{ paddingLeft: widthState * 0.9 + "px"}} alt="antapp"/>
+                        {/*メインのウィンドウ部分*/}
+                        <Grid item xs={12}>
+                            <Grid container justifyContent="center">
+                                <Grid item xs={1}></Grid>
+                                <Grid item xs={10}>
+                                    <div
+                                        style={{
+                                            top: "0",
+                                            position: 'sticky',
+                                            backgroundImage: `url(${HomeMobile})`,
+                                            backgroundRepeat: 'no-repeat',
+                                            width: `${widthState}`,
+                                            height: '55vh'
+                                        }}
+                                    >
+                                    </div>
+                                </Grid>
+                                <Grid item xs={1}></Grid>
+                            </Grid>
+                        </Grid>
 
-                            <Grid container justifyContent="center" className="mobile-content-title" id="home">
-                                <Grid item xs={12} style={{height: "5rem"}}>
-                                    <CSSAnimation timeoutEnter={500} timeoutExit={200} classNames="fade-in">
-                                        <h1 style={{fontFamily: "Noto Serif JP"}} className="mobile-text-size-title">良いモノ、つくります。</h1>
-                                    </CSSAnimation>
+                        <Grid item xs={12} style={{height: '10vh'}}>
+                            <h3>About</h3>
+                        </Grid>
+                        <Grid item xs={12} style={{height: '10vh'}}>
+                            <Slider
+                                aria-label="Temperature"
+                                defaultValue={30}
+                                // getAriaValueText={'valuetext'}
+                                valueLabelDisplay="auto"
+                                step={10}
+                                marks
+                                min={10}
+                                max={110}
+                            />
+                        </Grid>
+
+                        {/*コントロール部*/}
+                        <Grid item xs={12} style={{height: '10vh'}}>
+                            <Grid container justifyContent="center" className="content-flex-center">
+                                <Grid item xs={2}>
+                                    <ShareIcon/>
+                                </Grid>
+                                <Grid item xs={2}>
+                                    <img src={MobileLeft} style={{height: "5vh", margin: "0"}}/>
+                                </Grid>
+                                <Grid item xs={4}>
+                                    <img src={FoxLogo} style={{height: "7vh", margin: "0"}}/>
+                                </Grid>
+                                <Grid item xs={2}>
+                                    <img src={MobileRight} style={{height: "5vh", margin: "0"}}/>
+                                </Grid>
+                                <Grid item xs={2}>
+                                    <MenuIcon/>
                                 </Grid>
                             </Grid>
+                        </Grid>
 
-                                    <Grid container justifyContent="center" className="nav-menu" spacing={1}
-                                          style={{position: "sticky", top: "0", zIndex: "3"}}>
-                                        {BodyItems.map((item, id) => {
-                                            return (
-                                                <Grid item xs={3} className="padding-zero text-center">
-                                                    <CSSAnimation timeoutEnter={800} timeoutExit={200} classNames="slide-in-from-bottom">
-                                                        <InfinateGradation scale={10}
-                                                                           color1="#c0c0c0"
-                                                                           color2={BodyItems[id].backGroundColor}
-                                                                           color3="#c0c0c0"
-                                                                           style={{border: "none"}}
-                                                        >
-                                                            <div
-                                                                key={id}
-                                                                ref={navRef.current[id]}
-                                                                id={"nav-" + item.pageName}
-                                                                style={{
-                                                                    borderColor: "#808080",
-                                                                }}
-                                                                onMouseEnter={() => handleMouseEnter(id)}
-                                                                onMouseLeave={() => handleMouseLeave(id)}
-                                                                onClick={() => scrollToView(id)}
-                                                                className="icon-navbar-button"
-                                                            >
-                                                                <img src={item.navIcon}
-                                                                     className="icon-navbar-item"
-                                                                     alt={item.pageName}/>
-                                                                <p className="mobile-text-navbar">{item.pageName}</p>
-                                                            </div>
-                                                        </InfinateGradation>
-                                                    </CSSAnimation>
-                                                </Grid>
-                                            );
-                                        })}
-                                    </Grid>
-
-                        </InfinateGradation>
-                        {/*<div>*/}
-                        {/*    <Grid container justifyContent="center" className="content-title" id="home">*/}
-                        {/*        <Grid item xs={12}>*/}
-                        {/*            <h1 className="mobile-h1">Web制作のご依頼をお待ちしております。</h1>*/}
-                        {/*        </Grid>*/}
-                        {/*    </Grid>*/}
-
-                        {/*    <Grid container justifyContent="center"*/}
-                        {/*          style={{position: "sticky", top: "10px", zIndex: "3"}}*/}
-                        {/*    >*/}
-                        {/*        <Grid xs={12} className="content-flex-center"*/}
-                        {/*              style={{position: "sticky", top: "10px", zIndex: "3"}}>*/}
-                        {/*            <img onClick={() => scrollToView(null)} src={FoxLogo}*/}
-                        {/*                 className="mobile-icon-navbar-logo" alt="antapp" id="mobile-nav-item-target"/>*/}
-                        {/*        </Grid>*/}
-                        {/*    </Grid>*/}
-
-                        {/*    <Grid container justifyContent="center">*/}
-
-                        {/*        <Grid item xs={1}></Grid>*/}
-                        {/*        <Grid item xs={10} className="mobile-content-title-border text-center">*/}
-                        {/*            <h2 className="mobile-text-size-title">事業内容</h2>*/}
-                        {/*            <Grid container justifyContent="center" spacing={4} style={{marginBottom: "2rem"}}>*/}
-                        {/*                <Grid item xs={6} className="text-center">*/}
-                        {/*                    <img src={HumanIcon} className="mobile-icon-content-top"*/}
-                        {/*                         alt={"webシステム"}/><br/>*/}
-                        {/*                    <span className="mobile-text-size-sub-title mobile-title">webシステム（仮）</span>*/}
-                        {/*                </Grid>*/}
-                        {/*                <Grid item xs={6} className="text-center">*/}
-                        {/*                    <img src={WorksIcon} className="mobile-icon-content-top"*/}
-                        {/*                         alt={"LP、webサイト"}/><br/>*/}
-                        {/*                    <span className="mobile-text-size-sub-title">LP・webサイト（仮）</span>*/}
-                        {/*                </Grid>*/}
-                        {/*                <Grid item xs={12} className="text-center">*/}
-                        {/*                    <img src={SkillSetIcon} className="mobile-icon-content-top"*/}
-                        {/*                         alt={"スマホアプリ"}/><br/>*/}
-                        {/*                    <span className="mobile-text-size-sub-title">スマートフォンアプリ（仮）</span>*/}
-                        {/*                </Grid>*/}
-                        {/*            </Grid>*/}
-                        {/*        </Grid>*/}
-                        {/*        <Grid item xs={1}></Grid>*/}
-
-                        {/*    </Grid>*/}
-
-                        {/*    <Grid container justifyContent="center" spacing={1}*/}
-                        {/*          className="padding-top-3 margin-bottom-3"*/}
-                        {/*        // style={{position: "sticky", top: "10px", zIndex: "3"}}*/}
-                        {/*    >*/}
-                        {/*        {BodyItems.map((item, id) => {*/}
-                        {/*            return (*/}
-                        {/*                <Grid item xs={3}>*/}
-                        {/*                    <div>*/}
-                        {/*                        <NavLink to={item.pageName}>*/}
-                        {/*                            <Grid container justifyContent="center">*/}
-                        {/*                                <Grid item xs={12} className="text-center">*/}
-                        {/*                                    /!* ボーダーカラーはstyleプロップスで指定する必要があるので注意 *!/*/}
-                        {/*                                    <div*/}
-                        {/*                                        key={id}*/}
-                        {/*                                        ref={navRef.current[id]}*/}
-                        {/*                                        id={"nav-" + item.pageName}*/}
-                        {/*                                        style={{*/}
-                        {/*                                            backgroundColor: item.backGroundColor,*/}
-                        {/*                                            borderColor: "#808080"*/}
-                        {/*                                        }}*/}
-                        {/*                                        onMouseEnter={() => handleMouseEnter(id)}*/}
-                        {/*                                        onMouseLeave={() => handleMouseLeave(id)}*/}
-                        {/*                                        onClick={() => scrollToView(id)}*/}
-                        {/*                                        className="icon-navbar-button"*/}
-                        {/*                                    >*/}
-                        {/*                                        <img src={item.navIcon} className="icon-navbar-item"*/}
-                        {/*                                             alt={item.pageName}/>*/}
-                        {/*                                        <span className="text-navbar">{item.pageName}</span>*/}
-                        {/*                                    </div>*/}
-                        {/*                                </Grid>*/}
-                        {/*                            </Grid>*/}
-                        {/*                        </NavLink>*/}
-                        {/*                    </div>*/}
-                        {/*                </Grid>*/}
-                        {/*            );*/}
-                        {/*        })}*/}
-                        {/*    </Grid>*/}
-
-                        {/*    <Grid container justifyContent="center" className="margin-bottom-2"*/}
-                        {/*          id="mobile-nav-item-trigger">*/}
-                        {/*        <Grid item xs={12}>*/}
-                        {/*            <InfinateUpDown scale={20}>*/}
-                        {/*                <div className="content-flex-center">*/}
-                        {/*                    <img src={ArrowDownScroll} className="mobile-icon-scroll-arrow-down"*/}
-                        {/*                         alt="scroll" onClick={() => scrollToView(0)}/>*/}
-                        {/*                </div>*/}
-                        {/*            </InfinateUpDown>*/}
-                        {/*        </Grid>*/}
-                        {/*    </Grid>*/}
-
-                        {/*    <Grid container justifyContent="center">*/}
-                        {/*        <Grid item xs={10} className="content-front">*/}
-                        {/*            <Grid container justifyContent="center" style={{position: "sticky", top: "0"}}>*/}
-                        {/*                {BodyItems.map((item, id) => {*/}
-                        {/*                    return (*/}
-                        {/*                        <>*/}
-                        {/*                            /!*トピックのアイコン*!/*/}
-                        {/*                            <Grid item xs={2} id={item.pageName} key={id} ref={ref.current[id]}*/}
-                        {/*                                  className="text-center">*/}
-                        {/*                                {item.icon ?*/}
-                        {/*                                    <div style={{position: "sticky", top: "0"}}>*/}
-                        {/*                                        <img src={item.icon} className="mobile-icon-topic"*/}
-                        {/*                                             alt={item.pageName}*/}
-                        {/*                                             onClick={() => scrollToView(id)}*/}
-                        {/*                                        />*/}
-                        {/*                                        <h2 className="mobile-text-topic">*/}
-                        {/*                                            {item.pageName}*/}
-                        {/*                                        </h2>*/}
-                        {/*                                    </div>*/}
-                        {/*                                    :*/}
-                        {/*                                    ""*/}
-                        {/*                                }*/}
-                        {/*                            </Grid>*/}
-
-                        {/*                            /!*ボディ*!/*/}
-                        {/*                            <Grid item xs={10}>*/}
-                        {/*                                <ScrollFader timeoutEnter={500} timeoutExit={500}>*/}
-                        {/*                                    <div className="mobile-content-body">*/}
-                        {/*                                        {item.pageName === "about" ? <About/> : ''}*/}
-                        {/*                                        {item.pageName === "skillSet" ? <SkillSet/> : ''}*/}
-                        {/*                                        {item.pageName === "works" ? <Work/> : ''}*/}
-                        {/*                                        {item.pageName === "contact" ? <Contact/> : ''}*/}
-                        {/*                                    </div>*/}
-                        {/*                                </ScrollFader>*/}
-                        {/*                            </Grid>*/}
-                        {/*                        </>*/}
-                        {/*                    );*/}
-                        {/*                })}*/}
-                        {/*            </Grid>*/}
-                        {/*        </Grid>*/}
-
-                        {/*        /!*アニメーション*!/*/}
-                        {/*        <Grid item xs={2}>*/}
-                        {/*            <Grid container justifyContent="center">*/}
-                        {/*                <Grid item xs={12}>*/}
-                        {/*                </Grid>*/}
-                        {/*            </Grid>*/}
-                        {/*        </Grid>*/}
-
-                        {/*        <div className={'text-right'}>*/}
-                        {/*            特定商取引法のやつ<br/>*/}
-                        {/*            絶滅危惧種レッドリスト認定うんこ(仮)*/}
-                        {/*        </div>*/}
-                        {/*    </Grid>*/}
-                        {/*</div>*/}
-                    </NavAnimation>
-                </IsMobile>
+                        <Grid item xs={12}>
+                        </Grid>
+                        <Grid item xs={12}>
+                        </Grid>
+                    </Grid>
+                </div>
+            </IsMobile>
         </>
     );
 };

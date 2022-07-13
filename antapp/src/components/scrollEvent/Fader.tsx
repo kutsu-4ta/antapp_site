@@ -74,25 +74,25 @@ const useScrollFader: UseScrollFader = (props:Props)  => {
     const intersect = useObserver(myRef);
 
     // NOTE:デバッグ用
-    // const callBacks = {
-    //     onEnter: () => {
-    //         console.log('enter')
-    //         console.log(myRef.current?.children)
-    //         console.log()
-    //     },
-    //     onEntered: () => {
-    //         console.log('entered')
-    //         console.log(myRef.current?.children)
-    //     },
-    //     onExit: () => {
-    //         console.log('exit')
-    //         console.log(myRef.current?.children)
-    //     },
-    //     onExited: () => {
-    //         console.log('exited')
-    //         console.log(myRef.current?.children)
-    //     }
-    // };
+    const callBacks = {
+        onEnter: () => {
+            console.log('enter')
+            console.log(myRef.current?.children)
+            console.log()
+        },
+        onEntered: () => {
+            console.log('entered')
+            console.log(myRef.current?.children)
+        },
+        onExit: () => {
+            console.log('exit')
+            console.log(myRef.current?.children)
+        },
+        onExited: () => {
+            console.log('exited')
+            console.log(myRef.current?.children)
+        }
+    };
 
     return (
         <>
