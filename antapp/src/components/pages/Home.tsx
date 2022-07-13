@@ -73,6 +73,10 @@ export default () => {
     const [heightState, setHeightState] = useState(window.innerHeight);
     const [homePicture, setHomePicture] = useState(HomeXXLarge);
     const [displayColorState, setDisplayColorState] = useState("#00ffff");
+    const [activeIdState, setActiveIdState] = useState(0);
+    const [value, setValue] = React.useState<number | string | Array<number | string>>(
+        30,
+    );
 
     useEffect(() => {
         resize()
@@ -94,9 +98,22 @@ export default () => {
         return (navRef.current[id].current?.getAttribute('style') ? navRef.current[id].current?.setAttribute('style', styleNavButton) : '');
     }
 
+    // モバイルの機能
+    const onScroll = () => {
+        setValue(window.scrollY)
+    }
+    const handleSliderChange = (event: Event, newValue: number | number[]) => {
+        setValue(newValue);
+        window.scroll(0,typeof value === 'number' ? value : 0);
+    };
+
+
     // ボディ
     const ref = useRef(BodyItems.map(() => React.createRef<HTMLDivElement>()));
-    const scrollToView = (id: number | undefined | null) => (id !== null) && (id !== undefined) ? ref.current[id]!.current!.scrollIntoView({behavior: "smooth"}) : window.scroll({top: 0, behavior: 'smooth'});
+    const scrollToView = (id: number | undefined | null) => {
+        setActiveIdState(id ? id : 0 )
+        return ((id !== null) && (id !== undefined) ? ref.current[id]!.current!.scrollIntoView({behavior: "smooth"}) : window.scroll({top: 0, behavior: 'smooth'}));
+    }
     const resize = () => {
         console.log('resize');
         setWidthState(window.innerWidth);
@@ -114,9 +131,9 @@ export default () => {
     }
     return (
         <>
-            {window.addEventListener('resize', resize)}
             {/* PC端末 */}
             <IsPc>
+                {window.addEventListener('resize', resize)}
                 <Grid container justifyContent="center" style={{
                     position: "fixed",
                     height: "4rem",
@@ -334,79 +351,131 @@ export default () => {
 
             {/* Mobile端末 */}
             <IsMobile>
-                <div style={{backgroundColor: "black",
-                    // fontFamily:"Noto Serif JP",
-                    color:"white"}}
-                className="text-center">
-                    <Grid container justifyContent="center">
-                        <Grid item xs={12} style={{height: '15vh'}}>
-                            <h1>Masafumi Yamashita</h1>
-                        </Grid>
+                {document.addEventListener('scroll', onScroll)}
+                <Grid container justifyContent="center"
+                      style={{
+                          backgroundColor: "black",
+                          color: "white",
+                          height: '15vh',
+                          position: "fixed",
+                          top: "0",
+                          zIndex: "10"
+                      }}
+                      className="text-center"
+                >
+                    <Grid item xs={12}>
+                        <h1>Masafumi Yamashita</h1>
+                    </Grid>
+                </Grid>
 
-                        {/*メインのウィンドウ部分*/}
-                        <Grid item xs={12}>
-                            <Grid container justifyContent="center">
-                                <Grid item xs={1}></Grid>
+                <Grid container justifyContent="center">
+                    {BodyItems.map((item, id) => {
+                        return (
+                            <>
+                                <Grid item xs={1}
+                                      id={item.pageName}
+                                      key={id}
+                                      ref={ref.current[id]}
+                                      className="text-center"
+                                      style={{backgroundColor: "black", color: "white"}}
+                                />
+
+                                {/*ボディ*/}
                                 <Grid item xs={10}>
-                                    <div
-                                        style={{
-                                            top: "0",
-                                            position: 'sticky',
-                                            backgroundImage: `url(${HomeMobile})`,
-                                            backgroundRepeat: 'no-repeat',
-                                            width: `${widthState}`,
-                                            height: '55vh'
-                                        }}
-                                    >
-                                    </div>
+                                    <Grid container justifyContent="center">
+                                        {/*<ScrollFader timeoutEnter={150} timeoutExit={1000}>*/}
+                                        <Grid item xs={12}>
+                                            <div className="content-body"
+                                                 style={{marginTop: "5rem"}}>
+                                                {item.pageName === "about" ? <About/> : ''}
+                                                {item.pageName === "skillSet" ? <SkillSet/> : ''}
+                                                {item.pageName === "works" ? <Work/> : ''}
+                                                {item.pageName === "contact" ? <Contact/> : ''}
+                                            </div>
+                                        </Grid>
+                                        {/*</ScrollFader>*/}
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={1}></Grid>
-                            </Grid>
-                        </Grid>
+                                <Grid item xs={1} style={{backgroundColor: "black", color: "white"}}>
+                                </Grid>
+                            </>
+                        );
+                    })}
+                </Grid>
 
-                        <Grid item xs={12} style={{height: '10vh'}}>
-                            <h3>About</h3>
+
+                <Grid container justifyContent="center"
+                      style={{
+                          backgroundColor: "black",
+                          color: "white",
+                          height: '26vh',
+                          position: "fixed",
+                          top: "75vh",
+                          zIndex: "10"
+                      }}
+                      className="text-center"
+                >
+
+                    {/*タイトル*/}
+                    <Grid container justifyContent="center" style={{height: '5vh', padding: "0"}}>
+                        <Grid item xs={12}>
+                            <h4>{BodyItems[activeIdState].pageName}</h4>
                         </Grid>
-                        <Grid item xs={12} style={{height: '10vh'}}>
+                    </Grid>
+
+                    {/*スライダー*/}
+                    <Grid container justifyContent="center" style={{height: '10vh', padding: "0"}}>
+                        <Grid item xs={12}>
                             <Slider
+                                value={typeof value === 'number' ? value : 0}
                                 aria-label="Temperature"
-                                defaultValue={30}
-                                // getAriaValueText={'valuetext'}
+                                onChange={handleSliderChange}
+                                defaultValue={0}
                                 valueLabelDisplay="auto"
-                                step={10}
+                                // step={1}
                                 marks
-                                min={10}
-                                max={110}
+                                min={0}
+                                max={document.documentElement.getBoundingClientRect().height - window.innerHeight}
                             />
                         </Grid>
 
-                        {/*コントロール部*/}
-                        <Grid item xs={12} style={{height: '10vh'}}>
-                            <Grid container justifyContent="center" className="content-flex-center">
-                                <Grid item xs={2}>
-                                    <ShareIcon/>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <img src={MobileLeft} style={{height: "5vh", margin: "0"}}/>
-                                </Grid>
-                                <Grid item xs={4}>
-                                    <img src={FoxLogo} style={{height: "7vh", margin: "0"}}/>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <img src={MobileRight} style={{height: "5vh", margin: "0"}}/>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <MenuIcon/>
-                                </Grid>
-                            </Grid>
-                        </Grid>
+                    </Grid>
 
-                        <Grid item xs={12}>
+                    {/*コントロール*/}
+                    <Grid container justifyContent="center" style={{height: '7vh', padding: "0"}}>
+                        <Grid item xs={2}>
+                            <ShareIcon/>
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={2}>
+                            <img
+                                src={MobileLeft}
+                                style={{height: "5vh", margin: "0"}}
+                                onClick={()=>scrollToView(BodyItems[activeIdState - 1] ? activeIdState - 1 : null )}
+                            />
+                        </Grid>
+                        <Grid item xs={4}>
+                            <img
+                                src={FoxLogo}
+                                style={{height: "7vh", margin: "0"}}
+                                onClick={()=>scrollToView(0 )}
+                            />
+
+                        </Grid>
+                        <Grid item xs={2}>
+                            <img
+                                src={MobileRight}
+                                style={{height: "5vh", margin: "0"}}
+                                onClick={()=>scrollToView(BodyItems[activeIdState + 1] ? activeIdState + 1 : null)}
+                            />
+
+                        </Grid>
+                        <Grid item xs={2}>
+                            <MenuIcon/>
+                        </Grid>
+                        <Grid item xs={12} style={{height: "1vh", margin: "0"}}>
                         </Grid>
                     </Grid>
-                </div>
+                </Grid>
             </IsMobile>
         </>
     );
