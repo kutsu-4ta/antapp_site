@@ -8,9 +8,11 @@ import YamashitaSite from "../../assets/images/works/yamashitaWebSite.png";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
-import Sentence from "../atoms/texts/Sentence";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@mui/material/Button";
+import InfinateGradation from "../backgrounAnimation/InfinateGradation";
+import HomeMobile from "../../assets/images/PlayerUI.png";
+import WorkIcon from "../../assets/images/icons/works_pc_phone.svg";
 
 // TODO:ダイアログを追加するでみられるようにする
 
@@ -68,6 +70,48 @@ const Work: VFC = () => {
             </IsPc>
 
             <IsMobile>
+
+                <Grid container justifyContent="center">
+                    <Grid item xs={12}>
+
+                        <InfinateGradation
+                            color1="#00ffff"
+                            color2="#c0c0c0"
+                            color3="#696969"
+                            scale={2}
+                            style={{
+                                width: `${window.innerWidth}`,
+                                height: '45vh',
+                                position: "sticky",
+                                top: "0",
+                                border: "none"
+                            }}>
+
+                            <div
+                                style={{
+                                    marginTop: "3vh",
+                                    backgroundImage: `url(${HomeMobile})`,
+                                    backgroundRepeat: 'no-repeat',
+                                    width: `${window.innerWidth}`,
+                                    height: '65vh',
+                                    position: "sticky",
+                                    top: "0",
+                                }}
+                            >
+                                <Grid container justifyContent="center" className="content-flex-center">
+                                    <Grid item xs={12} className="content-flex-center" style={{height: "5rem", marginTop: "3rem"}}>
+                                        <h3 style={{fontFamily: "Noto Serif JP"}}>My Works</h3>
+                                    </Grid>
+                                    <Grid item xs={12} className="content-flex-center" style={{height: "3rem"}}>
+                                        <img src={WorkIcon} alt='skillSet' style={{height: "10vh"}}/>
+                                    </Grid>
+                                </Grid>
+
+                            </div>
+                        </InfinateGradation>
+                    </Grid>
+                </Grid>
+
                 <Grid container justifyContent="center" spacing={1} className="text-center"
                     // style={{margin: "2rem"}}
                 >

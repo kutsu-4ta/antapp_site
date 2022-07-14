@@ -15,26 +15,22 @@ import Grid from "@mui/material/Grid";
 import Slider from "@mui/material/Slider";
 import './style.css';
 import  {IsPc, IsMobile} from "../utility/Responsive";
-import Background from "../../assets/images/profile_kari.png";
 // スタイル
-import ScrollFader from '../scrollEvent/Fader';
+import ScrollFader, {useObserver} from '../scrollEvent/Fader';
 import InfinateUpDown from "../backgrounAnimation/InfinateUpDown";
-import {NavAnimation, ScrollAnimation} from "../scrollEvent/TrigerAnimation";
-import {UseTriangleAnimation} from "../backgrounAnimation/Triangle";
+import {NavAnimation} from "../scrollEvent/TrigerAnimation";
 import InfinateGradation from "../backgrounAnimation/InfinateGradation";
 import {CSSAnimation} from "../backgrounAnimation/Slidein";
-import Sentence from "../atoms/texts/Sentence";
 import HomeSmall from "../../assets/images/Home_small.png";
 import HomeMiddle from "../../assets/images/Home_middle.png";
 import HomeLarge from "../../assets/images/Home_large.png";
 import HomeXXLarge from "../../assets/images/Home_xxlarge.png";
-import HomeMobile from "../../assets/images/Home_mobile.png";
+import HomeMobile from "../../assets/images/PlayerUI.png";
 // 各ページ
 import About from "./About";
 import SkillSet from "./Skillset";
 import Work from './Work';
 import Contact from "./Contact";
-import Loading from "../loading/Loading";
 // アイコン
 import HumanIcon from "../../assets/images/icons/about_human.svg";
 import WorksIcon from "../../assets/images/icons/works_pc_phone.svg";
@@ -73,13 +69,15 @@ export default () => {
     const [heightState, setHeightState] = useState(window.innerHeight);
     const [homePicture, setHomePicture] = useState(HomeXXLarge);
     const [displayColorState, setDisplayColorState] = useState("#00ffff");
-    const [activeIdState, setActiveIdState] = useState(0);
+    // モバイル機能
+    const [activeIdState, setActiveIdState] = useState<number | undefined>(undefined);
     const [value, setValue] = React.useState<number | string | Array<number | string>>(
         30,
     );
 
     useEffect(() => {
-        resize()
+        resize();
+        // console.log(isWork);
     })
 
     // ナビゲーションバー
@@ -100,18 +98,55 @@ export default () => {
 
     // モバイルの機能
     const onScroll = () => {
-        setValue(window.scrollY)
+        console.log('スクロール')
+        getActiveElementId();
+        setValue(window.scrollY);
     }
     const handleSliderChange = (event: Event, newValue: number | number[]) => {
         setValue(newValue);
         window.scroll(0,typeof value === 'number' ? value : 0);
     };
 
+    // const getActiveElementName = () =>{
+    //     let elementName = 'home';
+    //     BodyItems.map((item, id) => {
+    //         if(useObserver(ref.current[id])){
+    //             console.log(BodyItems[id].pageName)
+    //             console.log(id)
+    //             elementName = BodyItems[id].pageName;
+    //         }
+    //     });
+    //     return (elementName);
+    // }
+
+    const getActiveElementId = () =>{
+        if(aboutRef){
+            setActiveIdState(0)
+            // console.log('ok');
+        }else if(skillSetRef){
+            setActiveIdState(1)
+            // console.log('OK')
+        }else if(workRef){
+            setActiveIdState(2)
+            // console.log('OK')
+        }else if(contactRef){
+            setActiveIdState(3)
+            // console.log('OK')
+        }
+    }
 
     // ボディ
     const ref = useRef(BodyItems.map(() => React.createRef<HTMLDivElement>()));
+
+    const aboutRef = useObserver(ref.current[0]);
+    const skillSetRef = useObserver(ref.current[1]);
+    const workRef = useObserver(ref.current[2]);
+    const contactRef = useObserver(ref.current[3]);
+
+
     const scrollToView = (id: number | undefined | null) => {
-        setActiveIdState(id ? id : 0 )
+        setActiveIdState(typeof id === 'number' ? id : undefined )
+
         return ((id !== null) && (id !== undefined) ? ref.current[id]!.current!.scrollIntoView({behavior: "smooth"}) : window.scroll({top: 0, behavior: 'smooth'}));
     }
     const resize = () => {
@@ -128,6 +163,7 @@ export default () => {
         } else {
             setHomePicture(HomeXXLarge);
         }
+
     }
     return (
         <>
@@ -142,8 +178,7 @@ export default () => {
                     backgroundColor: "rgba(169,169,169,0.9)",
                 }}>
                     <Grid item xs={8}>
-                        <img onClick={() => scrollToView(null)} src={FoxLogo} className="icon-navbar-logo"
-                             alt="antapp"/>
+                        <img onClick={() => scrollToView(null)} src={FoxLogo} className="icon-navbar-logo" alt="antapp"/>
                     </Grid>
                     <Grid item xs={4}>
                         <Grid container justifyContent="center" spacing={2}>
@@ -271,8 +306,7 @@ export default () => {
                                     </Grid>
                                 </Grid>
 
-                                <Grid container justifyContent="center" style={{paddingTop: heightState * 0.1}}
-                                      id="nav-item-trigger">
+                                <Grid container justifyContent="center" style={{paddingTop: heightState * 0.1}} id="nav-item-trigger">
                                     <Grid item xs={12} className="content-flex-center">
                                         <InfinateUpDown scale={20}>
                                             <div className="content-flex-center">
@@ -364,11 +398,62 @@ export default () => {
                       className="text-center"
                 >
                     <Grid item xs={12}>
-                        <h1>Masafumi Yamashita</h1>
+                        <h1 style={{fontSize: "1.5rem"}}>Masafumi Yamashita</h1>
                     </Grid>
                 </Grid>
 
                 <Grid container justifyContent="center">
+
+                    <Grid item xs={1}
+                          id="home"
+                          className="text-center"
+                          style={{backgroundColor: "black", color: "white"}}
+                    />
+
+                    {/*ボディ*/}
+                    <Grid item xs={10}>
+                        <Grid container justifyContent="center">
+                            <Grid item xs={12}>
+
+                                <InfinateGradation
+                                    color1="#c0c0c0"
+                                    color2={displayColorState}
+                                    color3="#696969"
+                                    scale={2}
+                                    style={{
+                                        width: `${widthState}`,
+                                        height: '45vh',
+                                        position: "sticky",
+                                        top: "0",
+                                        border: "none"
+                                    }}>
+
+                                    <div
+                                        style={{
+                                            marginTop: "15vh",
+                                            backgroundImage: `url(${HomeMobile})`,
+                                            backgroundRepeat: 'no-repeat',
+                                            width: `${widthState}`,
+                                            height: '65vh',
+                                            position: "sticky",
+                                            top: "0",
+                                        }}
+                                    >
+                                        <Grid container justifyContent="center" className="content-title" id="home">
+                                            <Grid item xs={12} style={{height: "5rem", marginTop: "3rem"}}>
+                                                <CSSAnimation timeoutEnter={500} timeoutExit={200} classNames="fade-in">
+                                                    <h2 style={{fontFamily: "Noto Serif JP"}}>I'm a Web Developer</h2>
+                                                </CSSAnimation>
+                                            </Grid>
+                                        </Grid>
+                                    </div>
+                                </InfinateGradation>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={1} style={{backgroundColor: "black", color: "white"}}>
+                    </Grid>
+
                     {BodyItems.map((item, id) => {
                         return (
                             <>
@@ -385,7 +470,7 @@ export default () => {
                                     <Grid container justifyContent="center">
                                         {/*<ScrollFader timeoutEnter={150} timeoutExit={1000}>*/}
                                         <Grid item xs={12}>
-                                            <div className="content-body"
+                                            <div className="content-body padding-3"
                                                  style={{marginTop: "5rem"}}>
                                                 {item.pageName === "about" ? <About/> : ''}
                                                 {item.pageName === "skillSet" ? <SkillSet/> : ''}
@@ -403,14 +488,13 @@ export default () => {
                     })}
                 </Grid>
 
-
                 <Grid container justifyContent="center"
                       style={{
                           backgroundColor: "black",
                           color: "white",
                           height: '26vh',
                           position: "fixed",
-                          top: "75vh",
+                          top: "68vh",
                           zIndex: "10"
                       }}
                       className="text-center"
@@ -419,13 +503,19 @@ export default () => {
                     {/*タイトル*/}
                     <Grid container justifyContent="center" style={{height: '5vh', padding: "0"}}>
                         <Grid item xs={12}>
-                            <h4>{BodyItems[activeIdState].pageName}</h4>
+                            <h4>
+                                {typeof activeIdState === 'number' ? BodyItems[activeIdState].pageName : 'hone'}
+                            </h4>
+                                {/*{ activeIdState!==undefined ? BodyItems[activeIdState].pageName : 'home'}*/}
+                                {/*{getActiveElementName()}*/}
+                                {/*{getActiveElementId()}*/}
                         </Grid>
                     </Grid>
 
                     {/*スライダー*/}
-                    <Grid container justifyContent="center" style={{height: '10vh', padding: "0"}}>
-                        <Grid item xs={12}>
+                    <Grid container justifyContent="center" style={{height: '7vh', padding: "0.5rem"}}>
+                        <Grid item xs={1}/>
+                        <Grid item xs={10}>
                             <Slider
                                 value={typeof value === 'number' ? value : 0}
                                 aria-label="Temperature"
@@ -438,11 +528,11 @@ export default () => {
                                 max={document.documentElement.getBoundingClientRect().height - window.innerHeight}
                             />
                         </Grid>
-
+                        <Grid item xs={1}/>
                     </Grid>
 
                     {/*コントロール*/}
-                    <Grid container justifyContent="center" style={{height: '7vh', padding: "0"}}>
+                    <Grid container justifyContent="center" style={{height: "25vh", padding: "0", backgroundColor: "black"}}>
                         <Grid item xs={2}>
                             <ShareIcon/>
                         </Grid>
@@ -450,14 +540,14 @@ export default () => {
                             <img
                                 src={MobileLeft}
                                 style={{height: "5vh", margin: "0"}}
-                                onClick={()=>scrollToView(BodyItems[activeIdState - 1] ? activeIdState - 1 : null )}
+                                onClick={()=>scrollToView(activeIdState!==undefined && BodyItems[activeIdState - 1] ? activeIdState - 1 : null )}
                             />
                         </Grid>
                         <Grid item xs={4}>
                             <img
                                 src={FoxLogo}
                                 style={{height: "7vh", margin: "0"}}
-                                onClick={()=>scrollToView(0 )}
+                                onClick={()=>scrollToView(null)}
                             />
 
                         </Grid>
@@ -465,14 +555,12 @@ export default () => {
                             <img
                                 src={MobileRight}
                                 style={{height: "5vh", margin: "0"}}
-                                onClick={()=>scrollToView(BodyItems[activeIdState + 1] ? activeIdState + 1 : null)}
+                                onClick={()=>scrollToView(activeIdState!==undefined && BodyItems[activeIdState + 1] ? activeIdState + 1 : 0 )}
                             />
 
                         </Grid>
                         <Grid item xs={2}>
                             <MenuIcon/>
-                        </Grid>
-                        <Grid item xs={12} style={{height: "1vh", margin: "0"}}>
                         </Grid>
                     </Grid>
                 </Grid>

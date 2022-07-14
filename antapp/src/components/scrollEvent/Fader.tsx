@@ -29,7 +29,7 @@ export const useObserver: UseObserver = (ref?: RefObject<HTMLDivElement>, option
 
     const options = {
         // root: null,
-        rootMargin: '-10% 0% -30% 0%', // (top, right, bottom, left)
+        rootMargin: '0% 0% 0% 0%', // (top, right, bottom, left)
         threshold: 0.4
     }
 

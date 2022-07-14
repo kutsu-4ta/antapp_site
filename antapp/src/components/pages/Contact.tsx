@@ -3,6 +3,9 @@ import "./style.css";
 import Grid from "@mui/material/Grid";
 import { Typography } from '@mui/material';
 import {IsPc, IsMobile} from "../utility/Responsive";
+import ContactIcon from "../../assets/images/icons/contact_mail.svg";
+import InfinateGradation from "../backgrounAnimation/InfinateGradation";
+import HomeMobile from "../../assets/images/PlayerUI.png";
 
 import UseForm from "./useContact";
 
@@ -34,7 +37,47 @@ const contact = () => {
                 </div>
             </IsPc>
             <IsMobile>
-                    <Grid container justifyContent="center">
+                <Grid container justifyContent="center">
+                    <Grid item xs={12}>
+
+                        <InfinateGradation
+                            color1="#00ff00"
+                            color2="#c0c0c0"
+                            color3="#696969"
+                            scale={2}
+                            style={{
+                                width: `${window.innerWidth}`,
+                                height: '45vh',
+                                position: "sticky",
+                                top: "0",
+                                border: "none"
+                            }}>
+
+                            <div
+                                style={{
+                                    marginTop: "3vh",
+                                    backgroundImage: `url(${HomeMobile})`,
+                                    backgroundRepeat: 'no-repeat',
+                                    width: `${window.innerWidth}`,
+                                    height: '65vh',
+                                    position: "sticky",
+                                    top: "0",
+                                }}
+                            >
+                                <Grid container justifyContent="center" className="content-flex-center">
+                                    <Grid item xs={12} className="content-flex-center" style={{height: "5rem", marginTop: "3rem"}}>
+                                        <h3 style={{fontFamily: "Noto Serif JP"}}>Please Contact</h3>
+                                    </Grid>
+                                    <Grid item xs={12} className="content-flex-center" style={{height: "3rem"}}>
+                                        <img src={ContactIcon} alt='skillSet' style={{height: "10vh"}}/>
+                                    </Grid>
+                                </Grid>
+                            </div>
+                        </InfinateGradation>
+                    </Grid>
+                </Grid>
+
+                    <Grid container justifyContent="center" style={{marginTop:"10rem"}}>
                         <Grid item xs={12} className="text-center">
                             <UseForm/>
                         </Grid>

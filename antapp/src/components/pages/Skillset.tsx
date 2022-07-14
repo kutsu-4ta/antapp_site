@@ -5,8 +5,9 @@ import Grid from "@mui/material/Grid";
 import Item from "@mui/material/Grid";
 import "./style.css";
 import {IsPc, IsMobile} from "../utility/Responsive";
-import GitHubLogo from "../../assets/images/LanguageLogo/github-icon.svg";
-import FlutterLogo from "../../assets/images/LanguageLogo/flutter.svg";
+import SkillSetIcon from "../../assets/images/icons/skillsets_dev.svg";
+import HomeMobile from "../../assets/images/PlayerUI.png";
+import InfinateGradation from "../backgrounAnimation/InfinateGradation";
 
 type SkillSet = () => JSX.Element;
 const SkillSet: SkillSet = () => {
@@ -39,7 +40,63 @@ const SkillSet: SkillSet = () => {
                 </Grid>
             </IsPc>
             <IsMobile>
+
                 <Grid container justifyContent="center">
+                    <Grid item xs={12}>
+
+                        <InfinateGradation
+                            color1="#ff0000"
+                            color2="#c0c0c0"
+                            color3="#696969"
+                            scale={2}
+                            style={{
+                                width: `${window.innerWidth}`,
+                                height: '45vh',
+                                position: "sticky",
+                                top: "0",
+                                border: "none"
+                            }}>
+
+                            <div
+                                style={{
+                                    marginTop: "3vh",
+                                    backgroundImage: `url(${HomeMobile})`,
+                                    backgroundRepeat: 'no-repeat',
+                                    width: `${window.innerWidth}`,
+                                    height: '65vh',
+                                    position: "sticky",
+                                    top: "0",
+                                }}
+                            >
+                                <Grid container justifyContent="center" className="content-flex-center">
+                                    <Grid item xs={12} className="content-flex-center" style={{height: "5rem", marginTop: "3rem"}}>
+                                        <h3 style={{fontFamily: "Noto Serif JP", }}>My Skill Set</h3>
+                                    </Grid>
+                                    <Grid item xs={12} className="content-flex-center" style={{height: "3rem"}}>
+                                        <img src={SkillSetIcon} alt='skillSet' style={{height: "10vh"}}/>
+                                    </Grid>
+                                </Grid>
+                            </div>
+                        </InfinateGradation>
+                    </Grid>
+                </Grid>
+
+                <Grid container justifyContent="center">
+                    {/*<Grid item xs={12}>*/}
+                    {/*    <div*/}
+                    {/*        style={{*/}
+                    {/*            backgroundImage: `url(${HomeMobile})`,*/}
+                    {/*            backgroundRepeat: 'no-repeat',*/}
+                    {/*            width: '100%',*/}
+                    {/*            height: '65vh',*/}
+                    {/*            position: "sticky",*/}
+                    {/*            top: "0",*/}
+                    {/*        }}*/}
+                    {/*        className="content-flex-center"*/}
+                    {/*    >*/}
+                    {/*        <img src={SkillSetIcon} alt='skillSet'/>*/}
+                    {/*    </div>*/}
+                    {/*</Grid>*/}
                     <Grid item xs={12} className='text-center' style={{paddingTop: "2rem"}}>
                             <Item className="mobile-text-size-body">
                                 業務で扱ったことのある言語とフレームワークの経験年数は以下になります。<br/>
